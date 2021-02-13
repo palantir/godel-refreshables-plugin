@@ -1,0 +1,5 @@
+refreshables:
+  github.com/palantir/conjure-go-runtime/v2/conjure-go-client/httpclient:
+    output: ./zz_generated_refreshables.go
+    types:
+      - ServicesConfig

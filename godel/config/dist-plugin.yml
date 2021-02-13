@@ -1,0 +1,24 @@
+products:
+  refreshables-plugin:
+    build:
+      main-pkg: .
+      version-var: github.com/palantir/godel-refreshables-plugin/cmd.Version
+      os-archs:
+        - os: darwin
+          arch: amd64
+        - os: linux
+          arch: amd64
+    dist:
+      disters:
+        os-arch-bin:
+          type: os-arch-bin
+          config:
+            os-archs:
+              - os: darwin
+                arch: amd64
+              - os: linux
+                arch: amd64
+    publish: {}
+product-defaults:
+  publish:
+    group-id: com.palantir.godel-refreshables-plugin
