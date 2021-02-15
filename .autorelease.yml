@@ -1,0 +1,8 @@
+type: local
+local:
+  repositoryType: oss
+  releaseStrategy:
+    type: timeBasedRelease
+    timeBasedRelease:
+      timeSinceLastRelease: 4 days
+
