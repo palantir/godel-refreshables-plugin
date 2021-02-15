@@ -203,12 +203,9 @@ func interfaceMethods(typ types.Type, typeSet RefreshableTypes) []jen.Code {
 		var methods []jen.Code
 		for i := 0; i < underlying.NumFields(); i++ {
 			field := underlying.Field(i)
-			typ := typeSet.forType(field.Type())
-			if !field.Exported() && typ.Imports == nil {
-				// if this is a private field in a different package, skip it
-				continue
+			if field.Exported() {
+				methods = append(methods, jen.Id(field.Name()).Params().Add(refreshableJenType(typeSet.forType(field.Type()))))
 			}
-			methods = append(methods, jen.Id(field.Name()).Params().Add(refreshableJenType(typ)))
 		}
 		return methods
 	}
@@ -392,11 +389,9 @@ func (rt RefreshableType) implementationMethods(t types.Type, typeSet Refreshabl
 		for i := 0; i < underlying.NumFields(); i++ {
 			field := underlying.Field(i)
 			typ := typeSet.forType(field.Type())
-			if !field.Exported() && typ.Imports == nil {
-				// if this is a private field in a different package, skip it
-				continue
+			if field.Exported() {
+				methods = append(methods, rt.jenImplementationForField(underlying.Field(i), typ), jen.Line(), jen.Line())
 			}
-			methods = append(methods, rt.jenImplementationForField(underlying.Field(i), typ), jen.Line(), jen.Line())
 		}
 		return methods
 	case *types.Pointer:
