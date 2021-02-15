@@ -9,7 +9,7 @@ wrappers for arbitrary types.
 
 For each target type, and the types required to construct it, the plugin will generate an interface definition (and
 implementation) which provides typed variants of the `Current`, `Map`, and `Subscribe` methods from the
-`refreshable.Refreshable` interface. Struct types additionally have methods to access each field as a Refreshable.
+`refreshable.Refreshable` interface. Struct types additionally have generated methods to access each field as a Refreshable.
 
 ### Plugin Configuration
 
