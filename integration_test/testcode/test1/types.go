@@ -1,12 +1,9 @@
 package test1
 
-//go:refreshable OtherStruct SuperStruct
-
 import (
 	"time"
 	"github.com/palantir/godel-refreshables-plugin/integration_test/testcode/test1/librarypkg"
 )
-
 
 type OtherStruct struct {
 	FieldA string
@@ -46,6 +43,12 @@ type SuperStruct struct {
 	DurationAlias               DurationAlias
 	OptionalDurationAlias       OptionalDurationAlias
 	DoubleOptionalDurationAlias *OptionalDurationAlias
+
+	// 64 bit numbers
+	Int64      int64
+	Int64Ptr   *int64
+	Float64    float64
+	Float64Ptr *float64
 
 	// Local types
 	NestedStruct

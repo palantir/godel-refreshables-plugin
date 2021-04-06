@@ -101,37 +101,6 @@ func (r RefreshingInnerStruct) InnerFieldB() refreshable.Duration {
 	}))
 }
 
-type RefreshableInt64 interface {
-	refreshable.Refreshable
-	CurrentInt64() int64
-	MapInt64(func(int64) interface{}) refreshable.Refreshable
-	SubscribeToInt64(func(int64)) (unsubscribe func())
-}
-
-type RefreshingInt64 struct {
-	refreshable.Refreshable
-}
-
-func NewRefreshingInt64(in refreshable.Refreshable) RefreshingInt64 {
-	return RefreshingInt64{Refreshable: in}
-}
-
-func (r RefreshingInt64) CurrentInt64() int64 {
-	return r.Current().(int64)
-}
-
-func (r RefreshingInt64) MapInt64(mapFn func(int64) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
-		return mapFn(i.(int64))
-	})
-}
-
-func (r RefreshingInt64) SubscribeToInt64(consumer func(int64)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
-		consumer(i.(int64))
-	})
-}
-
 type RefreshableSuperStruct interface {
 	refreshable.Refreshable
 	CurrentSuperStruct() SuperStruct
@@ -162,6 +131,10 @@ type RefreshableSuperStruct interface {
 	DurationAlias() RefreshableDurationAlias
 	OptionalDurationAlias() RefreshableOptionalDurationAlias
 	DoubleOptionalDurationAlias() RefreshableOptionalDurationAliasPtr
+	Int64() refreshable.Int64
+	Int64Ptr() refreshable.Int64Ptr
+	Float64() refreshable.Float64
+	Float64Ptr() refreshable.Float64Ptr
 	NestedStruct() RefreshableNestedStruct
 	NamedNestedStruct() RefreshableNestedStruct
 	OptionalNestedStruct() RefreshableNestedStructPtr
@@ -345,6 +318,30 @@ func (r RefreshingSuperStruct) OptionalDurationAlias() RefreshableOptionalDurati
 func (r RefreshingSuperStruct) DoubleOptionalDurationAlias() RefreshableOptionalDurationAliasPtr {
 	return NewRefreshingOptionalDurationAliasPtr(r.MapSuperStruct(func(i SuperStruct) interface{} {
 		return i.DoubleOptionalDurationAlias
+	}))
+}
+
+func (r RefreshingSuperStruct) Int64() refreshable.Int64 {
+	return refreshable.NewInt64(r.MapSuperStruct(func(i SuperStruct) interface{} {
+		return i.Int64
+	}))
+}
+
+func (r RefreshingSuperStruct) Int64Ptr() refreshable.Int64Ptr {
+	return refreshable.NewInt64Ptr(r.MapSuperStruct(func(i SuperStruct) interface{} {
+		return i.Int64Ptr
+	}))
+}
+
+func (r RefreshingSuperStruct) Float64() refreshable.Float64 {
+	return refreshable.NewFloat64(r.MapSuperStruct(func(i SuperStruct) interface{} {
+		return i.Float64
+	}))
+}
+
+func (r RefreshingSuperStruct) Float64Ptr() refreshable.Float64Ptr {
+	return refreshable.NewFloat64Ptr(r.MapSuperStruct(func(i SuperStruct) interface{} {
+		return i.Float64Ptr
 	}))
 }
 

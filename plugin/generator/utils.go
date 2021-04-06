@@ -30,6 +30,14 @@ var (
 	refreshableIntConstructor         = jen.Qual(refreshablePath, "NewInt")
 	refreshableIntPtr                 = jen.Qual(refreshablePath, "IntPtr")
 	refreshableIntPtrConstructor      = jen.Qual(refreshablePath, "NewIntPtr")
+	refreshableInt64                  = jen.Qual(refreshablePath, "Int64")
+	refreshableInt64Constructor       = jen.Qual(refreshablePath, "NewInt64")
+	refreshableInt64Ptr               = jen.Qual(refreshablePath, "Int64Ptr")
+	refreshableInt64PtrConstructor    = jen.Qual(refreshablePath, "NewInt64Ptr")
+	refreshableFloat64                = jen.Qual(refreshablePath, "Float64")
+	refreshableFloat64Constructor     = jen.Qual(refreshablePath, "NewFloat64")
+	refreshableFloat64Ptr             = jen.Qual(refreshablePath, "Float64Ptr")
+	refreshableFloat64PtrConstructor  = jen.Qual(refreshablePath, "NewFloat64Ptr")
 	refreshableDuration               = jen.Qual(refreshablePath, "Duration")
 	refreshableDurationConstructor    = jen.Qual(refreshablePath, "NewDuration")
 	refreshableDurationPtr            = jen.Qual(refreshablePath, "DurationPtr")
@@ -72,6 +80,10 @@ func refreshableLibraryImpl(rt RefreshableType) (jenType, jenConstructor *jen.St
 				return refreshableBoolPtr, refreshableBoolPtrConstructor
 			case types.Int:
 				return refreshableIntPtr, refreshableIntPtrConstructor
+			case types.Int64:
+				return refreshableInt64Ptr, refreshableInt64PtrConstructor
+			case types.Float64:
+				return refreshableFloat64Ptr, refreshableFloat64PtrConstructor
 			case types.String:
 				return refreshableStringPtr, refreshableStringPtrConstructor
 			}
@@ -86,6 +98,10 @@ func refreshableLibraryImpl(rt RefreshableType) (jenType, jenConstructor *jen.St
 			return refreshableBool, refreshableBoolConstructor
 		case types.Int:
 			return refreshableInt, refreshableIntConstructor
+		case types.Int64:
+			return refreshableInt64, refreshableInt64Constructor
+		case types.Float64:
+			return refreshableFloat64, refreshableFloat64Constructor
 		case types.String:
 			return refreshableString, refreshableStringConstructor
 		}
