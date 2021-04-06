@@ -238,8 +238,8 @@ github.com/palantir/pkg/objmatcher v1.0.1 h1:rzKVO2LXVR2ND7t9Hi3Q+sfFh1RZ5Liq/zm
 github.com/palantir/pkg/objmatcher v1.0.1/go.mod h1:rTHUAN1LduHN+5fMTPkO5w+JHTidSmn5AsK885x2mvs=
 github.com/palantir/pkg/pkgpath v1.0.1 h1:PEr0ZVJ+BCoC+Va2ean1wYz0bd3cv3HjhCoEIEVV5TU=
 github.com/palantir/pkg/pkgpath v1.0.1/go.mod h1:kE+G+qpKWqWwUugXunfaSVetL65By6D2XlNv6ULXG5U=
-github.com/palantir/pkg/refreshable v1.1.0 h1:9erYkOY+ITTyv6Nx2QkXDis01S0EMPCvrDYWuTLhIjE=
-github.com/palantir/pkg/refreshable v1.1.0/go.mod h1:92rISykbd0wXVYpkT41CU7nZstnLsPwT8iFDCdlJoJM=
+github.com/palantir/pkg/refreshable v1.2.0 h1:ztsXllhx0dIx4qkdVEtIVvTXoVKnvAHxMCARnM6xfNA=
+github.com/palantir/pkg/refreshable v1.2.0/go.mod h1:92rISykbd0wXVYpkT41CU7nZstnLsPwT8iFDCdlJoJM=
 github.com/palantir/pkg/retry v1.0.0/go.mod h1:/LJ8kSqgmyNvUKVU0ZSkNLfQ47ufKIZKhEk211pQZ7s=
 github.com/palantir/pkg/retry v1.1.1 h1:rwZ4rrOpudvWFeSrkWvXVLgZKRsp+D8digPJUXZMmw8=
 github.com/palantir/pkg/retry v1.1.1/go.mod h1:TdzhQIVAaNwpezz4OSibhZAFBYuAoJ16yZXyhJEQ9h8=

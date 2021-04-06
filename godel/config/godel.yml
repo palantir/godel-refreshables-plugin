@@ -13,5 +13,4 @@ exclude:
   names:
     - \..+
     - vendor
-  paths:
-    - integration_test/testcode
+    - zz_generated_refreshables.go

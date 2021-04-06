@@ -1,0 +1,5 @@
+type: improvement
+improvement:
+  description: Add support for Int64 and Float64
+  links:
+  - https://github.com/palantir/godel-refreshables-plugin/pull/15

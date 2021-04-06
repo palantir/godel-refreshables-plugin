@@ -1,12 +1,14 @@
-package test1
+// Copyright (c) 2021 Palantir Technologies Inc. All rights reserved.
+// Use of this source code is governed by the Apache License, Version 2.0
+// that can be found in the LICENSE file.
 
-//go:refreshable OtherStruct SuperStruct
+package test1
 
 import (
 	"time"
+
 	"github.com/palantir/godel-refreshables-plugin/integration_test/testcode/test1/librarypkg"
 )
-
 
 type OtherStruct struct {
 	FieldA string
@@ -46,6 +48,12 @@ type SuperStruct struct {
 	DurationAlias               DurationAlias
 	OptionalDurationAlias       OptionalDurationAlias
 	DoubleOptionalDurationAlias *OptionalDurationAlias
+
+	// 64 bit numbers
+	Int64      int64
+	Int64Ptr   *int64
+	Float64    float64
+	Float64Ptr *float64
 
 	// Local types
 	NestedStruct
