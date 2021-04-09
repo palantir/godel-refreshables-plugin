@@ -21,7 +21,7 @@ github.com/mattn/go-runewidth
 github.com/nmiyake/pkg
 # github.com/nmiyake/pkg/errorstringer v1.0.2
 github.com/nmiyake/pkg/errorstringer
-# github.com/palantir/conjure-go-runtime/v2 v2.10.0
+# github.com/palantir/conjure-go-runtime/v2 v2.11.0
 github.com/palantir/conjure-go-runtime/v2/conjure-go-client/httpclient
 github.com/palantir/conjure-go-runtime/v2/conjure-go-client/httpclient/internal
 github.com/palantir/conjure-go-runtime/v2/conjure-go-contract/codecs
@@ -55,7 +55,7 @@ github.com/palantir/pkg/cobracli
 github.com/palantir/pkg/matcher
 # github.com/palantir/pkg/metrics v1.0.1
 github.com/palantir/pkg/metrics
-# github.com/palantir/pkg/refreshable v1.2.0
+# github.com/palantir/pkg/refreshable v1.3.0
 github.com/palantir/pkg/refreshable
 # github.com/palantir/pkg/retry v1.1.1
 github.com/palantir/pkg/retry
@@ -63,17 +63,17 @@ github.com/palantir/pkg/retry
 github.com/palantir/pkg/safejson
 # github.com/palantir/pkg/specdir v1.0.1
 github.com/palantir/pkg/specdir
-# github.com/palantir/pkg/tlsconfig v1.0.2
+# github.com/palantir/pkg/tlsconfig v1.1.0
 github.com/palantir/pkg/tlsconfig
 # github.com/palantir/pkg/uuid v1.0.1
 github.com/palantir/pkg/uuid
 github.com/palantir/pkg/uuid/internal/uuid
-# github.com/palantir/witchcraft-go-error v1.4.3
+# github.com/palantir/witchcraft-go-error v1.5.0
 github.com/palantir/witchcraft-go-error
 github.com/palantir/witchcraft-go-error/internal/errors
 # github.com/palantir/witchcraft-go-params v1.2.0
 github.com/palantir/witchcraft-go-params
-# github.com/palantir/witchcraft-go-tracing v1.2.0
+# github.com/palantir/witchcraft-go-tracing v1.4.0
 github.com/palantir/witchcraft-go-tracing/wtracing
 github.com/palantir/witchcraft-go-tracing/wtracing/propagation/b3
 # github.com/pkg/errors v0.9.1
