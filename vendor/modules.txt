@@ -55,7 +55,7 @@ github.com/palantir/pkg/cobracli
 github.com/palantir/pkg/matcher
 # github.com/palantir/pkg/metrics v1.0.1
 github.com/palantir/pkg/metrics
-# github.com/palantir/pkg/refreshable v1.3.0
+# github.com/palantir/pkg/refreshable v1.3.1
 github.com/palantir/pkg/refreshable
 # github.com/palantir/pkg/retry v1.1.1
 github.com/palantir/pkg/retry
