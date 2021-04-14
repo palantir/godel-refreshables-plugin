@@ -1,0 +1,8 @@
+go mod operation failed. This may mean that there are legitimate dependency issues with the "go.mod" definition in the repository and the updates performed by the gomod check. This branch can be cloned locally to debug the issue.
+
+Command that caused error:
+./godelw exec -- go build ./. ./cmd ./config ./config/internal/v0 ./integration_test ./integration_test/testcode/test1 ./integration_test/testcode/test1/librarypkg ./plugin ./plugin/generator ./plugin/gotypes
+
+Output:
+go build github.com/palantir/godel-refreshables-plugin/integration_test: no non-test Go files in /local/repositories/palantir-godel-refreshables-plugin-338307689/integration_test
+Error: exit status 1
