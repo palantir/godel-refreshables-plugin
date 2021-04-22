@@ -203,8 +203,9 @@ func interfaceMethods(typ types.Type, typeSet RefreshableTypes) []jen.Code {
 		var methods []jen.Code
 		for i := 0; i < underlying.NumFields(); i++ {
 			field := underlying.Field(i)
-			returnType := refreshableJenType(typeSet.forType(field.Type()))
-			methods = append(methods, jen.Id(field.Name()).Params().Add(returnType))
+			if field.Exported() {
+				methods = append(methods, jen.Id(field.Name()).Params().Add(refreshableJenType(typeSet.forType(field.Type()))))
+			}
 		}
 		return methods
 	}
@@ -386,7 +387,11 @@ func (rt RefreshableType) implementationMethods(t types.Type, typeSet Refreshabl
 	case *types.Struct:
 		var methods []jen.Code
 		for i := 0; i < underlying.NumFields(); i++ {
-			methods = append(methods, rt.jenImplementationForField(underlying.Field(i), typeSet), jen.Line(), jen.Line())
+			field := underlying.Field(i)
+			typ := typeSet.forType(field.Type())
+			if field.Exported() {
+				methods = append(methods, rt.jenImplementationForField(underlying.Field(i), typ), jen.Line(), jen.Line())
+			}
 		}
 		return methods
 	case *types.Pointer:
@@ -395,13 +400,11 @@ func (rt RefreshableType) implementationMethods(t types.Type, typeSet Refreshabl
 	return nil
 }
 
-func (rt RefreshableType) jenImplementationForField(field *types.Var, typeSet RefreshableTypes) jen.Code {
-	ft := typeSet.forType(field.Type())
-
+func (rt RefreshableType) jenImplementationForField(field *types.Var, typ RefreshableType) jen.Code {
 	return jen.Func().Params(
 		jen.Id("r").Id(rt.implTypeString()),
-	).Id(field.Name()).Params().Add(refreshableJenType(ft)).Block(
-		jen.Return(refreshableJenTypeConstructor(ft)).Params(jen.Id("r").Dot(rt.mapFuncString()).Params(
+	).Id(field.Name()).Params().Add(refreshableJenType(typ)).Block(
+		jen.Return(refreshableJenTypeConstructor(typ)).Params(jen.Id("r").Dot(rt.mapFuncString()).Params(
 			jen.Func().Params(jen.Id("i").Add(jenType(rt.Type))).Interface().Block(
 				jen.Return(jen.Id("i").Dot(field.Name())),
 			),

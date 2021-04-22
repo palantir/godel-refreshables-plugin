@@ -1,0 +1,6 @@
+type: fix
+fix:
+  description: Ignore private fields in imported types
+  links:
+  - https://github.com/palantir/godel-refreshables-plugin/pull/9
+
