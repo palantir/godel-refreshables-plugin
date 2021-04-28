@@ -8,7 +8,7 @@ require (
 	github.com/fatih/color v1.10.0 // indirect
 	github.com/mattn/go-runewidth v0.0.10 // indirect
 	github.com/nmiyake/pkg/errorstringer v1.0.2 // indirect
-	github.com/palantir/conjure-go-runtime/v2 v2.11.0
+	github.com/palantir/conjure-go-runtime/v2 v2.12.0
 	github.com/palantir/go-metrics v1.1.1 // indirect
 	github.com/palantir/goastwriter v0.1.0
 	github.com/palantir/godel/v2 v2.26.0
