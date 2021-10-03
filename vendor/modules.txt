@@ -23,14 +23,13 @@ github.com/mattn/go-isatty
 github.com/mattn/go-runewidth
 # github.com/nmiyake/pkg/errorstringer v1.1.0
 github.com/nmiyake/pkg/errorstringer
-# github.com/palantir/conjure-go-runtime/v2 v2.18.0
+# github.com/palantir/conjure-go-runtime/v2 v2.19.0
 ## explicit
 github.com/palantir/conjure-go-runtime/v2/conjure-go-client/httpclient
 github.com/palantir/conjure-go-runtime/v2/conjure-go-client/httpclient/internal
 github.com/palantir/conjure-go-runtime/v2/conjure-go-contract/codecs
 github.com/palantir/conjure-go-runtime/v2/conjure-go-contract/errors
 # github.com/palantir/go-metrics v1.1.1
-## explicit
 github.com/palantir/go-metrics
 # github.com/palantir/goastwriter v0.1.0
 ## explicit
@@ -60,7 +59,7 @@ github.com/palantir/pkg/bytesbuffers
 github.com/palantir/pkg/cobracli
 # github.com/palantir/pkg/matcher v1.0.1
 github.com/palantir/pkg/matcher
-# github.com/palantir/pkg/metrics v1.0.1
+# github.com/palantir/pkg/metrics v1.2.0
 github.com/palantir/pkg/metrics
 # github.com/palantir/pkg/refreshable v1.3.2
 ## explicit
@@ -79,7 +78,7 @@ github.com/palantir/pkg/uuid/internal/uuid
 # github.com/palantir/witchcraft-go-error v1.5.0
 github.com/palantir/witchcraft-go-error
 github.com/palantir/witchcraft-go-error/internal/errors
-# github.com/palantir/witchcraft-go-logging v1.14.0
+# github.com/palantir/witchcraft-go-logging v1.17.0
 github.com/palantir/witchcraft-go-logging/internal/gopath
 github.com/palantir/witchcraft-go-logging/wlog
 github.com/palantir/witchcraft-go-logging/wlog/internal
