@@ -7,7 +7,7 @@ require (
 	github.com/dave/jennifer v1.4.1
 	github.com/fatih/color v1.10.0 // indirect
 	github.com/mattn/go-runewidth v0.0.10 // indirect
-	github.com/palantir/conjure-go-runtime/v2 v2.20.0
+	github.com/palantir/conjure-go-runtime/v2 v2.21.0
 	github.com/palantir/goastwriter v0.1.0
 	github.com/palantir/godel/v2 v2.40.0
 	github.com/palantir/pkg/cobracli v1.0.1
