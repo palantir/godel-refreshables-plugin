@@ -23,7 +23,7 @@ github.com/mattn/go-isatty
 github.com/mattn/go-runewidth
 # github.com/nmiyake/pkg/errorstringer v1.1.0
 github.com/nmiyake/pkg/errorstringer
-# github.com/palantir/conjure-go-runtime/v2 v2.22.0
+# github.com/palantir/conjure-go-runtime/v2 v2.23.0
 ## explicit
 github.com/palantir/conjure-go-runtime/v2/conjure-go-client/httpclient
 github.com/palantir/conjure-go-runtime/v2/conjure-go-client/httpclient/internal
