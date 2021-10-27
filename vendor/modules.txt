@@ -39,7 +39,7 @@ github.com/palantir/goastwriter/comment
 github.com/palantir/goastwriter/decl
 github.com/palantir/goastwriter/expression
 github.com/palantir/goastwriter/spec
-# github.com/palantir/godel/v2 v2.40.0
+# github.com/palantir/godel/v2 v2.41.0
 ## explicit
 github.com/palantir/godel/v2/framework/artifactresolver
 github.com/palantir/godel/v2/framework/builtintasks/installupdate/layout
