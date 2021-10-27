@@ -9,7 +9,7 @@ require (
 	github.com/mattn/go-runewidth v0.0.10 // indirect
 	github.com/palantir/conjure-go-runtime/v2 v2.23.0
 	github.com/palantir/goastwriter v0.1.0
-	github.com/palantir/godel/v2 v2.40.0
+	github.com/palantir/godel/v2 v2.41.0
 	github.com/palantir/pkg/cobracli v1.0.1
 	github.com/palantir/pkg/refreshable v1.3.2
 	github.com/pkg/errors v0.9.1
