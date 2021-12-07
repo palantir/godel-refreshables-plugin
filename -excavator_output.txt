@@ -1,0 +1,11 @@
+go mod operation failed. This may mean that there are legitimate dependency issues with the "go.mod" definition in the repository and the updates performed by the gomod check. This branch can be cloned locally to debug the issue.
+
+Command that caused error:
+./godelw exec -- go get -d github.com/stretchr/testify@upgrade
+
+Output:
+go: downloading github.com/stretchr/objx v0.1.0
+github.com/stretchr/testify imports
+	github.com/stretchr/testify/mock imports
+	github.com/stretchr/objx: github.com/stretchr/objx@v0.1.0: verifying module: github.com/stretchr/objx@v0.1.0: Get "https://sum.golang.org/lookup/github.com/stretchr/objx@v0.1.0": dial tcp 142.251.41.17:443: i/o timeout
+Error: exit status 1
