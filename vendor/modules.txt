@@ -46,7 +46,7 @@ github.com/palantir/goastwriter/comment
 github.com/palantir/goastwriter/decl
 github.com/palantir/goastwriter/expression
 github.com/palantir/goastwriter/spec
-# github.com/palantir/godel/v2 v2.42.0
+# github.com/palantir/godel/v2 v2.43.0
 ## explicit; go 1.17
 github.com/palantir/godel/v2/framework/artifactresolver
 github.com/palantir/godel/v2/framework/builtintasks/installupdate/layout
