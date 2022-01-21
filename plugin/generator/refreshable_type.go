@@ -10,7 +10,6 @@ import (
 	"strings"
 
 	"github.com/dave/jennifer/jen"
-	"github.com/palantir/goastwriter/decl"
 	"golang.org/x/tools/go/packages"
 )
 
@@ -68,7 +67,6 @@ func (t RefreshableTypes) forType(typ types.Type) RefreshableType {
 // all the RefreshableTypes used they same refreshableTypeGenerator.
 type RefreshableType struct {
 	Type         types.Type
-	Imports      map[types.Type]*decl.Import
 	OverrideName string
 }
 
@@ -94,12 +92,7 @@ func newRefreshableType(targetPackage *packages.Package, typ types.Type, typeSet
 	pathSlice := strings.Split(typePkg.Path(), "/")
 	pkgPathSuffix := 0
 
-	rt := RefreshableType{
-		Type: typ,
-		Imports: map[types.Type]*decl.Import{
-			typ: {Path: typePkg.Path(), Alias: typePkg.Name()},
-		},
-	}
+	rt := RefreshableType{Type: typ}
 
 	for _, otherTyp := range typeSet {
 		otherNamedType, ok := otherTyp.(*types.Named)
@@ -136,10 +129,6 @@ func newRefreshableType(targetPackage *packages.Package, typ types.Type, typeSet
 			b.WriteString(nameFromType(typ))
 			rt.OverrideName = b.String()
 		}
-	}
-
-	if pkgPathSuffix != 0 {
-		rt.Imports[typ].Alias = sanitizePackageAlias(strings.Join(pathSlice[len(pathSlice)-1-pkgPathSuffix:], ""))
 	}
 	return rt
 }
