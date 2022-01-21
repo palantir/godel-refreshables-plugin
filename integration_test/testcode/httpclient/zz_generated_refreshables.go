@@ -75,6 +75,8 @@ type RefreshableClientConfig interface {
 	IdleConnTimeout() refreshable.DurationPtr
 	TLSHandshakeTimeout() refreshable.DurationPtr
 	ExpectContinueTimeout() refreshable.DurationPtr
+	HTTP2ReadIdleTimeout() refreshable.DurationPtr
+	HTTP2PingTimeout() refreshable.DurationPtr
 	MaxIdleConns() refreshable.IntPtr
 	MaxIdleConnsPerHost() refreshable.IntPtr
 	Metrics() RefreshableMetricsConfig
@@ -198,6 +200,18 @@ func (r RefreshingClientConfig) TLSHandshakeTimeout() refreshable.DurationPtr {
 func (r RefreshingClientConfig) ExpectContinueTimeout() refreshable.DurationPtr {
 	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
 		return i.ExpectContinueTimeout
+	}))
+}
+
+func (r RefreshingClientConfig) HTTP2ReadIdleTimeout() refreshable.DurationPtr {
+	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+		return i.HTTP2ReadIdleTimeout
+	}))
+}
+
+func (r RefreshingClientConfig) HTTP2PingTimeout() refreshable.DurationPtr {
+	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+		return i.HTTP2PingTimeout
 	}))
 }
 

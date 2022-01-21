@@ -53,25 +53,6 @@ func NewRefreshableTypes(targetPackage *packages.Package, typeSet []types.Type) 
 	return refreshableTypes, nil
 }
 
-// Imports returns an unordered list of unique imports for the analyzed fields
-func (t RefreshableTypes) Imports() decl.Imports {
-	var imports decl.Imports
-
-	importSet := make(map[decl.Import]struct{})
-	for _, analyzedField := range t {
-		for _, i := range analyzedField.Imports {
-			importSet[*i] = struct{}{}
-		}
-	}
-
-	for i := range importSet {
-		iCopy := i
-		imports = append(imports, &iCopy)
-	}
-
-	return imports
-}
-
 func (t RefreshableTypes) forType(typ types.Type) RefreshableType {
 	for _, rt := range t {
 		if types.Identical(typ, rt.Type) {

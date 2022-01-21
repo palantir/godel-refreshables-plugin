@@ -5,7 +5,8 @@
 package v0
 
 type Config struct {
-	Refreshables map[string]RefreshablePackageConfig `yaml:"refreshables,omitempty"`
+	Refreshables  map[string]RefreshablePackageConfig `yaml:"refreshables,omitempty"`
+	ImportAliases map[string]string                   `yaml:"importAliases,omitempty"`
 }
 
 type RefreshablePackageConfig struct {
