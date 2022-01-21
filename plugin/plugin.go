@@ -29,14 +29,14 @@ var fset = token.NewFileSet()
 
 func Run(projectDir string, cfg config.Config, verify bool) error {
 	for pkgPath, pkgCfg := range cfg.Refreshables {
-		if err := renderRefreshableTypesFile(projectDir, pkgPath, pkgCfg.Types, pkgCfg.Output, verify); err != nil {
+		if err := renderRefreshableTypesFile(projectDir, cfg.ImportAliases, pkgPath, pkgCfg.Types, pkgCfg.Output, verify); err != nil {
 			return errors.Wrap(err, pkgPath)
 		}
 	}
 	return nil
 }
 
-func renderRefreshableTypesFile(projectDir string, pkgPath string, typeNames []string, outputFile string, verify bool) error {
+func renderRefreshableTypesFile(projectDir string, importAliases map[string]string, pkgPath string, typeNames []string, outputFile string, verify bool) error {
 	pkg, err := loadPackage(projectDir, pkgPath)
 	if err != nil {
 		return err
@@ -65,6 +65,9 @@ func renderRefreshableTypesFile(projectDir string, pkgPath string, typeNames []s
 	}
 
 	file := generator.GenerateRefreshableFile(outputPackagePath, outputPackageName, refreshableTypes)
+	for path, alias := range importAliases {
+		file.ImportAlias(path, alias)
+	}
 	buf := &bytes.Buffer{}
 	if err := file.Render(buf); err != nil {
 		return err

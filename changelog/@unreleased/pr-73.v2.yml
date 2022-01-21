@@ -1,0 +1,5 @@
+type: feature
+feature:
+  description: Allow specifying import aliases in plugin config
+  links:
+  - https://github.com/palantir/godel-refreshables-plugin/pull/73

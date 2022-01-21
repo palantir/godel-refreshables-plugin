@@ -5,3 +5,6 @@ refreshables:
   ./librarypkg:
     types:
       - LibraryStruct
+importAliases:
+  github.com/not-imported: not_imported
+  github.com/palantir/godel-refreshables-plugin/integration_test/testcode/test1/librarypkg: library

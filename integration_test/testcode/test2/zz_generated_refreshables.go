@@ -3,7 +3,7 @@
 package test2
 
 import (
-	librarypkg "github.com/palantir/godel-refreshables-plugin/integration_test/testcode/test1/librarypkg"
+	library "github.com/palantir/godel-refreshables-plugin/integration_test/testcode/test1/librarypkg"
 	refreshable "github.com/palantir/pkg/refreshable"
 )
 
@@ -55,9 +55,9 @@ func (r RefreshingOtherStruct) FieldB() RefreshableLibraryStruct {
 
 type RefreshableLibraryStruct interface {
 	refreshable.Refreshable
-	CurrentLibraryStruct() librarypkg.LibraryStruct
-	MapLibraryStruct(func(librarypkg.LibraryStruct) interface{}) refreshable.Refreshable
-	SubscribeToLibraryStruct(func(librarypkg.LibraryStruct)) (unsubscribe func())
+	CurrentLibraryStruct() library.LibraryStruct
+	MapLibraryStruct(func(library.LibraryStruct) interface{}) refreshable.Refreshable
+	SubscribeToLibraryStruct(func(library.LibraryStruct)) (unsubscribe func())
 
 	FieldA() refreshable.Int
 }
@@ -70,24 +70,24 @@ func NewRefreshingLibraryStruct(in refreshable.Refreshable) RefreshingLibraryStr
 	return RefreshingLibraryStruct{Refreshable: in}
 }
 
-func (r RefreshingLibraryStruct) CurrentLibraryStruct() librarypkg.LibraryStruct {
-	return r.Current().(librarypkg.LibraryStruct)
+func (r RefreshingLibraryStruct) CurrentLibraryStruct() library.LibraryStruct {
+	return r.Current().(library.LibraryStruct)
 }
 
-func (r RefreshingLibraryStruct) MapLibraryStruct(mapFn func(librarypkg.LibraryStruct) interface{}) refreshable.Refreshable {
+func (r RefreshingLibraryStruct) MapLibraryStruct(mapFn func(library.LibraryStruct) interface{}) refreshable.Refreshable {
 	return r.Map(func(i interface{}) interface{} {
-		return mapFn(i.(librarypkg.LibraryStruct))
+		return mapFn(i.(library.LibraryStruct))
 	})
 }
 
-func (r RefreshingLibraryStruct) SubscribeToLibraryStruct(consumer func(librarypkg.LibraryStruct)) (unsubscribe func()) {
+func (r RefreshingLibraryStruct) SubscribeToLibraryStruct(consumer func(library.LibraryStruct)) (unsubscribe func()) {
 	return r.Subscribe(func(i interface{}) {
-		consumer(i.(librarypkg.LibraryStruct))
+		consumer(i.(library.LibraryStruct))
 	})
 }
 
 func (r RefreshingLibraryStruct) FieldA() refreshable.Int {
-	return refreshable.NewInt(r.MapLibraryStruct(func(i librarypkg.LibraryStruct) interface{} {
+	return refreshable.NewInt(r.MapLibraryStruct(func(i library.LibraryStruct) interface{} {
 		return i.FieldA
 	}))
 }

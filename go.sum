@@ -352,8 +352,6 @@ github.com/palantir/distgo/pkg/git v1.0.0/go.mod h1:eXrr3SOmf/sWTYmtiubYVxSaVegT
 github.com/palantir/go-metrics v1.1.0/go.mod h1:fRkuipBnsI4nD8Vd9UNcrUJvD8Y0wOJMSbicygcBrGs=
 github.com/palantir/go-metrics v1.1.1 h1:YL/UmptBjrC6iSCTVr7vfuIcjL0M359Da3/gBGNny10=
 github.com/palantir/go-metrics v1.1.1/go.mod h1:fRkuipBnsI4nD8Vd9UNcrUJvD8Y0wOJMSbicygcBrGs=
-github.com/palantir/goastwriter v0.1.0 h1:9F0QlLD4sW84nssudASIRYrS0rApF+/QrMAoPCayCZo=
-github.com/palantir/goastwriter v0.1.0/go.mod h1:CzTlNu38b4eUbE3B9UBOy6oC5GMB1uGsJ4Zd7RAsRK8=
 github.com/palantir/godel/pkg/products/v2 v2.0.0/go.mod h1:SaLUycZLVP5qV6mL9MWG3jkX4dS23lJnzpubTGAV4FU=
 github.com/palantir/godel/v2 v2.43.0 h1:JQKiC+k/7KmRBJhzGKRBO6kcf0/TlIBsAucgRerRGQI=
 github.com/palantir/godel/v2 v2.43.0/go.mod h1:smmCKpSWBQwaPv+iWyDy47x8y69M7+AvFHoe9JfK1vg=
