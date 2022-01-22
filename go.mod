@@ -4,8 +4,8 @@ go 1.17
 
 require (
 	github.com/dave/jennifer v1.4.1
-	github.com/palantir/conjure-go-runtime/v2 v2.25.0
-	github.com/palantir/godel/v2 v2.43.0
+	github.com/palantir/conjure-go-runtime/v2 v2.26.0
+	github.com/palantir/godel/v2 v2.45.0
 	github.com/palantir/pkg/cobracli v1.0.1
 	github.com/palantir/pkg/refreshable v1.3.2
 	github.com/pkg/errors v0.9.1
@@ -29,7 +29,7 @@ require (
 	github.com/palantir/pkg v1.0.1 // indirect
 	github.com/palantir/pkg/bytesbuffers v1.0.1 // indirect
 	github.com/palantir/pkg/matcher v1.0.1 // indirect
-	github.com/palantir/pkg/metrics v1.2.0 // indirect
+	github.com/palantir/pkg/metrics v1.3.0 // indirect
 	github.com/palantir/pkg/retry v1.1.1 // indirect
 	github.com/palantir/pkg/safejson v1.0.1 // indirect
 	github.com/palantir/pkg/specdir v1.0.1 // indirect
