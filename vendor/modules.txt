@@ -1,46 +1,38 @@
 # github.com/VividCortex/ewma v1.1.1
-## explicit
 github.com/VividCortex/ewma
 # github.com/cheggaaa/pb/v3 v3.0.6
-## explicit; go 1.12
+## explicit
 github.com/cheggaaa/pb/v3
 github.com/cheggaaa/pb/v3/termutil
 # github.com/dave/jennifer v1.4.1
-## explicit; go 1.15
+## explicit
 github.com/dave/jennifer/jen
 # github.com/davecgh/go-spew v1.1.1
-## explicit
 github.com/davecgh/go-spew/spew
 # github.com/fatih/color v1.13.0
-## explicit; go 1.13
 github.com/fatih/color
 # github.com/inconshreveable/mousetrap v1.0.0
-## explicit
 github.com/inconshreveable/mousetrap
 # github.com/mattn/go-colorable v0.1.12
-## explicit; go 1.13
 github.com/mattn/go-colorable
 # github.com/mattn/go-isatty v0.0.14
-## explicit; go 1.12
 github.com/mattn/go-isatty
 # github.com/mattn/go-runewidth v0.0.10
-## explicit; go 1.9
+## explicit
 github.com/mattn/go-runewidth
 # github.com/nmiyake/pkg/errorstringer v1.1.0
-## explicit; go 1.16
 github.com/nmiyake/pkg/errorstringer
 # github.com/palantir/conjure-go-runtime/v2 v2.26.0
-## explicit; go 1.16
+## explicit
 github.com/palantir/conjure-go-runtime/v2/conjure-go-client/httpclient
 github.com/palantir/conjure-go-runtime/v2/conjure-go-client/httpclient/internal
 github.com/palantir/conjure-go-runtime/v2/conjure-go-client/httpclient/internal/refreshingclient
 github.com/palantir/conjure-go-runtime/v2/conjure-go-contract/codecs
 github.com/palantir/conjure-go-runtime/v2/conjure-go-contract/errors
 # github.com/palantir/go-metrics v1.1.1
-## explicit; go 1.13
 github.com/palantir/go-metrics
 # github.com/palantir/godel/v2 v2.45.0
-## explicit; go 1.17
+## explicit
 github.com/palantir/godel/v2/framework/artifactresolver
 github.com/palantir/godel/v2/framework/builtintasks/installupdate/layout
 github.com/palantir/godel/v2/framework/godel
@@ -52,82 +44,64 @@ github.com/palantir/godel/v2/godelgetter
 github.com/palantir/godel/v2/pkg/osarch
 github.com/palantir/godel/v2/pkg/products
 # github.com/palantir/pkg v1.0.1
-## explicit; go 1.13
 github.com/palantir/pkg
 # github.com/palantir/pkg/bytesbuffers v1.0.1
-## explicit; go 1.13
 github.com/palantir/pkg/bytesbuffers
 # github.com/palantir/pkg/cobracli v1.0.1
-## explicit; go 1.13
+## explicit
 github.com/palantir/pkg/cobracli
 # github.com/palantir/pkg/matcher v1.0.1
-## explicit; go 1.13
 github.com/palantir/pkg/matcher
 # github.com/palantir/pkg/metrics v1.3.0
-## explicit; go 1.16
 github.com/palantir/pkg/metrics
 # github.com/palantir/pkg/refreshable v1.3.2
-## explicit; go 1.13
+## explicit
 github.com/palantir/pkg/refreshable
 # github.com/palantir/pkg/retry v1.1.1
-## explicit; go 1.13
 github.com/palantir/pkg/retry
 # github.com/palantir/pkg/safejson v1.0.1
-## explicit; go 1.13
 github.com/palantir/pkg/safejson
 # github.com/palantir/pkg/specdir v1.0.1
-## explicit; go 1.13
 github.com/palantir/pkg/specdir
 # github.com/palantir/pkg/tlsconfig v1.1.0
-## explicit; go 1.14
 github.com/palantir/pkg/tlsconfig
 # github.com/palantir/pkg/uuid v1.0.1
-## explicit; go 1.13
 github.com/palantir/pkg/uuid
 github.com/palantir/pkg/uuid/internal/uuid
 # github.com/palantir/witchcraft-go-error v1.5.0
-## explicit; go 1.13
 github.com/palantir/witchcraft-go-error
 github.com/palantir/witchcraft-go-error/internal/errors
 # github.com/palantir/witchcraft-go-logging v1.17.0
-## explicit; go 1.16
 github.com/palantir/witchcraft-go-logging/internal/gopath
 github.com/palantir/witchcraft-go-logging/wlog
 github.com/palantir/witchcraft-go-logging/wlog/internal
 github.com/palantir/witchcraft-go-logging/wlog/svclog/svc1log
 # github.com/palantir/witchcraft-go-params v1.2.0
-## explicit; go 1.13
 github.com/palantir/witchcraft-go-params
 # github.com/palantir/witchcraft-go-tracing v1.4.0
-## explicit; go 1.13
 github.com/palantir/witchcraft-go-tracing/wtracing
 github.com/palantir/witchcraft-go-tracing/wtracing/propagation/b3
 # github.com/pkg/errors v0.9.1
 ## explicit
 github.com/pkg/errors
 # github.com/pmezard/go-difflib v1.0.0
-## explicit
 github.com/pmezard/go-difflib/difflib
 # github.com/rivo/uniseg v0.1.0
-## explicit; go 1.12
 github.com/rivo/uniseg
 # github.com/spf13/cobra v1.3.0
-## explicit; go 1.15
+## explicit
 github.com/spf13/cobra
 # github.com/spf13/pflag v1.0.5
-## explicit; go 1.12
 github.com/spf13/pflag
 # github.com/stretchr/testify v1.7.0
-## explicit; go 1.13
+## explicit
 github.com/stretchr/testify/assert
 github.com/stretchr/testify/require
 # golang.org/x/mod v0.5.0
-## explicit; go 1.17
 golang.org/x/mod/internal/lazyregexp
 golang.org/x/mod/module
 golang.org/x/mod/semver
 # golang.org/x/net v0.0.0-20210813160813-60bc85c4be6d
-## explicit; go 1.17
 golang.org/x/net/http/httpguts
 golang.org/x/net/http2
 golang.org/x/net/http2/hpack
@@ -135,18 +109,16 @@ golang.org/x/net/idna
 golang.org/x/net/internal/socks
 golang.org/x/net/proxy
 # golang.org/x/sys v0.0.0-20211205182925-97ca703d548d
-## explicit; go 1.17
 golang.org/x/sys/execabs
 golang.org/x/sys/internal/unsafeheader
 golang.org/x/sys/unix
 # golang.org/x/text v0.3.7
-## explicit; go 1.17
 golang.org/x/text/secure/bidirule
 golang.org/x/text/transform
 golang.org/x/text/unicode/bidi
 golang.org/x/text/unicode/norm
 # golang.org/x/tools v0.1.5
-## explicit; go 1.17
+## explicit
 golang.org/x/tools/go/ast/astutil
 golang.org/x/tools/go/gcexportdata
 golang.org/x/tools/go/internal/gcimporter
@@ -165,12 +137,10 @@ golang.org/x/tools/internal/packagesinternal
 golang.org/x/tools/internal/typeparams
 golang.org/x/tools/internal/typesinternal
 # golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
-## explicit; go 1.11
 golang.org/x/xerrors
 golang.org/x/xerrors/internal
 # gopkg.in/yaml.v2 v2.4.0
-## explicit; go 1.15
+## explicit
 gopkg.in/yaml.v2
 # gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
-## explicit
 gopkg.in/yaml.v3
