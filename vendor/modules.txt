@@ -39,7 +39,7 @@ github.com/palantir/conjure-go-runtime/v2/conjure-go-contract/errors
 # github.com/palantir/go-metrics v1.1.1
 ## explicit; go 1.13
 github.com/palantir/go-metrics
-# github.com/palantir/godel/v2 v2.45.0
+# github.com/palantir/godel/v2 v2.46.0
 ## explicit; go 1.17
 github.com/palantir/godel/v2/framework/artifactresolver
 github.com/palantir/godel/v2/framework/builtintasks/installupdate/layout
