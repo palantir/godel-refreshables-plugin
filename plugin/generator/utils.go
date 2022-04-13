@@ -58,7 +58,9 @@ func longestCommonPkgPathSuffix(pkgA []string, pkgB []string) int {
 }
 
 func sanitizePackageAlias(alias string) string {
-	return strings.ReplaceAll(alias, "-", "")
+	alias = strings.ReplaceAll(alias, ".", "")
+	alias = strings.ReplaceAll(alias, "-", "")
+	return alias
 }
 
 // refreshableLibraryImpl returns the library implementations for the type and constructor if they exist.
