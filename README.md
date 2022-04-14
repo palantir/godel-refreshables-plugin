@@ -35,3 +35,19 @@ refreshables:
     types:
       - MyType
 ```
+
+### Excluding Fields From Code Generation
+
+There are some cases where you may want to exclude specific fields in a struct from generation (for example if the
+field type is a third-party library struct that contains unexported fields). Fields can be excluded from generation
+by adding a ``refreshables`` tag with the value ``",exclude"``. For example:
+
+```go
+package mypackage
+
+type MyType struct {
+	FieldA string `yaml:"field-a"`
+	// FieldB will not have refreshable methods/types generated for it
+	FieldB string `yaml:"field-b" refreshables:",exclude"`
+}
+```
