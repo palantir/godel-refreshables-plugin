@@ -1,0 +1,4 @@
+refreshables:
+  github.com/palantir/godel-refreshables-plugin/integration_test/testcode/test3:
+    types:
+      - MainStruct

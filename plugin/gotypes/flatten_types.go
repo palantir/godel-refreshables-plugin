@@ -6,6 +6,8 @@ package gotypes
 
 import (
 	"go/types"
+
+	"github.com/palantir/godel-refreshables-plugin/plugin/tags"
 )
 
 // FlattenTypes recursively iterates through type's fields and underlying types and returns a list.
@@ -54,6 +56,10 @@ func (t *typesContainer) flattenTypesRecursive(typ types.Type) {
 		t.flattenTypesRecursive(underlying.Elem())
 	case *types.Struct:
 		for i := 0; i < underlying.NumFields(); i++ {
+			fieldOptions, _ := tags.ParseTag(underlying.Tag(i))
+			if fieldOptions.Exclude {
+				continue
+			}
 			t.flattenTypesRecursive(underlying.Field(i).Type())
 		}
 	}

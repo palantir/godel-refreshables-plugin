@@ -10,6 +10,7 @@ import (
 	"strings"
 
 	"github.com/dave/jennifer/jen"
+	"github.com/palantir/godel-refreshables-plugin/plugin/tags"
 	"golang.org/x/tools/go/packages"
 )
 
@@ -174,6 +175,10 @@ func interfaceMethods(typ types.Type, typeSet RefreshableTypes) []jen.Code {
 		for i := 0; i < underlying.NumFields(); i++ {
 			field := underlying.Field(i)
 			if field.Exported() {
+				fieldOptions, _ := tags.ParseTag(underlying.Tag(i))
+				if fieldOptions.Exclude {
+					continue
+				}
 				methods = append(methods, jen.Id(field.Name()).Params().Add(refreshableJenType(typeSet.forType(field.Type()))))
 			}
 		}
@@ -358,6 +363,10 @@ func (rt RefreshableType) implementationMethods(t types.Type, typeSet Refreshabl
 		var methods []jen.Code
 		for i := 0; i < underlying.NumFields(); i++ {
 			field := underlying.Field(i)
+			fieldOptions, _ := tags.ParseTag(underlying.Tag(i))
+			if fieldOptions.Exclude {
+				continue
+			}
 			typ := typeSet.forType(field.Type())
 			if field.Exported() {
 				methods = append(methods, rt.jenImplementationForField(underlying.Field(i), typ), jen.Line(), jen.Line())
