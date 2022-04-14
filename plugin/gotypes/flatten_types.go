@@ -33,10 +33,6 @@ func (t *typesContainer) flattenTypesRecursive(typ types.Type) error {
 		}
 	}
 
-	typeStr := typ.String()
-	typeUnderlying := typ.Underlying()
-	_, _ = typeStr, typeUnderlying
-
 	switch underlying := typ.(type) {
 	case *types.Basic:
 		t.types = append(t.types, typ)
