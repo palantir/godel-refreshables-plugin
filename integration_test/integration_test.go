@@ -49,6 +49,23 @@ func Test2(t *testing.T) {
 	require.NoError(t, err, "plugin verify failed: %s", string(out))
 }
 
+func Test3(t *testing.T) {
+	const (
+		cfgFile = "testcode/test3/refreshables-plugin.yml"
+	)
+	cfg, err := config.ReadConfigFromFile(cfgFile)
+	require.NoError(t, err)
+	err = plugin.Run("./testcode/test3", cfg, false)
+	require.NoError(t, err)
+
+	cli, err := products.Bin("refreshables-plugin")
+	require.NoError(t, err)
+
+	cmd := exec.Command(cli, "generate", "--project-dir=./testcode/test3", "--config", cfgFile, "--verify")
+	out, err := cmd.CombinedOutput()
+	require.NoError(t, err, "plugin verify failed: %s", string(out))
+}
+
 func TestHttpclient(t *testing.T) {
 	const (
 		cfgFile = "testcode/httpclient/refreshables-plugin.yml"

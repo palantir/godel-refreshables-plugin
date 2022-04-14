@@ -57,14 +57,20 @@ func renderRefreshableTypesFile(projectDir string, importAliases map[string]stri
 		}
 		typeObjects[i] = typeObj.Type()
 	}
-	typeObjects = gotypes.FlattenTypes(typeObjects...)
+	typeObjects, err = gotypes.FlattenTypes(typeObjects...)
+	if err != nil {
+		return err
+	}
 
 	refreshableTypes, err := generator.NewRefreshableTypes(pkg, typeObjects)
 	if err != nil {
 		return err
 	}
 
-	file := generator.GenerateRefreshableFile(outputPackagePath, outputPackageName, refreshableTypes)
+	file, err := generator.GenerateRefreshableFile(outputPackagePath, outputPackageName, refreshableTypes)
+	if err != nil {
+		return err
+	}
 	for path, alias := range importAliases {
 		file.ImportAlias(path, alias)
 	}
