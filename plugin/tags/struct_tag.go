@@ -22,9 +22,9 @@ type RefreshablesFieldTagOptions struct {
 // ParseTag returns the RefreshablesFieldTagOptions from the tag.
 // This uses a field tag syntax similar to json or yaml struct tags.
 //
-//   type Example struct {
-//   	Foo FooType `yaml:"foo,omitempty" refreshables:",exclude"`
-//   }
+//	type Example struct {
+//		Foo FooType `yaml:"foo,omitempty" refreshables:",exclude"`
+//	}
 func ParseTag(tag string) (RefreshablesFieldTagOptions, error) {
 	result := RefreshablesFieldTagOptions{}
 	structTag := reflect.StructTag(tag)
