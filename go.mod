@@ -29,11 +29,11 @@ require (
 	github.com/palantir/go-metrics v1.1.1 // indirect
 	github.com/palantir/pkg v1.0.1 // indirect
 	github.com/palantir/pkg/bytesbuffers v1.0.1 // indirect
-	github.com/palantir/pkg/matcher v1.0.1 // indirect
+	github.com/palantir/pkg/matcher v1.1.0 // indirect
 	github.com/palantir/pkg/metrics v1.3.0 // indirect
 	github.com/palantir/pkg/retry v1.1.1 // indirect
 	github.com/palantir/pkg/safejson v1.0.1 // indirect
-	github.com/palantir/pkg/specdir v1.0.1 // indirect
+	github.com/palantir/pkg/specdir v1.1.0 // indirect
 	github.com/palantir/pkg/tlsconfig v1.1.0 // indirect
 	github.com/palantir/pkg/uuid v1.0.1 // indirect
 	github.com/palantir/witchcraft-go-error v1.15.0 // indirect

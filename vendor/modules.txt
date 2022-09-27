@@ -62,8 +62,8 @@ github.com/palantir/pkg/bytesbuffers
 # github.com/palantir/pkg/cobracli v1.1.0
 ## explicit; go 1.16
 github.com/palantir/pkg/cobracli
-# github.com/palantir/pkg/matcher v1.0.1
-## explicit; go 1.13
+# github.com/palantir/pkg/matcher v1.1.0
+## explicit; go 1.18
 github.com/palantir/pkg/matcher
 # github.com/palantir/pkg/metrics v1.3.0
 ## explicit; go 1.16
@@ -77,8 +77,8 @@ github.com/palantir/pkg/retry
 # github.com/palantir/pkg/safejson v1.0.1
 ## explicit; go 1.13
 github.com/palantir/pkg/safejson
-# github.com/palantir/pkg/specdir v1.0.1
-## explicit; go 1.13
+# github.com/palantir/pkg/specdir v1.1.0
+## explicit; go 1.18
 github.com/palantir/pkg/specdir
 # github.com/palantir/pkg/tlsconfig v1.1.0
 ## explicit; go 1.14
