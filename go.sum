@@ -42,8 +42,8 @@ github.com/nmiyake/pkg/errorstringer v1.1.0/go.mod h1:3c/Luj1o1XtUmdqL6QRKnBnkfB
 github.com/nmiyake/pkg/gofiles v1.2.0 h1:L0LWMfnHyMxiLP2Cuqno163/4zK73FscEsNd7sHo2M4=
 github.com/nwaples/rardecode v1.0.0 h1:r7vGuS5akxOnR4JQSkko62RJ1ReCMXxQRPtxsiFMBOs=
 github.com/openzipkin/zipkin-go v0.2.2 h1:nY8Hti+WKaP0cRsSeQ026wU03QsM762XBeCXBb9NAWI=
-github.com/palantir/conjure-go-runtime/v2 v2.41.0 h1:SMwZEOzT4dQ5kmkGg2K1FqShhMvd/VXwuiiIszyVCrA=
-github.com/palantir/conjure-go-runtime/v2 v2.41.0/go.mod h1:7/cQnj4DKtYj22ICbDKnrjHbNscyxJy1s6A05UUp2CE=
+github.com/palantir/conjure-go-runtime/v2 v2.42.0 h1:7HLfaDGaWC3VQWaZnNu3LiJ8UYKCL8vlQV+m4Tor/lo=
+github.com/palantir/conjure-go-runtime/v2 v2.42.0/go.mod h1:SnzhZgzg44G+/Y4RXMFhUwnfVe05jht75rOe4FsflAU=
 github.com/palantir/go-metrics v1.1.1 h1:YL/UmptBjrC6iSCTVr7vfuIcjL0M359Da3/gBGNny10=
 github.com/palantir/go-metrics v1.1.1/go.mod h1:fRkuipBnsI4nD8Vd9UNcrUJvD8Y0wOJMSbicygcBrGs=
 github.com/palantir/godel/v2 v2.68.0 h1:djIrPtvMc2oMM6TspyBcpJsj2n3ZN1oLNWrsCny3928=
@@ -55,7 +55,7 @@ github.com/palantir/pkg/bytesbuffers v1.1.0/go.mod h1:BTsWfwxwTzzPTptfraoT23L0Ct
 github.com/palantir/pkg/cobracli v1.2.0 h1:hANp5fUB5cX90SVri97Apz4xB3BqnZw0gP2jMQ34G8Y=
 github.com/palantir/pkg/cobracli v1.2.0/go.mod h1:8poQy1FM1lISezW7Czmhmj7I0xEVpuYpv/ywgsAzv0Y=
 github.com/palantir/pkg/datetime v1.1.0 h1:P4ZPuQI5rM8pHJ/0g3Bgx3MQkX1zzVqrbxfyrZ88xx4=
-github.com/palantir/pkg/httpserver v1.0.1 h1:50GykXrOIZ6U4OWz3o4jDCK4ql4h3TnldusqIi/75zs=
+github.com/palantir/pkg/httpserver v1.1.0 h1:AI52vj8W4LtbwCXYzAupmNqrqtWX1F+rRco6ylDUGGw=
 github.com/palantir/pkg/matcher v1.2.0 h1:h4IeYPSQGWIdi1Qh7QSzWATv0+2coTaaCiozYtPWBks=
 github.com/palantir/pkg/matcher v1.2.0/go.mod h1:JUH9L+Cmjv2U87y+1Ov5KKLmMbgHtESCTrPq5MyWeVM=
 github.com/palantir/pkg/metrics v1.4.0 h1:2Nv0tNnPvsYvjZattZHyu0K8311BoagfHaZDG5wATRk=
