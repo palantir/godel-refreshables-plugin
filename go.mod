@@ -9,8 +9,8 @@ require (
 	github.com/palantir/pkg/cobracli v1.2.0
 	github.com/palantir/pkg/refreshable v1.4.0
 	github.com/pkg/errors v0.9.1
-	github.com/spf13/cobra v1.6.0
-	github.com/stretchr/testify v1.8.0
+	github.com/spf13/cobra v1.6.1
+	github.com/stretchr/testify v1.8.1
 	golang.org/x/tools v0.1.5
 	gopkg.in/yaml.v2 v2.4.0
 )
