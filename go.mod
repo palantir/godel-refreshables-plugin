@@ -28,7 +28,7 @@ require (
 	github.com/nmiyake/pkg/errorstringer v1.1.0 // indirect
 	github.com/palantir/go-metrics v1.1.1 // indirect
 	github.com/palantir/pkg v1.1.0 // indirect
-	github.com/palantir/pkg/bytesbuffers v1.1.0 // indirect
+	github.com/palantir/pkg/bytesbuffers v1.2.0 // indirect
 	github.com/palantir/pkg/matcher v1.2.0 // indirect
 	github.com/palantir/pkg/metrics v1.4.0 // indirect
 	github.com/palantir/pkg/retry v1.2.0 // indirect
