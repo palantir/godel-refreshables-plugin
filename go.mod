@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/dave/jennifer v1.4.1
-	github.com/palantir/conjure-go-runtime/v2 v2.46.0
+	github.com/palantir/conjure-go-runtime/v2 v2.47.0
 	github.com/palantir/godel/v2 v2.70.0
 	github.com/palantir/pkg/cobracli v1.2.0
 	github.com/palantir/pkg/refreshable v1.4.0
@@ -20,6 +20,7 @@ require (
 	github.com/cheggaaa/pb/v3 v3.0.6 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fatih/color v1.13.0 // indirect
+	github.com/golang/snappy v0.0.4 // indirect
 	github.com/inconshreveable/mousetrap v1.0.1 // indirect
 	github.com/kr/pretty v0.2.0 // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect
@@ -48,6 +49,7 @@ require (
 	golang.org/x/net v0.2.0 // indirect
 	golang.org/x/sys v0.2.0 // indirect
 	golang.org/x/text v0.4.0 // indirect
+	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
