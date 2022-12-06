@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/dave/jennifer v1.4.1
-	github.com/palantir/conjure-go-runtime/v2 v2.47.0
+	github.com/palantir/conjure-go-runtime/v2 v2.48.0
 	github.com/palantir/godel/v2 v2.70.0
 	github.com/palantir/pkg/cobracli v1.2.0
 	github.com/palantir/pkg/refreshable v1.4.0
