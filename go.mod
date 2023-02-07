@@ -1,6 +1,6 @@
 module github.com/palantir/godel-refreshables-plugin
 
-go 1.19
+go 1.20
 
 require (
 	github.com/dave/jennifer v1.4.1
