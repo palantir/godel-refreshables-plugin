@@ -44,7 +44,7 @@ github.com/palantir/conjure-go-runtime/v2/conjure-go-contract/errors
 # github.com/palantir/go-metrics v1.1.1
 ## explicit; go 1.13
 github.com/palantir/go-metrics
-# github.com/palantir/godel/v2 v2.74.0
+# github.com/palantir/godel/v2 v2.75.0
 ## explicit; go 1.19
 github.com/palantir/godel/v2/framework/artifactresolver
 github.com/palantir/godel/v2/framework/builtintasks/installupdate/layout
@@ -133,7 +133,7 @@ github.com/stretchr/testify/require
 golang.org/x/mod/internal/lazyregexp
 golang.org/x/mod/module
 golang.org/x/mod/semver
-# golang.org/x/net v0.5.0
+# golang.org/x/net v0.6.0
 ## explicit; go 1.17
 golang.org/x/net/http/httpguts
 golang.org/x/net/http2
@@ -141,11 +141,11 @@ golang.org/x/net/http2/hpack
 golang.org/x/net/idna
 golang.org/x/net/internal/socks
 golang.org/x/net/proxy
-# golang.org/x/sys v0.4.0
+# golang.org/x/sys v0.5.0
 ## explicit; go 1.17
 golang.org/x/sys/execabs
 golang.org/x/sys/unix
-# golang.org/x/text v0.6.0
+# golang.org/x/text v0.7.0
 ## explicit; go 1.17
 golang.org/x/text/secure/bidirule
 golang.org/x/text/transform
