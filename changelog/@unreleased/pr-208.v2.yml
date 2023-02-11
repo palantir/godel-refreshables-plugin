@@ -1,0 +1,5 @@
+type: improvement
+improvement:
+  description: Update build configuration to disable CGo.
+  links:
+  - https://github.com/palantir/godel-refreshables-plugin/pull/208
