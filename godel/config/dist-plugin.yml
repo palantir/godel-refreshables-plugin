@@ -2,6 +2,8 @@ products:
   refreshables-plugin:
     build:
       main-pkg: .
+      environment:
+        CGO_ENABLED: "0"
       version-var: github.com/palantir/godel-refreshables-plugin/cmd.Version
       os-archs:
         - os: darwin
