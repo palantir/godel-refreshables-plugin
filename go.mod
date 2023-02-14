@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/dave/jennifer v1.4.1
 	github.com/palantir/conjure-go-runtime/v2 v2.50.0
-	github.com/palantir/godel/v2 v2.76.0
+	github.com/palantir/godel/v2 v2.77.0
 	github.com/palantir/pkg/cobracli v1.2.0
 	github.com/palantir/pkg/refreshable v1.4.0
 	github.com/pkg/errors v0.9.1
@@ -46,7 +46,7 @@ require (
 	github.com/spf13/pflag v1.0.5 // indirect
 	go.uber.org/zap v1.17.0 // indirect
 	golang.org/x/mod v0.8.0 // indirect
-	golang.org/x/net v0.6.0 // indirect
+	golang.org/x/net v0.7.0 // indirect
 	golang.org/x/sys v0.5.0 // indirect
 	golang.org/x/text v0.7.0 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
