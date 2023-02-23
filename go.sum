@@ -50,8 +50,8 @@ github.com/palantir/conjure-go-runtime/v2 v2.52.0 h1:And53JWTCQE9Tu8aaIqqKR+nIew
 github.com/palantir/conjure-go-runtime/v2 v2.52.0/go.mod h1:GGs4rYqiUTkcnHEGMSYUg4G0w23QSDKiLyclQFjiZy4=
 github.com/palantir/go-metrics v1.1.1 h1:YL/UmptBjrC6iSCTVr7vfuIcjL0M359Da3/gBGNny10=
 github.com/palantir/go-metrics v1.1.1/go.mod h1:fRkuipBnsI4nD8Vd9UNcrUJvD8Y0wOJMSbicygcBrGs=
-github.com/palantir/godel/v2 v2.77.0 h1:7cHiTPwkOgD4Xl+PwYplozdTguf/euUDUzkYTLLGhQQ=
-github.com/palantir/godel/v2 v2.77.0/go.mod h1:pz6I94FQtRw5yhOeIyLPDJ4pOWe3NRDWSBVOs0ShATI=
+github.com/palantir/godel/v2 v2.78.0 h1:hA6u0q7tApzl+GAljEvy3t6beP6cb7vYonwP8F0ciWw=
+github.com/palantir/godel/v2 v2.78.0/go.mod h1:pz6I94FQtRw5yhOeIyLPDJ4pOWe3NRDWSBVOs0ShATI=
 github.com/palantir/pkg v1.1.0 h1:0EhrSUP8oeeh3MUvk7V/UU7WmsN1UiJNTvNj0sN9Cpo=
 github.com/palantir/pkg v1.1.0/go.mod h1:KC9srP/9ssWRxBxFCIqhUGC4Jt7OJkWRz0Iqehup1/c=
 github.com/palantir/pkg/bytesbuffers v1.2.0 h1:MNcQa9oLySQ8921ULyW0lcvA+V6gBNK/K3o5K2bFh6A=
@@ -85,8 +85,8 @@ github.com/palantir/witchcraft-go-error v1.21.0 h1:+i5hWrKnOt3f7GJuWzgBbNxlQ2KQH
 github.com/palantir/witchcraft-go-error v1.21.0/go.mod h1:S4l6fjQgk/MJbtv9WjUcp8QeaKQYzotfZNBKA+zfJ78=
 github.com/palantir/witchcraft-go-logging v1.35.0 h1:TkwOcXl6f7v3FXi+VPeRzZqFd5+udhYIPfdUYONlYXo=
 github.com/palantir/witchcraft-go-logging v1.35.0/go.mod h1:CZwtB7C/gCBAnvF+u4d8/6Trzv2ne8SVvK1qksCU1Y0=
-github.com/palantir/witchcraft-go-params v1.17.0 h1:cWI7a+8fc+xpFodkPjZmJBJObgsQkbRV7/y9x9Ei/Co=
-github.com/palantir/witchcraft-go-params v1.17.0/go.mod h1:xY6CXHAzATmzWe0pvJMDlS612jMYVvFB5giPQWn/WSo=
+github.com/palantir/witchcraft-go-params v1.18.0 h1:BpmCGvzLge5OkaLOgDWIzr7aVfIqO7J/f52A1Bg4JN4=
+github.com/palantir/witchcraft-go-params v1.18.0/go.mod h1:xY6CXHAzATmzWe0pvJMDlS612jMYVvFB5giPQWn/WSo=
 github.com/palantir/witchcraft-go-tracing v1.20.0 h1:VezqLf1yHkDT5geBIyl8PM3gLGPzSxxn+CVSbUs2xfg=
 github.com/palantir/witchcraft-go-tracing v1.20.0/go.mod h1:1xiTjModYTIEbOzFrfahLcMs7/RxX2hfMTsl7i0NmGM=
 github.com/pierrec/lz4 v2.0.5+incompatible h1:2xWsjqPFWcplujydGg4WmhC/6fZqK42wMM8aXeqhl0I=
