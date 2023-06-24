@@ -34,7 +34,7 @@ github.com/mattn/go-runewidth
 # github.com/nmiyake/pkg/errorstringer v1.1.0
 ## explicit; go 1.16
 github.com/nmiyake/pkg/errorstringer
-# github.com/palantir/conjure-go-runtime/v2 v2.58.0
+# github.com/palantir/conjure-go-runtime/v2 v2.59.0
 ## explicit; go 1.20
 github.com/palantir/conjure-go-runtime/v2/conjure-go-client/httpclient
 github.com/palantir/conjure-go-runtime/v2/conjure-go-client/httpclient/internal
@@ -94,16 +94,16 @@ github.com/palantir/pkg/uuid/internal/uuid
 ## explicit; go 1.20
 github.com/palantir/witchcraft-go-error
 github.com/palantir/witchcraft-go-error/internal/errors
-# github.com/palantir/witchcraft-go-logging v1.41.0
+# github.com/palantir/witchcraft-go-logging v1.42.0
 ## explicit; go 1.20
 github.com/palantir/witchcraft-go-logging/internal/gopath
 github.com/palantir/witchcraft-go-logging/wlog
 github.com/palantir/witchcraft-go-logging/wlog/internal
 github.com/palantir/witchcraft-go-logging/wlog/svclog/svc1log
-# github.com/palantir/witchcraft-go-params v1.22.0
+# github.com/palantir/witchcraft-go-params v1.23.0
 ## explicit; go 1.20
 github.com/palantir/witchcraft-go-params
-# github.com/palantir/witchcraft-go-tracing v1.24.0
+# github.com/palantir/witchcraft-go-tracing v1.25.0
 ## explicit; go 1.20
 github.com/palantir/witchcraft-go-tracing/wtracing
 github.com/palantir/witchcraft-go-tracing/wtracing/propagation/b3
