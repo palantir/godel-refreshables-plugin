@@ -31,7 +31,7 @@ require (
 	github.com/palantir/pkg v1.1.0 // indirect
 	github.com/palantir/pkg/bytesbuffers v1.2.0 // indirect
 	github.com/palantir/pkg/matcher v1.2.0 // indirect
-	github.com/palantir/pkg/metrics v1.6.0 // indirect
+	github.com/palantir/pkg/metrics v1.7.0 // indirect
 	github.com/palantir/pkg/retry v1.2.0 // indirect
 	github.com/palantir/pkg/safejson v1.1.0 // indirect
 	github.com/palantir/pkg/specdir v1.2.0 // indirect
