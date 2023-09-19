@@ -56,8 +56,8 @@ github.com/nwaples/rardecode v1.0.0 h1:r7vGuS5akxOnR4JQSkko62RJ1ReCMXxQRPtxsiFMB
 github.com/nwaples/rardecode v1.0.0/go.mod h1:5DzqNKiOdpKKBH87u8VlvAnPZMXcGRhxWkRpHbbfGS0=
 github.com/openzipkin/zipkin-go v0.2.2 h1:nY8Hti+WKaP0cRsSeQ026wU03QsM762XBeCXBb9NAWI=
 github.com/openzipkin/zipkin-go v0.2.2/go.mod h1:NaW6tEwdmWMaCDZzg8sh+IBNOxHMPnhQw8ySjnjRyN4=
-github.com/palantir/conjure-go-runtime/v2 v2.63.0 h1:Kuk0RGox8rBbwsv6kLtG4JeidfFYjSgNsKNDgICDgS8=
-github.com/palantir/conjure-go-runtime/v2 v2.63.0/go.mod h1:k92Ii/f5oieZfp+0cr4DxehpCnWjjVnyqAKnDPHm4ns=
+github.com/palantir/conjure-go-runtime/v2 v2.64.0 h1:59Eb7iu9JrCc/Hr2jKL3zDFOupgfjMa4voXLx1dpch4=
+github.com/palantir/conjure-go-runtime/v2 v2.64.0/go.mod h1:4qcRMCAPwNEuPiJ/kTMSR9PM+OBU76+1yivkUhnpSSg=
 github.com/palantir/go-metrics v1.1.1 h1:YL/UmptBjrC6iSCTVr7vfuIcjL0M359Da3/gBGNny10=
 github.com/palantir/go-metrics v1.1.1/go.mod h1:fRkuipBnsI4nD8Vd9UNcrUJvD8Y0wOJMSbicygcBrGs=
 github.com/palantir/godel/v2 v2.92.0 h1:NjfiXoLaFp31vEmBjmh0n1BngdOn8qK83aO+ef0TwqM=
