@@ -62,8 +62,8 @@ github.com/palantir/conjure-go-runtime/v2 v2.70.0 h1:/rLpF36Yjdzc9Y8Hs4AQrZWnwvF
 github.com/palantir/conjure-go-runtime/v2 v2.70.0/go.mod h1:mhUkj1aFsr4rYN8V4gYnilpG6Y9iCSOqETe6b2WJuyU=
 github.com/palantir/go-metrics v1.1.1 h1:YL/UmptBjrC6iSCTVr7vfuIcjL0M359Da3/gBGNny10=
 github.com/palantir/go-metrics v1.1.1/go.mod h1:fRkuipBnsI4nD8Vd9UNcrUJvD8Y0wOJMSbicygcBrGs=
-github.com/palantir/godel/v2 v2.104.0 h1:NvLt8LTqtoSgOnVrRZIiUlq52ruyGFmS1e9KnSJv91Y=
-github.com/palantir/godel/v2 v2.104.0/go.mod h1:fE82SaZOfXavl+b+dJ5jwoPkUc0GWsV9eDVglL9RhME=
+github.com/palantir/godel/v2 v2.105.0 h1:iIgXT49OrD3HMko1+9EKVCpKV3n/BSjoRAfcp1uDc18=
+github.com/palantir/godel/v2 v2.105.0/go.mod h1:fE82SaZOfXavl+b+dJ5jwoPkUc0GWsV9eDVglL9RhME=
 github.com/palantir/pkg v1.1.0 h1:0EhrSUP8oeeh3MUvk7V/UU7WmsN1UiJNTvNj0sN9Cpo=
 github.com/palantir/pkg v1.1.0/go.mod h1:KC9srP/9ssWRxBxFCIqhUGC4Jt7OJkWRz0Iqehup1/c=
 github.com/palantir/pkg/bytesbuffers v1.2.0 h1:MNcQa9oLySQ8921ULyW0lcvA+V6gBNK/K3o5K2bFh6A=
@@ -132,8 +132,8 @@ github.com/stathat/go v1.0.0/go.mod h1:+9Eg2szqkcOGWv6gfheJmBBsmq9Qf5KDbzy8/aYYR
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
-github.com/stretchr/testify v1.8.4 h1:CcVxjf3Q8PM0mHUKJCdn+eZZtm5yQwehR5yeSVQQcUk=
-github.com/stretchr/testify v1.8.4/go.mod h1:sz/lmYIOXD/1dqDmKjjqLyZ2RngseejIcXlSw2iwfAo=
+github.com/stretchr/testify v1.9.0 h1:HtqpIVDClZ4nwg75+f6Lvsy/wHu+3BoSGCbBAcpTsTg=
+github.com/stretchr/testify v1.9.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
 github.com/ulikunitz/xz v0.5.10 h1:t92gobL9l3HE202wg3rlk19F6X+JOxl9BBrCCMYEYd8=
 github.com/ulikunitz/xz v0.5.10/go.mod h1:nbz6k7qbPmH4IRqmfOplQw/tblSgqTqBwxkY0oWt/14=
 github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8 h1:nIPpBwaJSVYIxUFsDv3M8ofmx9yWTog9BfvIu0q41lo=

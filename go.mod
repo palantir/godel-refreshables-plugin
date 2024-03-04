@@ -5,12 +5,12 @@ go 1.21
 require (
 	github.com/dave/jennifer v1.4.1
 	github.com/palantir/conjure-go-runtime/v2 v2.70.0
-	github.com/palantir/godel/v2 v2.104.0
+	github.com/palantir/godel/v2 v2.105.0
 	github.com/palantir/pkg/cobracli v1.2.0
 	github.com/palantir/pkg/refreshable v1.5.0
 	github.com/pkg/errors v0.9.1
 	github.com/spf13/cobra v1.8.0
-	github.com/stretchr/testify v1.8.4
+	github.com/stretchr/testify v1.9.0
 	golang.org/x/tools v0.18.0
 	gopkg.in/yaml.v2 v2.4.0
 )

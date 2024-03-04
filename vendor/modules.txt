@@ -44,7 +44,7 @@ github.com/palantir/conjure-go-runtime/v2/conjure-go-contract/errors
 # github.com/palantir/go-metrics v1.1.1
 ## explicit; go 1.13
 github.com/palantir/go-metrics
-# github.com/palantir/godel/v2 v2.104.0
+# github.com/palantir/godel/v2 v2.105.0
 ## explicit; go 1.21
 github.com/palantir/godel/v2/framework/artifactresolver
 github.com/palantir/godel/v2/framework/builtintasks/installupdate/layout
@@ -125,8 +125,8 @@ github.com/spf13/cobra
 # github.com/spf13/pflag v1.0.5
 ## explicit; go 1.12
 github.com/spf13/pflag
-# github.com/stretchr/testify v1.8.4
-## explicit; go 1.20
+# github.com/stretchr/testify v1.9.0
+## explicit; go 1.17
 github.com/stretchr/testify/assert
 github.com/stretchr/testify/require
 # go.uber.org/zap v1.17.0
