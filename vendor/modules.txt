@@ -44,7 +44,7 @@ github.com/palantir/conjure-go-runtime/v2/conjure-go-contract/errors
 # github.com/palantir/go-metrics v1.1.1
 ## explicit; go 1.13
 github.com/palantir/go-metrics
-# github.com/palantir/godel/v2 v2.106.0
+# github.com/palantir/godel/v2 v2.107.0
 ## explicit; go 1.21
 github.com/palantir/godel/v2/framework/artifactresolver
 github.com/palantir/godel/v2/framework/builtintasks/installupdate/layout
@@ -103,7 +103,7 @@ github.com/palantir/witchcraft-go-logging/internal/gopath
 github.com/palantir/witchcraft-go-logging/wlog
 github.com/palantir/witchcraft-go-logging/wlog/internal
 github.com/palantir/witchcraft-go-logging/wlog/svclog/svc1log
-# github.com/palantir/witchcraft-go-params v1.32.0
+# github.com/palantir/witchcraft-go-params v1.33.0
 ## explicit; go 1.21
 github.com/palantir/witchcraft-go-params
 # github.com/palantir/witchcraft-go-tracing v1.35.0
