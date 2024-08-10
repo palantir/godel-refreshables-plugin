@@ -34,7 +34,7 @@ github.com/mattn/go-runewidth
 # github.com/nmiyake/pkg/errorstringer v1.1.0
 ## explicit; go 1.16
 github.com/nmiyake/pkg/errorstringer
-# github.com/palantir/conjure-go-runtime/v2 v2.77.0
+# github.com/palantir/conjure-go-runtime/v2 v2.78.0
 ## explicit; go 1.21
 github.com/palantir/conjure-go-runtime/v2/conjure-go-client/httpclient
 github.com/palantir/conjure-go-runtime/v2/conjure-go-client/httpclient/internal
@@ -106,7 +106,7 @@ github.com/palantir/witchcraft-go-logging/wlog/svclog/svc1log
 # github.com/palantir/witchcraft-go-params v1.35.0
 ## explicit; go 1.21
 github.com/palantir/witchcraft-go-params
-# github.com/palantir/witchcraft-go-tracing v1.37.0
+# github.com/palantir/witchcraft-go-tracing v1.38.0
 ## explicit; go 1.21
 github.com/palantir/witchcraft-go-tracing/wtracing
 github.com/palantir/witchcraft-go-tracing/wtracing/propagation/b3
