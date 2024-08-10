@@ -4,7 +4,7 @@ go 1.22
 
 require (
 	github.com/dave/jennifer v1.4.1
-	github.com/palantir/conjure-go-runtime/v2 v2.77.0
+	github.com/palantir/conjure-go-runtime/v2 v2.78.0
 	github.com/palantir/godel/v2 v2.113.0
 	github.com/palantir/pkg/cobracli v1.2.0
 	github.com/palantir/pkg/refreshable v1.5.0
@@ -41,7 +41,7 @@ require (
 	github.com/palantir/witchcraft-go-error v1.38.0 // indirect
 	github.com/palantir/witchcraft-go-logging v1.56.0 // indirect
 	github.com/palantir/witchcraft-go-params v1.35.0 // indirect
-	github.com/palantir/witchcraft-go-tracing v1.37.0 // indirect
+	github.com/palantir/witchcraft-go-tracing v1.38.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/rivo/uniseg v0.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
