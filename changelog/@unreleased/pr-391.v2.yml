@@ -1,0 +1,5 @@
+type: improvement
+improvement:
+  description: Upgrade jennifer dependency
+  links:
+  - https://github.com/palantir/godel-refreshables-plugin/pull/391
