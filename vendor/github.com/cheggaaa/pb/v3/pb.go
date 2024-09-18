@@ -21,7 +21,7 @@ import (
 )
 
 // Version of ProgressBar library
-const Version = "3.0.6"
+const Version = "3.0.8"
 
 type key int
 
@@ -48,6 +48,9 @@ const (
 
 	// Hide the progress bar when finished, rather than leaving it up. By default it's false.
 	CleanOnFinish
+
+	// Round elapsed time to this precision. Defaults to time.Second.
+	TimeRound
 )
 
 const (
@@ -238,6 +241,12 @@ func (pb *ProgressBar) SetTotal(value int64) *ProgressBar {
 	return pb
 }
 
+// AddTotal adds to the total bar value
+func (pb *ProgressBar) AddTotal(value int64) *ProgressBar {
+	atomic.AddInt64(&pb.total, value)
+	return pb
+}
+
 // SetCurrent sets the current bar value
 func (pb *ProgressBar) SetCurrent(value int64) *ProgressBar {
 	atomic.StoreInt64(&pb.current, value)
@@ -397,6 +406,13 @@ func (pb *ProgressBar) IsStarted() bool {
 	pb.mu.RLock()
 	defer pb.mu.RUnlock()
 	return pb.finish != nil
+}
+
+// IsFinished indicates progress bar is finished
+func (pb *ProgressBar) IsFinished() bool {
+	pb.mu.RLock()
+	defer pb.mu.RUnlock()
+	return pb.finished
 }
 
 // SetTemplateString sets ProgressBar tempate string and parse it
