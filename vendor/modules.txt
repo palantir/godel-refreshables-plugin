@@ -44,7 +44,7 @@ github.com/palantir/conjure-go-runtime/v2/conjure-go-contract/errors
 # github.com/palantir/go-metrics v1.1.1
 ## explicit; go 1.13
 github.com/palantir/go-metrics
-# github.com/palantir/godel/v2 v2.121.0
+# github.com/palantir/godel/v2 v2.122.0
 ## explicit; go 1.21.0
 github.com/palantir/godel/v2/framework/artifactresolver
 github.com/palantir/godel/v2/framework/builtintasks/installupdate/layout
@@ -137,7 +137,7 @@ github.com/stretchr/testify/require
 golang.org/x/mod/internal/lazyregexp
 golang.org/x/mod/module
 golang.org/x/mod/semver
-# golang.org/x/net v0.31.0
+# golang.org/x/net v0.32.0
 ## explicit; go 1.18
 golang.org/x/net/http/httpguts
 golang.org/x/net/http2
@@ -148,7 +148,7 @@ golang.org/x/net/proxy
 # golang.org/x/sync v0.10.0
 ## explicit; go 1.18
 golang.org/x/sync/errgroup
-# golang.org/x/sys v0.27.0
+# golang.org/x/sys v0.28.0
 ## explicit; go 1.18
 golang.org/x/sys/unix
 # golang.org/x/text v0.21.0
@@ -157,7 +157,7 @@ golang.org/x/text/secure/bidirule
 golang.org/x/text/transform
 golang.org/x/text/unicode/bidi
 golang.org/x/text/unicode/norm
-# golang.org/x/tools v0.27.0
+# golang.org/x/tools v0.28.0
 ## explicit; go 1.22.0
 golang.org/x/tools/go/ast/astutil
 golang.org/x/tools/go/gcexportdata
@@ -174,6 +174,7 @@ golang.org/x/tools/internal/gcimporter
 golang.org/x/tools/internal/gocommand
 golang.org/x/tools/internal/gopathwalk
 golang.org/x/tools/internal/imports
+golang.org/x/tools/internal/modindex
 golang.org/x/tools/internal/packagesinternal
 golang.org/x/tools/internal/pkgbits
 golang.org/x/tools/internal/stdlib
