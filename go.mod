@@ -5,7 +5,7 @@ go 1.24.0
 require (
 	github.com/dave/jennifer v1.4.1
 	github.com/palantir/conjure-go-runtime/v2 v2.97.0
-	github.com/palantir/godel/v2 v2.130.0
+	github.com/palantir/godel/v2 v2.131.0
 	github.com/palantir/pkg/cobracli v1.2.0
 	github.com/palantir/pkg/refreshable v1.6.0
 	github.com/pkg/errors v0.9.1
