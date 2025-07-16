@@ -5,7 +5,7 @@ go 1.24.0
 require (
 	github.com/dave/jennifer v1.4.1
 	github.com/palantir/conjure-go-runtime/v2 v2.97.0
-	github.com/palantir/godel/v2 v2.133.0
+	github.com/palantir/godel/v2 v2.134.0
 	github.com/palantir/pkg/cobracli v1.2.0
 	github.com/palantir/pkg/refreshable v1.6.0
 	github.com/pkg/errors v0.9.1
@@ -44,7 +44,7 @@ require (
 	github.com/palantir/witchcraft-go-tracing v1.40.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/rivo/uniseg v0.1.0 // indirect
-	github.com/spf13/pflag v1.0.6 // indirect
+	github.com/spf13/pflag v1.0.7 // indirect
 	go.uber.org/zap v1.17.0 // indirect
 	golang.org/x/mod v0.26.0 // indirect
 	golang.org/x/net v0.42.0 // indirect
