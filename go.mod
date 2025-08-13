@@ -3,7 +3,7 @@ module github.com/palantir/godel-refreshables-plugin
 go 1.24.0
 
 require (
-	github.com/dave/jennifer v1.4.1
+	github.com/dave/jennifer v1.7.1
 	github.com/palantir/conjure-go-runtime/v2 v2.97.0
 	github.com/palantir/godel/v2 v2.134.0
 	github.com/palantir/pkg/cobracli v1.2.0
