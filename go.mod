@@ -43,7 +43,7 @@ require (
 	github.com/palantir/witchcraft-go-params v1.38.0 // indirect
 	github.com/palantir/witchcraft-go-tracing v1.40.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/rivo/uniseg v0.2.0 // indirect
+	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/spf13/pflag v1.0.7 // indirect
 	go.uber.org/zap v1.27.0 // indirect
 	golang.org/x/mod v0.27.0 // indirect
