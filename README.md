@@ -1,3 +1,7 @@
+<p align="right">
+<a href="https://autorelease.general.dmz.palantir.tech/palantir/godel-refreshables-plugin"><img src="https://img.shields.io/badge/Perform%20an-Autorelease-success.svg" alt="Autorelease"></a>
+</p>
+
 <p align=right>
 <a href=https://autorelease3.general.dmz.palantir.tech/repos/palantir/godel-refreshables-plugin><img src=https://img.shields.io/badge/Perform%20an-Autorelease-success.svg alt=Autorelease></a>
 </p>
