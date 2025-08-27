@@ -20,8 +20,8 @@ github.com/golang/snappy
 # github.com/inconshreveable/mousetrap v1.1.0
 ## explicit; go 1.18
 github.com/inconshreveable/mousetrap
-# github.com/kr/pretty v0.3.1
-## explicit; go 1.12
+# github.com/kr/text v0.2.0
+## explicit
 # github.com/mattn/go-colorable v0.1.14
 ## explicit; go 1.18
 github.com/mattn/go-colorable
@@ -34,8 +34,8 @@ github.com/mattn/go-runewidth
 # github.com/nmiyake/pkg/errorstringer v1.1.0
 ## explicit; go 1.16
 github.com/nmiyake/pkg/errorstringer
-# github.com/palantir/conjure-go-runtime/v2 v2.97.0
-## explicit; go 1.24.0
+# github.com/palantir/conjure-go-runtime/v2 v2.98.0
+## explicit; go 1.25.0
 github.com/palantir/conjure-go-runtime/v2/conjure-go-client/httpclient
 github.com/palantir/conjure-go-runtime/v2/conjure-go-client/httpclient/internal
 github.com/palantir/conjure-go-runtime/v2/conjure-go-client/httpclient/internal/refreshingclient
@@ -93,12 +93,12 @@ github.com/palantir/pkg/tlsconfig
 ## explicit; go 1.19
 github.com/palantir/pkg/uuid
 github.com/palantir/pkg/uuid/internal/uuid
-# github.com/palantir/witchcraft-go-error v1.41.0
-## explicit; go 1.24.0
+# github.com/palantir/witchcraft-go-error v1.42.0
+## explicit; go 1.25.0
 github.com/palantir/witchcraft-go-error
 github.com/palantir/witchcraft-go-error/internal/errors
-# github.com/palantir/witchcraft-go-logging v1.61.0
-## explicit; go 1.24.0
+# github.com/palantir/witchcraft-go-logging v1.62.0
+## explicit; go 1.25.0
 github.com/palantir/witchcraft-go-logging/internal/gopath
 github.com/palantir/witchcraft-go-logging/wlog
 github.com/palantir/witchcraft-go-logging/wlog/internal
@@ -130,8 +130,6 @@ github.com/spf13/pflag
 github.com/stretchr/testify/assert
 github.com/stretchr/testify/assert/yaml
 github.com/stretchr/testify/require
-# go.uber.org/zap v1.27.0
-## explicit; go 1.19
 # golang.org/x/mod v0.27.0
 ## explicit; go 1.23.0
 golang.org/x/mod/internal/lazyregexp
@@ -198,8 +196,6 @@ google.golang.org/protobuf/proto
 google.golang.org/protobuf/reflect/protoreflect
 google.golang.org/protobuf/reflect/protoregistry
 google.golang.org/protobuf/runtime/protoiface
-# gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c
-## explicit; go 1.11
 # gopkg.in/yaml.v2 v2.4.0
 ## explicit; go 1.15
 gopkg.in/yaml.v2
