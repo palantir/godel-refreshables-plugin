@@ -40,8 +40,8 @@ require (
 	github.com/palantir/pkg/uuid v1.2.0 // indirect
 	github.com/palantir/witchcraft-go-error v1.42.0 // indirect
 	github.com/palantir/witchcraft-go-logging v1.62.0 // indirect
-	github.com/palantir/witchcraft-go-params v1.38.0 // indirect
-	github.com/palantir/witchcraft-go-tracing v1.40.0 // indirect
+	github.com/palantir/witchcraft-go-params v1.39.0 // indirect
+	github.com/palantir/witchcraft-go-tracing v1.41.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/spf13/pflag v1.0.7 // indirect
