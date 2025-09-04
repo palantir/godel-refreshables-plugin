@@ -5,7 +5,7 @@ go 1.25.0
 require (
 	github.com/dave/jennifer v1.7.1
 	github.com/palantir/conjure-go-runtime/v2 v2.98.0
-	github.com/palantir/godel/v2 v2.137.0
+	github.com/palantir/godel/v2 v2.138.0
 	github.com/palantir/pkg/cobracli v1.3.0
 	github.com/palantir/pkg/refreshable v1.6.0
 	github.com/pkg/errors v0.9.1
@@ -35,7 +35,7 @@ require (
 	github.com/palantir/pkg/refreshable/v2 v2.1.0 // indirect
 	github.com/palantir/pkg/retry v1.3.0 // indirect
 	github.com/palantir/pkg/safejson v1.2.0 // indirect
-	github.com/palantir/pkg/specdir v1.2.0 // indirect
+	github.com/palantir/pkg/specdir v1.3.0 // indirect
 	github.com/palantir/pkg/tlsconfig v1.4.0 // indirect
 	github.com/palantir/pkg/uuid v1.3.0 // indirect
 	github.com/palantir/witchcraft-go-error v1.42.0 // indirect
