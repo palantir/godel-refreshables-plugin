@@ -42,7 +42,7 @@ require (
 	github.com/palantir/witchcraft-go-error v1.42.0 // indirect
 	github.com/palantir/witchcraft-go-logging v1.65.0 // indirect
 	github.com/palantir/witchcraft-go-params v1.39.0 // indirect
-	github.com/palantir/witchcraft-go-tracing v1.41.0 // indirect
+	github.com/palantir/witchcraft-go-tracing v1.42.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
 	golang.org/x/mod v0.34.0 // indirect
