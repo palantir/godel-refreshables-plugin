@@ -37,4 +37,5 @@ var (
 	)
 )
 
-func pInt(i int) *int { return &i }
+//go:fix inline
+func pInt(i int) *int { return new(i) }

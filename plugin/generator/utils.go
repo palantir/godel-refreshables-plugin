@@ -49,7 +49,7 @@ func longestCommonPkgPathSuffix(pkgA []string, pkgB []string) int {
 		return 0
 	}
 	longestPossibleDiff := int(math.Min(float64(len(pkgA)), float64(len(pkgB))))
-	for i := 0; i < longestPossibleDiff; i++ {
+	for i := range longestPossibleDiff {
 		if pkgA[len(pkgA)-1-i] != pkgB[len(pkgB)-1-i] {
 			return i
 		}

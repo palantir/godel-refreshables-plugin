@@ -7,7 +7,7 @@ import refreshable "github.com/palantir/pkg/refreshable"
 type RefreshableMainStruct interface {
 	refreshable.Refreshable
 	CurrentMainStruct() MainStruct
-	MapMainStruct(func(MainStruct) interface{}) refreshable.Refreshable
+	MapMainStruct(func(MainStruct) any) refreshable.Refreshable
 	SubscribeToMainStruct(func(MainStruct)) (unsubscribe func())
 
 	IncludedString() refreshable.String
@@ -26,26 +26,26 @@ func (r RefreshingMainStruct) CurrentMainStruct() MainStruct {
 	return r.Current().(MainStruct)
 }
 
-func (r RefreshingMainStruct) MapMainStruct(mapFn func(MainStruct) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingMainStruct) MapMainStruct(mapFn func(MainStruct) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(MainStruct))
 	})
 }
 
 func (r RefreshingMainStruct) SubscribeToMainStruct(consumer func(MainStruct)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(MainStruct))
 	})
 }
 
 func (r RefreshingMainStruct) IncludedString() refreshable.String {
-	return refreshable.NewString(r.MapMainStruct(func(i MainStruct) interface{} {
+	return refreshable.NewString(r.MapMainStruct(func(i MainStruct) any {
 		return i.IncludedString
 	}))
 }
 
 func (r RefreshingMainStruct) Sub() RefreshableSubStruct {
-	return NewRefreshingSubStruct(r.MapMainStruct(func(i MainStruct) interface{} {
+	return NewRefreshingSubStruct(r.MapMainStruct(func(i MainStruct) any {
 		return i.Sub
 	}))
 }
@@ -53,7 +53,7 @@ func (r RefreshingMainStruct) Sub() RefreshableSubStruct {
 type RefreshableSubStruct interface {
 	refreshable.Refreshable
 	CurrentSubStruct() SubStruct
-	MapSubStruct(func(SubStruct) interface{}) refreshable.Refreshable
+	MapSubStruct(func(SubStruct) any) refreshable.Refreshable
 	SubscribeToSubStruct(func(SubStruct)) (unsubscribe func())
 
 	IncludedInt() refreshable.Int
@@ -71,20 +71,20 @@ func (r RefreshingSubStruct) CurrentSubStruct() SubStruct {
 	return r.Current().(SubStruct)
 }
 
-func (r RefreshingSubStruct) MapSubStruct(mapFn func(SubStruct) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingSubStruct) MapSubStruct(mapFn func(SubStruct) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(SubStruct))
 	})
 }
 
 func (r RefreshingSubStruct) SubscribeToSubStruct(consumer func(SubStruct)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(SubStruct))
 	})
 }
 
 func (r RefreshingSubStruct) IncludedInt() refreshable.Int {
-	return refreshable.NewInt(r.MapSubStruct(func(i SubStruct) interface{} {
+	return refreshable.NewInt(r.MapSubStruct(func(i SubStruct) any {
 		return i.IncludedInt
 	}))
 }

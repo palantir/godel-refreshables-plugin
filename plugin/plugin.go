@@ -8,7 +8,6 @@ import (
 	"bytes"
 	"go/token"
 	"go/types"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -83,7 +82,7 @@ func renderRefreshableTypesFile(projectDir string, importAliases map[string]stri
 		return err
 	}
 	if verify {
-		existing, err := ioutil.ReadFile(outputFile)
+		existing, err := os.ReadFile(outputFile)
 		if os.IsNotExist(err) {
 			return errors.Wrap(err, "regenerate refreshables output")
 		}
@@ -94,7 +93,7 @@ func renderRefreshableTypesFile(projectDir string, importAliases map[string]stri
 		if err := os.MkdirAll(filepath.Dir(outputFile), 0755); err != nil {
 			return errors.Wrap(err, "create outputFile parent directories")
 		}
-		if err := ioutil.WriteFile(outputFile, outputBytes, 0644); err != nil {
+		if err := os.WriteFile(outputFile, outputBytes, 0644); err != nil {
 			return errors.Wrap(err, "write outputFile")
 		}
 	}
@@ -133,11 +132,11 @@ func validatePackage(pkg *packages.Package) error {
 		return errors.Errorf("nil package")
 	}
 	if len(pkg.Errors) > 0 {
-		errs := ""
+		var errs strings.Builder
 		for _, e := range pkg.Errors {
-			errs += "\n" + e.Error()
+			errs.WriteString("\n" + e.Error())
 		}
-		return errors.Errorf("failed to load package %s:%s", pkg.PkgPath, errs)
+		return errors.Errorf("failed to load package %s:%s", pkg.PkgPath, errs.String())
 	}
 	if pkg.IllTyped {
 		return errors.Errorf("package %s was ill-typed", pkg.PkgPath)
