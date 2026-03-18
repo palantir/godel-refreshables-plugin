@@ -12,7 +12,7 @@ import (
 type RefreshableOtherStruct interface {
 	refreshable.Refreshable
 	CurrentOtherStruct() OtherStruct
-	MapOtherStruct(func(OtherStruct) interface{}) refreshable.Refreshable
+	MapOtherStruct(func(OtherStruct) any) refreshable.Refreshable
 	SubscribeToOtherStruct(func(OtherStruct)) (unsubscribe func())
 
 	FieldA() refreshable.String
@@ -31,26 +31,26 @@ func (r RefreshingOtherStruct) CurrentOtherStruct() OtherStruct {
 	return r.Current().(OtherStruct)
 }
 
-func (r RefreshingOtherStruct) MapOtherStruct(mapFn func(OtherStruct) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingOtherStruct) MapOtherStruct(mapFn func(OtherStruct) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(OtherStruct))
 	})
 }
 
 func (r RefreshingOtherStruct) SubscribeToOtherStruct(consumer func(OtherStruct)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(OtherStruct))
 	})
 }
 
 func (r RefreshingOtherStruct) FieldA() refreshable.String {
-	return refreshable.NewString(r.MapOtherStruct(func(i OtherStruct) interface{} {
+	return refreshable.NewString(r.MapOtherStruct(func(i OtherStruct) any {
 		return i.FieldA
 	}))
 }
 
 func (r RefreshingOtherStruct) FieldB() RefreshableInnerStruct {
-	return NewRefreshingInnerStruct(r.MapOtherStruct(func(i OtherStruct) interface{} {
+	return NewRefreshingInnerStruct(r.MapOtherStruct(func(i OtherStruct) any {
 		return i.FieldB
 	}))
 }
@@ -58,7 +58,7 @@ func (r RefreshingOtherStruct) FieldB() RefreshableInnerStruct {
 type RefreshableInnerStruct interface {
 	refreshable.Refreshable
 	CurrentInnerStruct() InnerStruct
-	MapInnerStruct(func(InnerStruct) interface{}) refreshable.Refreshable
+	MapInnerStruct(func(InnerStruct) any) refreshable.Refreshable
 	SubscribeToInnerStruct(func(InnerStruct)) (unsubscribe func())
 
 	InnerFieldA() refreshable.Int
@@ -77,26 +77,26 @@ func (r RefreshingInnerStruct) CurrentInnerStruct() InnerStruct {
 	return r.Current().(InnerStruct)
 }
 
-func (r RefreshingInnerStruct) MapInnerStruct(mapFn func(InnerStruct) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingInnerStruct) MapInnerStruct(mapFn func(InnerStruct) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(InnerStruct))
 	})
 }
 
 func (r RefreshingInnerStruct) SubscribeToInnerStruct(consumer func(InnerStruct)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(InnerStruct))
 	})
 }
 
 func (r RefreshingInnerStruct) InnerFieldA() refreshable.Int {
-	return refreshable.NewInt(r.MapInnerStruct(func(i InnerStruct) interface{} {
+	return refreshable.NewInt(r.MapInnerStruct(func(i InnerStruct) any {
 		return i.InnerFieldA
 	}))
 }
 
 func (r RefreshingInnerStruct) InnerFieldB() refreshable.Duration {
-	return refreshable.NewDuration(r.MapInnerStruct(func(i InnerStruct) interface{} {
+	return refreshable.NewDuration(r.MapInnerStruct(func(i InnerStruct) any {
 		return i.InnerFieldB
 	}))
 }
@@ -104,7 +104,7 @@ func (r RefreshingInnerStruct) InnerFieldB() refreshable.Duration {
 type RefreshableSuperStruct interface {
 	refreshable.Refreshable
 	CurrentSuperStruct() SuperStruct
-	MapSuperStruct(func(SuperStruct) interface{}) refreshable.Refreshable
+	MapSuperStruct(func(SuperStruct) any) refreshable.Refreshable
 	SubscribeToSuperStruct(func(SuperStruct)) (unsubscribe func())
 
 	String() refreshable.String
@@ -165,278 +165,278 @@ func (r RefreshingSuperStruct) CurrentSuperStruct() SuperStruct {
 	return r.Current().(SuperStruct)
 }
 
-func (r RefreshingSuperStruct) MapSuperStruct(mapFn func(SuperStruct) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingSuperStruct) MapSuperStruct(mapFn func(SuperStruct) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(SuperStruct))
 	})
 }
 
 func (r RefreshingSuperStruct) SubscribeToSuperStruct(consumer func(SuperStruct)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(SuperStruct))
 	})
 }
 
 func (r RefreshingSuperStruct) String() refreshable.String {
-	return refreshable.NewString(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return refreshable.NewString(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.String
 	}))
 }
 
 func (r RefreshingSuperStruct) OptionalString() refreshable.StringPtr {
-	return refreshable.NewStringPtr(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return refreshable.NewStringPtr(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.OptionalString
 	}))
 }
 
 func (r RefreshingSuperStruct) SliceString() refreshable.StringSlice {
-	return refreshable.NewStringSlice(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return refreshable.NewStringSlice(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.SliceString
 	}))
 }
 
 func (r RefreshingSuperStruct) ArrayString() RefreshableStringArray {
-	return NewRefreshingStringArray(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingStringArray(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.ArrayString
 	}))
 }
 
 func (r RefreshingSuperStruct) StringString() RefreshableStringToString {
-	return NewRefreshingStringToString(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingStringToString(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.StringString
 	}))
 }
 
 func (r RefreshingSuperStruct) StringAlias() RefreshableStringAlias {
-	return NewRefreshingStringAlias(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingStringAlias(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.StringAlias
 	}))
 }
 
 func (r RefreshingSuperStruct) OptionalStringAlias() RefreshableOptionalStringAlias {
-	return NewRefreshingOptionalStringAlias(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingOptionalStringAlias(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.OptionalStringAlias
 	}))
 }
 
 func (r RefreshingSuperStruct) DoubleOptionalStringAlias() RefreshableOptionalStringAliasPtr {
-	return NewRefreshingOptionalStringAliasPtr(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingOptionalStringAliasPtr(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.DoubleOptionalStringAlias
 	}))
 }
 
 func (r RefreshingSuperStruct) Int() refreshable.Int {
-	return refreshable.NewInt(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return refreshable.NewInt(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.Int
 	}))
 }
 
 func (r RefreshingSuperStruct) OptionalInt() refreshable.IntPtr {
-	return refreshable.NewIntPtr(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return refreshable.NewIntPtr(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.OptionalInt
 	}))
 }
 
 func (r RefreshingSuperStruct) SliceInt() RefreshableIntSlice {
-	return NewRefreshingIntSlice(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingIntSlice(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.SliceInt
 	}))
 }
 
 func (r RefreshingSuperStruct) ArrayInt() RefreshableIntArray {
-	return NewRefreshingIntArray(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingIntArray(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.ArrayInt
 	}))
 }
 
 func (r RefreshingSuperStruct) IntInt() RefreshableIntToInt {
-	return NewRefreshingIntToInt(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingIntToInt(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.IntInt
 	}))
 }
 
 func (r RefreshingSuperStruct) IntAlias() RefreshableIntAlias {
-	return NewRefreshingIntAlias(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingIntAlias(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.IntAlias
 	}))
 }
 
 func (r RefreshingSuperStruct) OptionalIntAlias() RefreshableOptionalIntAlias {
-	return NewRefreshingOptionalIntAlias(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingOptionalIntAlias(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.OptionalIntAlias
 	}))
 }
 
 func (r RefreshingSuperStruct) DoubleOptionalIntAlias() RefreshableOptionalIntAliasPtr {
-	return NewRefreshingOptionalIntAliasPtr(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingOptionalIntAliasPtr(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.DoubleOptionalIntAlias
 	}))
 }
 
 func (r RefreshingSuperStruct) Duration() refreshable.Duration {
-	return refreshable.NewDuration(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return refreshable.NewDuration(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.Duration
 	}))
 }
 
 func (r RefreshingSuperStruct) OptionalDuration() refreshable.DurationPtr {
-	return refreshable.NewDurationPtr(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return refreshable.NewDurationPtr(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.OptionalDuration
 	}))
 }
 
 func (r RefreshingSuperStruct) SliceDuration() RefreshableDurationSlice {
-	return NewRefreshingDurationSlice(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingDurationSlice(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.SliceDuration
 	}))
 }
 
 func (r RefreshingSuperStruct) ArrayDuration() RefreshableDurationArray {
-	return NewRefreshingDurationArray(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingDurationArray(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.ArrayDuration
 	}))
 }
 
 func (r RefreshingSuperStruct) DurationDuration() RefreshableDurationToDuration {
-	return NewRefreshingDurationToDuration(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingDurationToDuration(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.DurationDuration
 	}))
 }
 
 func (r RefreshingSuperStruct) DurationAlias() RefreshableDurationAlias {
-	return NewRefreshingDurationAlias(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingDurationAlias(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.DurationAlias
 	}))
 }
 
 func (r RefreshingSuperStruct) OptionalDurationAlias() RefreshableOptionalDurationAlias {
-	return NewRefreshingOptionalDurationAlias(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingOptionalDurationAlias(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.OptionalDurationAlias
 	}))
 }
 
 func (r RefreshingSuperStruct) DoubleOptionalDurationAlias() RefreshableOptionalDurationAliasPtr {
-	return NewRefreshingOptionalDurationAliasPtr(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingOptionalDurationAliasPtr(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.DoubleOptionalDurationAlias
 	}))
 }
 
 func (r RefreshingSuperStruct) Int64() refreshable.Int64 {
-	return refreshable.NewInt64(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return refreshable.NewInt64(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.Int64
 	}))
 }
 
 func (r RefreshingSuperStruct) Int64Ptr() refreshable.Int64Ptr {
-	return refreshable.NewInt64Ptr(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return refreshable.NewInt64Ptr(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.Int64Ptr
 	}))
 }
 
 func (r RefreshingSuperStruct) Float64() refreshable.Float64 {
-	return refreshable.NewFloat64(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return refreshable.NewFloat64(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.Float64
 	}))
 }
 
 func (r RefreshingSuperStruct) Float64Ptr() refreshable.Float64Ptr {
-	return refreshable.NewFloat64Ptr(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return refreshable.NewFloat64Ptr(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.Float64Ptr
 	}))
 }
 
 func (r RefreshingSuperStruct) NestedStruct() RefreshableNestedStruct {
-	return NewRefreshingNestedStruct(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingNestedStruct(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.NestedStruct
 	}))
 }
 
 func (r RefreshingSuperStruct) NamedNestedStruct() RefreshableNestedStruct {
-	return NewRefreshingNestedStruct(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingNestedStruct(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.NamedNestedStruct
 	}))
 }
 
 func (r RefreshingSuperStruct) OptionalNestedStruct() RefreshableNestedStructPtr {
-	return NewRefreshingNestedStructPtr(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingNestedStructPtr(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.OptionalNestedStruct
 	}))
 }
 
 func (r RefreshingSuperStruct) SliceNestedStruct() RefreshableNestedStructSlice {
-	return NewRefreshingNestedStructSlice(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingNestedStructSlice(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.SliceNestedStruct
 	}))
 }
 
 func (r RefreshingSuperStruct) ArrayNestedStruct() RefreshableNestedStructArray {
-	return NewRefreshingNestedStructArray(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingNestedStructArray(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.ArrayNestedStruct
 	}))
 }
 
 func (r RefreshingSuperStruct) NestedStructNestedStruct() RefreshableNestedStructToNestedStruct {
-	return NewRefreshingNestedStructToNestedStruct(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingNestedStructToNestedStruct(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.NestedStructNestedStruct
 	}))
 }
 
 func (r RefreshingSuperStruct) NestedStructAlias() RefreshableNestedStructAlias {
-	return NewRefreshingNestedStructAlias(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingNestedStructAlias(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.NestedStructAlias
 	}))
 }
 
 func (r RefreshingSuperStruct) OptionalNestedStructAlias() RefreshableOptionalNestedStructAlias {
-	return NewRefreshingOptionalNestedStructAlias(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingOptionalNestedStructAlias(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.OptionalNestedStructAlias
 	}))
 }
 
 func (r RefreshingSuperStruct) LibraryStruct() RefreshableLibraryStruct {
-	return NewRefreshingLibraryStruct(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingLibraryStruct(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.LibraryStruct
 	}))
 }
 
 func (r RefreshingSuperStruct) NamedLibraryStruct() RefreshableLibraryStruct {
-	return NewRefreshingLibraryStruct(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingLibraryStruct(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.NamedLibraryStruct
 	}))
 }
 
 func (r RefreshingSuperStruct) OptionalLibraryStruct() RefreshableLibraryStructPtr {
-	return NewRefreshingLibraryStructPtr(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingLibraryStructPtr(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.OptionalLibraryStruct
 	}))
 }
 
 func (r RefreshingSuperStruct) SliceLibraryStruct() RefreshableLibraryStructSlice {
-	return NewRefreshingLibraryStructSlice(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingLibraryStructSlice(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.SliceLibraryStruct
 	}))
 }
 
 func (r RefreshingSuperStruct) ArrayLibraryStruct() RefreshableLibraryStructArray {
-	return NewRefreshingLibraryStructArray(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingLibraryStructArray(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.ArrayLibraryStruct
 	}))
 }
 
 func (r RefreshingSuperStruct) LibraryStructLibraryStruct() RefreshableLibraryStructToLibraryStruct {
-	return NewRefreshingLibraryStructToLibraryStruct(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingLibraryStructToLibraryStruct(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.LibraryStructLibraryStruct
 	}))
 }
 
 func (r RefreshingSuperStruct) LibraryStructAlias() RefreshableLibraryStructAlias {
-	return NewRefreshingLibraryStructAlias(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingLibraryStructAlias(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.LibraryStructAlias
 	}))
 }
 
 func (r RefreshingSuperStruct) OptionalLibraryStructAlias() RefreshableOptionalLibraryStructAlias {
-	return NewRefreshingOptionalLibraryStructAlias(r.MapSuperStruct(func(i SuperStruct) interface{} {
+	return NewRefreshingOptionalLibraryStructAlias(r.MapSuperStruct(func(i SuperStruct) any {
 		return i.OptionalLibraryStructAlias
 	}))
 }
@@ -444,7 +444,7 @@ func (r RefreshingSuperStruct) OptionalLibraryStructAlias() RefreshableOptionalL
 type RefreshableStringArray interface {
 	refreshable.Refreshable
 	CurrentStringArray() string
-	MapStringArray(func(string) interface{}) refreshable.Refreshable
+	MapStringArray(func(string) any) refreshable.Refreshable
 	SubscribeToStringArray(func(string)) (unsubscribe func())
 }
 
@@ -460,14 +460,14 @@ func (r RefreshingStringArray) CurrentStringArray() string {
 	return r.Current().(string)
 }
 
-func (r RefreshingStringArray) MapStringArray(mapFn func(string) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingStringArray) MapStringArray(mapFn func(string) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(string))
 	})
 }
 
 func (r RefreshingStringArray) SubscribeToStringArray(consumer func(string)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(string))
 	})
 }
@@ -475,7 +475,7 @@ func (r RefreshingStringArray) SubscribeToStringArray(consumer func(string)) (un
 type RefreshableStringToString interface {
 	refreshable.Refreshable
 	CurrentStringToString() map[string]string
-	MapStringToString(func(map[string]string) interface{}) refreshable.Refreshable
+	MapStringToString(func(map[string]string) any) refreshable.Refreshable
 	SubscribeToStringToString(func(map[string]string)) (unsubscribe func())
 }
 
@@ -491,14 +491,14 @@ func (r RefreshingStringToString) CurrentStringToString() map[string]string {
 	return r.Current().(map[string]string)
 }
 
-func (r RefreshingStringToString) MapStringToString(mapFn func(map[string]string) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingStringToString) MapStringToString(mapFn func(map[string]string) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(map[string]string))
 	})
 }
 
 func (r RefreshingStringToString) SubscribeToStringToString(consumer func(map[string]string)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(map[string]string))
 	})
 }
@@ -506,7 +506,7 @@ func (r RefreshingStringToString) SubscribeToStringToString(consumer func(map[st
 type RefreshableStringAlias interface {
 	refreshable.Refreshable
 	CurrentStringAlias() StringAlias
-	MapStringAlias(func(StringAlias) interface{}) refreshable.Refreshable
+	MapStringAlias(func(StringAlias) any) refreshable.Refreshable
 	SubscribeToStringAlias(func(StringAlias)) (unsubscribe func())
 }
 
@@ -522,14 +522,14 @@ func (r RefreshingStringAlias) CurrentStringAlias() StringAlias {
 	return r.Current().(StringAlias)
 }
 
-func (r RefreshingStringAlias) MapStringAlias(mapFn func(StringAlias) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingStringAlias) MapStringAlias(mapFn func(StringAlias) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(StringAlias))
 	})
 }
 
 func (r RefreshingStringAlias) SubscribeToStringAlias(consumer func(StringAlias)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(StringAlias))
 	})
 }
@@ -537,7 +537,7 @@ func (r RefreshingStringAlias) SubscribeToStringAlias(consumer func(StringAlias)
 type RefreshableOptionalStringAlias interface {
 	refreshable.Refreshable
 	CurrentOptionalStringAlias() OptionalStringAlias
-	MapOptionalStringAlias(func(OptionalStringAlias) interface{}) refreshable.Refreshable
+	MapOptionalStringAlias(func(OptionalStringAlias) any) refreshable.Refreshable
 	SubscribeToOptionalStringAlias(func(OptionalStringAlias)) (unsubscribe func())
 }
 
@@ -553,14 +553,14 @@ func (r RefreshingOptionalStringAlias) CurrentOptionalStringAlias() OptionalStri
 	return r.Current().(OptionalStringAlias)
 }
 
-func (r RefreshingOptionalStringAlias) MapOptionalStringAlias(mapFn func(OptionalStringAlias) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingOptionalStringAlias) MapOptionalStringAlias(mapFn func(OptionalStringAlias) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(OptionalStringAlias))
 	})
 }
 
 func (r RefreshingOptionalStringAlias) SubscribeToOptionalStringAlias(consumer func(OptionalStringAlias)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(OptionalStringAlias))
 	})
 }
@@ -568,7 +568,7 @@ func (r RefreshingOptionalStringAlias) SubscribeToOptionalStringAlias(consumer f
 type RefreshableStringAliasPtr interface {
 	refreshable.Refreshable
 	CurrentStringAliasPtr() *StringAlias
-	MapStringAliasPtr(func(*StringAlias) interface{}) refreshable.Refreshable
+	MapStringAliasPtr(func(*StringAlias) any) refreshable.Refreshable
 	SubscribeToStringAliasPtr(func(*StringAlias)) (unsubscribe func())
 }
 
@@ -584,14 +584,14 @@ func (r RefreshingStringAliasPtr) CurrentStringAliasPtr() *StringAlias {
 	return r.Current().(*StringAlias)
 }
 
-func (r RefreshingStringAliasPtr) MapStringAliasPtr(mapFn func(*StringAlias) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingStringAliasPtr) MapStringAliasPtr(mapFn func(*StringAlias) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(*StringAlias))
 	})
 }
 
 func (r RefreshingStringAliasPtr) SubscribeToStringAliasPtr(consumer func(*StringAlias)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(*StringAlias))
 	})
 }
@@ -599,7 +599,7 @@ func (r RefreshingStringAliasPtr) SubscribeToStringAliasPtr(consumer func(*Strin
 type RefreshableOptionalStringAliasPtr interface {
 	refreshable.Refreshable
 	CurrentOptionalStringAliasPtr() *OptionalStringAlias
-	MapOptionalStringAliasPtr(func(*OptionalStringAlias) interface{}) refreshable.Refreshable
+	MapOptionalStringAliasPtr(func(*OptionalStringAlias) any) refreshable.Refreshable
 	SubscribeToOptionalStringAliasPtr(func(*OptionalStringAlias)) (unsubscribe func())
 }
 
@@ -615,14 +615,14 @@ func (r RefreshingOptionalStringAliasPtr) CurrentOptionalStringAliasPtr() *Optio
 	return r.Current().(*OptionalStringAlias)
 }
 
-func (r RefreshingOptionalStringAliasPtr) MapOptionalStringAliasPtr(mapFn func(*OptionalStringAlias) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingOptionalStringAliasPtr) MapOptionalStringAliasPtr(mapFn func(*OptionalStringAlias) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(*OptionalStringAlias))
 	})
 }
 
 func (r RefreshingOptionalStringAliasPtr) SubscribeToOptionalStringAliasPtr(consumer func(*OptionalStringAlias)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(*OptionalStringAlias))
 	})
 }
@@ -630,7 +630,7 @@ func (r RefreshingOptionalStringAliasPtr) SubscribeToOptionalStringAliasPtr(cons
 type RefreshableIntSlice interface {
 	refreshable.Refreshable
 	CurrentIntSlice() []int
-	MapIntSlice(func([]int) interface{}) refreshable.Refreshable
+	MapIntSlice(func([]int) any) refreshable.Refreshable
 	SubscribeToIntSlice(func([]int)) (unsubscribe func())
 }
 
@@ -646,14 +646,14 @@ func (r RefreshingIntSlice) CurrentIntSlice() []int {
 	return r.Current().([]int)
 }
 
-func (r RefreshingIntSlice) MapIntSlice(mapFn func([]int) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingIntSlice) MapIntSlice(mapFn func([]int) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.([]int))
 	})
 }
 
 func (r RefreshingIntSlice) SubscribeToIntSlice(consumer func([]int)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.([]int))
 	})
 }
@@ -661,7 +661,7 @@ func (r RefreshingIntSlice) SubscribeToIntSlice(consumer func([]int)) (unsubscri
 type RefreshableIntArray interface {
 	refreshable.Refreshable
 	CurrentIntArray() int
-	MapIntArray(func(int) interface{}) refreshable.Refreshable
+	MapIntArray(func(int) any) refreshable.Refreshable
 	SubscribeToIntArray(func(int)) (unsubscribe func())
 }
 
@@ -677,14 +677,14 @@ func (r RefreshingIntArray) CurrentIntArray() int {
 	return r.Current().(int)
 }
 
-func (r RefreshingIntArray) MapIntArray(mapFn func(int) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingIntArray) MapIntArray(mapFn func(int) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(int))
 	})
 }
 
 func (r RefreshingIntArray) SubscribeToIntArray(consumer func(int)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(int))
 	})
 }
@@ -692,7 +692,7 @@ func (r RefreshingIntArray) SubscribeToIntArray(consumer func(int)) (unsubscribe
 type RefreshableIntToInt interface {
 	refreshable.Refreshable
 	CurrentIntToInt() map[int]int
-	MapIntToInt(func(map[int]int) interface{}) refreshable.Refreshable
+	MapIntToInt(func(map[int]int) any) refreshable.Refreshable
 	SubscribeToIntToInt(func(map[int]int)) (unsubscribe func())
 }
 
@@ -708,14 +708,14 @@ func (r RefreshingIntToInt) CurrentIntToInt() map[int]int {
 	return r.Current().(map[int]int)
 }
 
-func (r RefreshingIntToInt) MapIntToInt(mapFn func(map[int]int) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingIntToInt) MapIntToInt(mapFn func(map[int]int) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(map[int]int))
 	})
 }
 
 func (r RefreshingIntToInt) SubscribeToIntToInt(consumer func(map[int]int)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(map[int]int))
 	})
 }
@@ -723,7 +723,7 @@ func (r RefreshingIntToInt) SubscribeToIntToInt(consumer func(map[int]int)) (uns
 type RefreshableIntAlias interface {
 	refreshable.Refreshable
 	CurrentIntAlias() IntAlias
-	MapIntAlias(func(IntAlias) interface{}) refreshable.Refreshable
+	MapIntAlias(func(IntAlias) any) refreshable.Refreshable
 	SubscribeToIntAlias(func(IntAlias)) (unsubscribe func())
 }
 
@@ -739,14 +739,14 @@ func (r RefreshingIntAlias) CurrentIntAlias() IntAlias {
 	return r.Current().(IntAlias)
 }
 
-func (r RefreshingIntAlias) MapIntAlias(mapFn func(IntAlias) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingIntAlias) MapIntAlias(mapFn func(IntAlias) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(IntAlias))
 	})
 }
 
 func (r RefreshingIntAlias) SubscribeToIntAlias(consumer func(IntAlias)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(IntAlias))
 	})
 }
@@ -754,7 +754,7 @@ func (r RefreshingIntAlias) SubscribeToIntAlias(consumer func(IntAlias)) (unsubs
 type RefreshableOptionalIntAlias interface {
 	refreshable.Refreshable
 	CurrentOptionalIntAlias() OptionalIntAlias
-	MapOptionalIntAlias(func(OptionalIntAlias) interface{}) refreshable.Refreshable
+	MapOptionalIntAlias(func(OptionalIntAlias) any) refreshable.Refreshable
 	SubscribeToOptionalIntAlias(func(OptionalIntAlias)) (unsubscribe func())
 }
 
@@ -770,14 +770,14 @@ func (r RefreshingOptionalIntAlias) CurrentOptionalIntAlias() OptionalIntAlias {
 	return r.Current().(OptionalIntAlias)
 }
 
-func (r RefreshingOptionalIntAlias) MapOptionalIntAlias(mapFn func(OptionalIntAlias) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingOptionalIntAlias) MapOptionalIntAlias(mapFn func(OptionalIntAlias) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(OptionalIntAlias))
 	})
 }
 
 func (r RefreshingOptionalIntAlias) SubscribeToOptionalIntAlias(consumer func(OptionalIntAlias)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(OptionalIntAlias))
 	})
 }
@@ -785,7 +785,7 @@ func (r RefreshingOptionalIntAlias) SubscribeToOptionalIntAlias(consumer func(Op
 type RefreshableIntAliasPtr interface {
 	refreshable.Refreshable
 	CurrentIntAliasPtr() *IntAlias
-	MapIntAliasPtr(func(*IntAlias) interface{}) refreshable.Refreshable
+	MapIntAliasPtr(func(*IntAlias) any) refreshable.Refreshable
 	SubscribeToIntAliasPtr(func(*IntAlias)) (unsubscribe func())
 }
 
@@ -801,14 +801,14 @@ func (r RefreshingIntAliasPtr) CurrentIntAliasPtr() *IntAlias {
 	return r.Current().(*IntAlias)
 }
 
-func (r RefreshingIntAliasPtr) MapIntAliasPtr(mapFn func(*IntAlias) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingIntAliasPtr) MapIntAliasPtr(mapFn func(*IntAlias) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(*IntAlias))
 	})
 }
 
 func (r RefreshingIntAliasPtr) SubscribeToIntAliasPtr(consumer func(*IntAlias)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(*IntAlias))
 	})
 }
@@ -816,7 +816,7 @@ func (r RefreshingIntAliasPtr) SubscribeToIntAliasPtr(consumer func(*IntAlias)) 
 type RefreshableOptionalIntAliasPtr interface {
 	refreshable.Refreshable
 	CurrentOptionalIntAliasPtr() *OptionalIntAlias
-	MapOptionalIntAliasPtr(func(*OptionalIntAlias) interface{}) refreshable.Refreshable
+	MapOptionalIntAliasPtr(func(*OptionalIntAlias) any) refreshable.Refreshable
 	SubscribeToOptionalIntAliasPtr(func(*OptionalIntAlias)) (unsubscribe func())
 }
 
@@ -832,14 +832,14 @@ func (r RefreshingOptionalIntAliasPtr) CurrentOptionalIntAliasPtr() *OptionalInt
 	return r.Current().(*OptionalIntAlias)
 }
 
-func (r RefreshingOptionalIntAliasPtr) MapOptionalIntAliasPtr(mapFn func(*OptionalIntAlias) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingOptionalIntAliasPtr) MapOptionalIntAliasPtr(mapFn func(*OptionalIntAlias) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(*OptionalIntAlias))
 	})
 }
 
 func (r RefreshingOptionalIntAliasPtr) SubscribeToOptionalIntAliasPtr(consumer func(*OptionalIntAlias)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(*OptionalIntAlias))
 	})
 }
@@ -847,7 +847,7 @@ func (r RefreshingOptionalIntAliasPtr) SubscribeToOptionalIntAliasPtr(consumer f
 type RefreshableDurationSlice interface {
 	refreshable.Refreshable
 	CurrentDurationSlice() []time.Duration
-	MapDurationSlice(func([]time.Duration) interface{}) refreshable.Refreshable
+	MapDurationSlice(func([]time.Duration) any) refreshable.Refreshable
 	SubscribeToDurationSlice(func([]time.Duration)) (unsubscribe func())
 }
 
@@ -863,14 +863,14 @@ func (r RefreshingDurationSlice) CurrentDurationSlice() []time.Duration {
 	return r.Current().([]time.Duration)
 }
 
-func (r RefreshingDurationSlice) MapDurationSlice(mapFn func([]time.Duration) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingDurationSlice) MapDurationSlice(mapFn func([]time.Duration) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.([]time.Duration))
 	})
 }
 
 func (r RefreshingDurationSlice) SubscribeToDurationSlice(consumer func([]time.Duration)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.([]time.Duration))
 	})
 }
@@ -878,7 +878,7 @@ func (r RefreshingDurationSlice) SubscribeToDurationSlice(consumer func([]time.D
 type RefreshableDurationArray interface {
 	refreshable.Refreshable
 	CurrentDurationArray() time.Duration
-	MapDurationArray(func(time.Duration) interface{}) refreshable.Refreshable
+	MapDurationArray(func(time.Duration) any) refreshable.Refreshable
 	SubscribeToDurationArray(func(time.Duration)) (unsubscribe func())
 }
 
@@ -894,14 +894,14 @@ func (r RefreshingDurationArray) CurrentDurationArray() time.Duration {
 	return r.Current().(time.Duration)
 }
 
-func (r RefreshingDurationArray) MapDurationArray(mapFn func(time.Duration) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingDurationArray) MapDurationArray(mapFn func(time.Duration) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(time.Duration))
 	})
 }
 
 func (r RefreshingDurationArray) SubscribeToDurationArray(consumer func(time.Duration)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(time.Duration))
 	})
 }
@@ -909,7 +909,7 @@ func (r RefreshingDurationArray) SubscribeToDurationArray(consumer func(time.Dur
 type RefreshableDurationToDuration interface {
 	refreshable.Refreshable
 	CurrentDurationToDuration() map[time.Duration]time.Duration
-	MapDurationToDuration(func(map[time.Duration]time.Duration) interface{}) refreshable.Refreshable
+	MapDurationToDuration(func(map[time.Duration]time.Duration) any) refreshable.Refreshable
 	SubscribeToDurationToDuration(func(map[time.Duration]time.Duration)) (unsubscribe func())
 }
 
@@ -925,14 +925,14 @@ func (r RefreshingDurationToDuration) CurrentDurationToDuration() map[time.Durat
 	return r.Current().(map[time.Duration]time.Duration)
 }
 
-func (r RefreshingDurationToDuration) MapDurationToDuration(mapFn func(map[time.Duration]time.Duration) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingDurationToDuration) MapDurationToDuration(mapFn func(map[time.Duration]time.Duration) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(map[time.Duration]time.Duration))
 	})
 }
 
 func (r RefreshingDurationToDuration) SubscribeToDurationToDuration(consumer func(map[time.Duration]time.Duration)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(map[time.Duration]time.Duration))
 	})
 }
@@ -940,7 +940,7 @@ func (r RefreshingDurationToDuration) SubscribeToDurationToDuration(consumer fun
 type RefreshableDurationAlias interface {
 	refreshable.Refreshable
 	CurrentDurationAlias() DurationAlias
-	MapDurationAlias(func(DurationAlias) interface{}) refreshable.Refreshable
+	MapDurationAlias(func(DurationAlias) any) refreshable.Refreshable
 	SubscribeToDurationAlias(func(DurationAlias)) (unsubscribe func())
 }
 
@@ -956,14 +956,14 @@ func (r RefreshingDurationAlias) CurrentDurationAlias() DurationAlias {
 	return r.Current().(DurationAlias)
 }
 
-func (r RefreshingDurationAlias) MapDurationAlias(mapFn func(DurationAlias) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingDurationAlias) MapDurationAlias(mapFn func(DurationAlias) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(DurationAlias))
 	})
 }
 
 func (r RefreshingDurationAlias) SubscribeToDurationAlias(consumer func(DurationAlias)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(DurationAlias))
 	})
 }
@@ -971,7 +971,7 @@ func (r RefreshingDurationAlias) SubscribeToDurationAlias(consumer func(Duration
 type RefreshableOptionalDurationAlias interface {
 	refreshable.Refreshable
 	CurrentOptionalDurationAlias() OptionalDurationAlias
-	MapOptionalDurationAlias(func(OptionalDurationAlias) interface{}) refreshable.Refreshable
+	MapOptionalDurationAlias(func(OptionalDurationAlias) any) refreshable.Refreshable
 	SubscribeToOptionalDurationAlias(func(OptionalDurationAlias)) (unsubscribe func())
 }
 
@@ -987,14 +987,14 @@ func (r RefreshingOptionalDurationAlias) CurrentOptionalDurationAlias() Optional
 	return r.Current().(OptionalDurationAlias)
 }
 
-func (r RefreshingOptionalDurationAlias) MapOptionalDurationAlias(mapFn func(OptionalDurationAlias) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingOptionalDurationAlias) MapOptionalDurationAlias(mapFn func(OptionalDurationAlias) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(OptionalDurationAlias))
 	})
 }
 
 func (r RefreshingOptionalDurationAlias) SubscribeToOptionalDurationAlias(consumer func(OptionalDurationAlias)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(OptionalDurationAlias))
 	})
 }
@@ -1002,7 +1002,7 @@ func (r RefreshingOptionalDurationAlias) SubscribeToOptionalDurationAlias(consum
 type RefreshableDurationAliasPtr interface {
 	refreshable.Refreshable
 	CurrentDurationAliasPtr() *DurationAlias
-	MapDurationAliasPtr(func(*DurationAlias) interface{}) refreshable.Refreshable
+	MapDurationAliasPtr(func(*DurationAlias) any) refreshable.Refreshable
 	SubscribeToDurationAliasPtr(func(*DurationAlias)) (unsubscribe func())
 }
 
@@ -1018,14 +1018,14 @@ func (r RefreshingDurationAliasPtr) CurrentDurationAliasPtr() *DurationAlias {
 	return r.Current().(*DurationAlias)
 }
 
-func (r RefreshingDurationAliasPtr) MapDurationAliasPtr(mapFn func(*DurationAlias) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingDurationAliasPtr) MapDurationAliasPtr(mapFn func(*DurationAlias) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(*DurationAlias))
 	})
 }
 
 func (r RefreshingDurationAliasPtr) SubscribeToDurationAliasPtr(consumer func(*DurationAlias)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(*DurationAlias))
 	})
 }
@@ -1033,7 +1033,7 @@ func (r RefreshingDurationAliasPtr) SubscribeToDurationAliasPtr(consumer func(*D
 type RefreshableOptionalDurationAliasPtr interface {
 	refreshable.Refreshable
 	CurrentOptionalDurationAliasPtr() *OptionalDurationAlias
-	MapOptionalDurationAliasPtr(func(*OptionalDurationAlias) interface{}) refreshable.Refreshable
+	MapOptionalDurationAliasPtr(func(*OptionalDurationAlias) any) refreshable.Refreshable
 	SubscribeToOptionalDurationAliasPtr(func(*OptionalDurationAlias)) (unsubscribe func())
 }
 
@@ -1049,14 +1049,14 @@ func (r RefreshingOptionalDurationAliasPtr) CurrentOptionalDurationAliasPtr() *O
 	return r.Current().(*OptionalDurationAlias)
 }
 
-func (r RefreshingOptionalDurationAliasPtr) MapOptionalDurationAliasPtr(mapFn func(*OptionalDurationAlias) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingOptionalDurationAliasPtr) MapOptionalDurationAliasPtr(mapFn func(*OptionalDurationAlias) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(*OptionalDurationAlias))
 	})
 }
 
 func (r RefreshingOptionalDurationAliasPtr) SubscribeToOptionalDurationAliasPtr(consumer func(*OptionalDurationAlias)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(*OptionalDurationAlias))
 	})
 }
@@ -1064,7 +1064,7 @@ func (r RefreshingOptionalDurationAliasPtr) SubscribeToOptionalDurationAliasPtr(
 type RefreshableNestedStruct interface {
 	refreshable.Refreshable
 	CurrentNestedStruct() NestedStruct
-	MapNestedStruct(func(NestedStruct) interface{}) refreshable.Refreshable
+	MapNestedStruct(func(NestedStruct) any) refreshable.Refreshable
 	SubscribeToNestedStruct(func(NestedStruct)) (unsubscribe func())
 
 	FieldA() refreshable.String
@@ -1083,26 +1083,26 @@ func (r RefreshingNestedStruct) CurrentNestedStruct() NestedStruct {
 	return r.Current().(NestedStruct)
 }
 
-func (r RefreshingNestedStruct) MapNestedStruct(mapFn func(NestedStruct) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingNestedStruct) MapNestedStruct(mapFn func(NestedStruct) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(NestedStruct))
 	})
 }
 
 func (r RefreshingNestedStruct) SubscribeToNestedStruct(consumer func(NestedStruct)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(NestedStruct))
 	})
 }
 
 func (r RefreshingNestedStruct) FieldA() refreshable.String {
-	return refreshable.NewString(r.MapNestedStruct(func(i NestedStruct) interface{} {
+	return refreshable.NewString(r.MapNestedStruct(func(i NestedStruct) any {
 		return i.FieldA
 	}))
 }
 
 func (r RefreshingNestedStruct) FieldB() refreshable.Int {
-	return refreshable.NewInt(r.MapNestedStruct(func(i NestedStruct) interface{} {
+	return refreshable.NewInt(r.MapNestedStruct(func(i NestedStruct) any {
 		return i.FieldB
 	}))
 }
@@ -1110,7 +1110,7 @@ func (r RefreshingNestedStruct) FieldB() refreshable.Int {
 type RefreshableNestedStructPtr interface {
 	refreshable.Refreshable
 	CurrentNestedStructPtr() *NestedStruct
-	MapNestedStructPtr(func(*NestedStruct) interface{}) refreshable.Refreshable
+	MapNestedStructPtr(func(*NestedStruct) any) refreshable.Refreshable
 	SubscribeToNestedStructPtr(func(*NestedStruct)) (unsubscribe func())
 
 	FieldA() refreshable.String
@@ -1129,26 +1129,26 @@ func (r RefreshingNestedStructPtr) CurrentNestedStructPtr() *NestedStruct {
 	return r.Current().(*NestedStruct)
 }
 
-func (r RefreshingNestedStructPtr) MapNestedStructPtr(mapFn func(*NestedStruct) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingNestedStructPtr) MapNestedStructPtr(mapFn func(*NestedStruct) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(*NestedStruct))
 	})
 }
 
 func (r RefreshingNestedStructPtr) SubscribeToNestedStructPtr(consumer func(*NestedStruct)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(*NestedStruct))
 	})
 }
 
 func (r RefreshingNestedStructPtr) FieldA() refreshable.String {
-	return refreshable.NewString(r.MapNestedStructPtr(func(i *NestedStruct) interface{} {
+	return refreshable.NewString(r.MapNestedStructPtr(func(i *NestedStruct) any {
 		return i.FieldA
 	}))
 }
 
 func (r RefreshingNestedStructPtr) FieldB() refreshable.Int {
-	return refreshable.NewInt(r.MapNestedStructPtr(func(i *NestedStruct) interface{} {
+	return refreshable.NewInt(r.MapNestedStructPtr(func(i *NestedStruct) any {
 		return i.FieldB
 	}))
 }
@@ -1156,7 +1156,7 @@ func (r RefreshingNestedStructPtr) FieldB() refreshable.Int {
 type RefreshableNestedStructSlice interface {
 	refreshable.Refreshable
 	CurrentNestedStructSlice() []NestedStruct
-	MapNestedStructSlice(func([]NestedStruct) interface{}) refreshable.Refreshable
+	MapNestedStructSlice(func([]NestedStruct) any) refreshable.Refreshable
 	SubscribeToNestedStructSlice(func([]NestedStruct)) (unsubscribe func())
 }
 
@@ -1172,14 +1172,14 @@ func (r RefreshingNestedStructSlice) CurrentNestedStructSlice() []NestedStruct {
 	return r.Current().([]NestedStruct)
 }
 
-func (r RefreshingNestedStructSlice) MapNestedStructSlice(mapFn func([]NestedStruct) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingNestedStructSlice) MapNestedStructSlice(mapFn func([]NestedStruct) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.([]NestedStruct))
 	})
 }
 
 func (r RefreshingNestedStructSlice) SubscribeToNestedStructSlice(consumer func([]NestedStruct)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.([]NestedStruct))
 	})
 }
@@ -1187,7 +1187,7 @@ func (r RefreshingNestedStructSlice) SubscribeToNestedStructSlice(consumer func(
 type RefreshableNestedStructArray interface {
 	refreshable.Refreshable
 	CurrentNestedStructArray() NestedStruct
-	MapNestedStructArray(func(NestedStruct) interface{}) refreshable.Refreshable
+	MapNestedStructArray(func(NestedStruct) any) refreshable.Refreshable
 	SubscribeToNestedStructArray(func(NestedStruct)) (unsubscribe func())
 }
 
@@ -1203,14 +1203,14 @@ func (r RefreshingNestedStructArray) CurrentNestedStructArray() NestedStruct {
 	return r.Current().(NestedStruct)
 }
 
-func (r RefreshingNestedStructArray) MapNestedStructArray(mapFn func(NestedStruct) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingNestedStructArray) MapNestedStructArray(mapFn func(NestedStruct) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(NestedStruct))
 	})
 }
 
 func (r RefreshingNestedStructArray) SubscribeToNestedStructArray(consumer func(NestedStruct)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(NestedStruct))
 	})
 }
@@ -1218,7 +1218,7 @@ func (r RefreshingNestedStructArray) SubscribeToNestedStructArray(consumer func(
 type RefreshableNestedStructToNestedStruct interface {
 	refreshable.Refreshable
 	CurrentNestedStructToNestedStruct() map[NestedStruct]NestedStruct
-	MapNestedStructToNestedStruct(func(map[NestedStruct]NestedStruct) interface{}) refreshable.Refreshable
+	MapNestedStructToNestedStruct(func(map[NestedStruct]NestedStruct) any) refreshable.Refreshable
 	SubscribeToNestedStructToNestedStruct(func(map[NestedStruct]NestedStruct)) (unsubscribe func())
 }
 
@@ -1234,14 +1234,14 @@ func (r RefreshingNestedStructToNestedStruct) CurrentNestedStructToNestedStruct(
 	return r.Current().(map[NestedStruct]NestedStruct)
 }
 
-func (r RefreshingNestedStructToNestedStruct) MapNestedStructToNestedStruct(mapFn func(map[NestedStruct]NestedStruct) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingNestedStructToNestedStruct) MapNestedStructToNestedStruct(mapFn func(map[NestedStruct]NestedStruct) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(map[NestedStruct]NestedStruct))
 	})
 }
 
 func (r RefreshingNestedStructToNestedStruct) SubscribeToNestedStructToNestedStruct(consumer func(map[NestedStruct]NestedStruct)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(map[NestedStruct]NestedStruct))
 	})
 }
@@ -1249,7 +1249,7 @@ func (r RefreshingNestedStructToNestedStruct) SubscribeToNestedStructToNestedStr
 type RefreshableNestedStructAlias interface {
 	refreshable.Refreshable
 	CurrentNestedStructAlias() NestedStructAlias
-	MapNestedStructAlias(func(NestedStructAlias) interface{}) refreshable.Refreshable
+	MapNestedStructAlias(func(NestedStructAlias) any) refreshable.Refreshable
 	SubscribeToNestedStructAlias(func(NestedStructAlias)) (unsubscribe func())
 
 	FieldA() refreshable.String
@@ -1268,26 +1268,26 @@ func (r RefreshingNestedStructAlias) CurrentNestedStructAlias() NestedStructAlia
 	return r.Current().(NestedStructAlias)
 }
 
-func (r RefreshingNestedStructAlias) MapNestedStructAlias(mapFn func(NestedStructAlias) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingNestedStructAlias) MapNestedStructAlias(mapFn func(NestedStructAlias) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(NestedStructAlias))
 	})
 }
 
 func (r RefreshingNestedStructAlias) SubscribeToNestedStructAlias(consumer func(NestedStructAlias)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(NestedStructAlias))
 	})
 }
 
 func (r RefreshingNestedStructAlias) FieldA() refreshable.String {
-	return refreshable.NewString(r.MapNestedStructAlias(func(i NestedStructAlias) interface{} {
+	return refreshable.NewString(r.MapNestedStructAlias(func(i NestedStructAlias) any {
 		return i.FieldA
 	}))
 }
 
 func (r RefreshingNestedStructAlias) FieldB() refreshable.Int {
-	return refreshable.NewInt(r.MapNestedStructAlias(func(i NestedStructAlias) interface{} {
+	return refreshable.NewInt(r.MapNestedStructAlias(func(i NestedStructAlias) any {
 		return i.FieldB
 	}))
 }
@@ -1295,7 +1295,7 @@ func (r RefreshingNestedStructAlias) FieldB() refreshable.Int {
 type RefreshableOptionalNestedStructAlias interface {
 	refreshable.Refreshable
 	CurrentOptionalNestedStructAlias() OptionalNestedStructAlias
-	MapOptionalNestedStructAlias(func(OptionalNestedStructAlias) interface{}) refreshable.Refreshable
+	MapOptionalNestedStructAlias(func(OptionalNestedStructAlias) any) refreshable.Refreshable
 	SubscribeToOptionalNestedStructAlias(func(OptionalNestedStructAlias)) (unsubscribe func())
 
 	FieldA() refreshable.String
@@ -1314,26 +1314,26 @@ func (r RefreshingOptionalNestedStructAlias) CurrentOptionalNestedStructAlias() 
 	return r.Current().(OptionalNestedStructAlias)
 }
 
-func (r RefreshingOptionalNestedStructAlias) MapOptionalNestedStructAlias(mapFn func(OptionalNestedStructAlias) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingOptionalNestedStructAlias) MapOptionalNestedStructAlias(mapFn func(OptionalNestedStructAlias) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(OptionalNestedStructAlias))
 	})
 }
 
 func (r RefreshingOptionalNestedStructAlias) SubscribeToOptionalNestedStructAlias(consumer func(OptionalNestedStructAlias)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(OptionalNestedStructAlias))
 	})
 }
 
 func (r RefreshingOptionalNestedStructAlias) FieldA() refreshable.String {
-	return refreshable.NewString(r.MapOptionalNestedStructAlias(func(i OptionalNestedStructAlias) interface{} {
+	return refreshable.NewString(r.MapOptionalNestedStructAlias(func(i OptionalNestedStructAlias) any {
 		return i.FieldA
 	}))
 }
 
 func (r RefreshingOptionalNestedStructAlias) FieldB() refreshable.Int {
-	return refreshable.NewInt(r.MapOptionalNestedStructAlias(func(i OptionalNestedStructAlias) interface{} {
+	return refreshable.NewInt(r.MapOptionalNestedStructAlias(func(i OptionalNestedStructAlias) any {
 		return i.FieldB
 	}))
 }
@@ -1341,7 +1341,7 @@ func (r RefreshingOptionalNestedStructAlias) FieldB() refreshable.Int {
 type RefreshableNestedStructAliasPtr interface {
 	refreshable.Refreshable
 	CurrentNestedStructAliasPtr() *NestedStructAlias
-	MapNestedStructAliasPtr(func(*NestedStructAlias) interface{}) refreshable.Refreshable
+	MapNestedStructAliasPtr(func(*NestedStructAlias) any) refreshable.Refreshable
 	SubscribeToNestedStructAliasPtr(func(*NestedStructAlias)) (unsubscribe func())
 
 	FieldA() refreshable.String
@@ -1360,26 +1360,26 @@ func (r RefreshingNestedStructAliasPtr) CurrentNestedStructAliasPtr() *NestedStr
 	return r.Current().(*NestedStructAlias)
 }
 
-func (r RefreshingNestedStructAliasPtr) MapNestedStructAliasPtr(mapFn func(*NestedStructAlias) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingNestedStructAliasPtr) MapNestedStructAliasPtr(mapFn func(*NestedStructAlias) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(*NestedStructAlias))
 	})
 }
 
 func (r RefreshingNestedStructAliasPtr) SubscribeToNestedStructAliasPtr(consumer func(*NestedStructAlias)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(*NestedStructAlias))
 	})
 }
 
 func (r RefreshingNestedStructAliasPtr) FieldA() refreshable.String {
-	return refreshable.NewString(r.MapNestedStructAliasPtr(func(i *NestedStructAlias) interface{} {
+	return refreshable.NewString(r.MapNestedStructAliasPtr(func(i *NestedStructAlias) any {
 		return i.FieldA
 	}))
 }
 
 func (r RefreshingNestedStructAliasPtr) FieldB() refreshable.Int {
-	return refreshable.NewInt(r.MapNestedStructAliasPtr(func(i *NestedStructAlias) interface{} {
+	return refreshable.NewInt(r.MapNestedStructAliasPtr(func(i *NestedStructAlias) any {
 		return i.FieldB
 	}))
 }
@@ -1387,7 +1387,7 @@ func (r RefreshingNestedStructAliasPtr) FieldB() refreshable.Int {
 type RefreshableLibraryStruct interface {
 	refreshable.Refreshable
 	CurrentLibraryStruct() librarypkg.LibraryStruct
-	MapLibraryStruct(func(librarypkg.LibraryStruct) interface{}) refreshable.Refreshable
+	MapLibraryStruct(func(librarypkg.LibraryStruct) any) refreshable.Refreshable
 	SubscribeToLibraryStruct(func(librarypkg.LibraryStruct)) (unsubscribe func())
 
 	FieldA() refreshable.Int
@@ -1405,20 +1405,20 @@ func (r RefreshingLibraryStruct) CurrentLibraryStruct() librarypkg.LibraryStruct
 	return r.Current().(librarypkg.LibraryStruct)
 }
 
-func (r RefreshingLibraryStruct) MapLibraryStruct(mapFn func(librarypkg.LibraryStruct) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingLibraryStruct) MapLibraryStruct(mapFn func(librarypkg.LibraryStruct) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(librarypkg.LibraryStruct))
 	})
 }
 
 func (r RefreshingLibraryStruct) SubscribeToLibraryStruct(consumer func(librarypkg.LibraryStruct)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(librarypkg.LibraryStruct))
 	})
 }
 
 func (r RefreshingLibraryStruct) FieldA() refreshable.Int {
-	return refreshable.NewInt(r.MapLibraryStruct(func(i librarypkg.LibraryStruct) interface{} {
+	return refreshable.NewInt(r.MapLibraryStruct(func(i librarypkg.LibraryStruct) any {
 		return i.FieldA
 	}))
 }
@@ -1426,7 +1426,7 @@ func (r RefreshingLibraryStruct) FieldA() refreshable.Int {
 type RefreshableLibraryStructPtr interface {
 	refreshable.Refreshable
 	CurrentLibraryStructPtr() *librarypkg.LibraryStruct
-	MapLibraryStructPtr(func(*librarypkg.LibraryStruct) interface{}) refreshable.Refreshable
+	MapLibraryStructPtr(func(*librarypkg.LibraryStruct) any) refreshable.Refreshable
 	SubscribeToLibraryStructPtr(func(*librarypkg.LibraryStruct)) (unsubscribe func())
 
 	FieldA() refreshable.Int
@@ -1444,20 +1444,20 @@ func (r RefreshingLibraryStructPtr) CurrentLibraryStructPtr() *librarypkg.Librar
 	return r.Current().(*librarypkg.LibraryStruct)
 }
 
-func (r RefreshingLibraryStructPtr) MapLibraryStructPtr(mapFn func(*librarypkg.LibraryStruct) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingLibraryStructPtr) MapLibraryStructPtr(mapFn func(*librarypkg.LibraryStruct) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(*librarypkg.LibraryStruct))
 	})
 }
 
 func (r RefreshingLibraryStructPtr) SubscribeToLibraryStructPtr(consumer func(*librarypkg.LibraryStruct)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(*librarypkg.LibraryStruct))
 	})
 }
 
 func (r RefreshingLibraryStructPtr) FieldA() refreshable.Int {
-	return refreshable.NewInt(r.MapLibraryStructPtr(func(i *librarypkg.LibraryStruct) interface{} {
+	return refreshable.NewInt(r.MapLibraryStructPtr(func(i *librarypkg.LibraryStruct) any {
 		return i.FieldA
 	}))
 }
@@ -1465,7 +1465,7 @@ func (r RefreshingLibraryStructPtr) FieldA() refreshable.Int {
 type RefreshableLibraryStructSlice interface {
 	refreshable.Refreshable
 	CurrentLibraryStructSlice() []librarypkg.LibraryStruct
-	MapLibraryStructSlice(func([]librarypkg.LibraryStruct) interface{}) refreshable.Refreshable
+	MapLibraryStructSlice(func([]librarypkg.LibraryStruct) any) refreshable.Refreshable
 	SubscribeToLibraryStructSlice(func([]librarypkg.LibraryStruct)) (unsubscribe func())
 }
 
@@ -1481,14 +1481,14 @@ func (r RefreshingLibraryStructSlice) CurrentLibraryStructSlice() []librarypkg.L
 	return r.Current().([]librarypkg.LibraryStruct)
 }
 
-func (r RefreshingLibraryStructSlice) MapLibraryStructSlice(mapFn func([]librarypkg.LibraryStruct) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingLibraryStructSlice) MapLibraryStructSlice(mapFn func([]librarypkg.LibraryStruct) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.([]librarypkg.LibraryStruct))
 	})
 }
 
 func (r RefreshingLibraryStructSlice) SubscribeToLibraryStructSlice(consumer func([]librarypkg.LibraryStruct)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.([]librarypkg.LibraryStruct))
 	})
 }
@@ -1496,7 +1496,7 @@ func (r RefreshingLibraryStructSlice) SubscribeToLibraryStructSlice(consumer fun
 type RefreshableLibraryStructArray interface {
 	refreshable.Refreshable
 	CurrentLibraryStructArray() librarypkg.LibraryStruct
-	MapLibraryStructArray(func(librarypkg.LibraryStruct) interface{}) refreshable.Refreshable
+	MapLibraryStructArray(func(librarypkg.LibraryStruct) any) refreshable.Refreshable
 	SubscribeToLibraryStructArray(func(librarypkg.LibraryStruct)) (unsubscribe func())
 }
 
@@ -1512,14 +1512,14 @@ func (r RefreshingLibraryStructArray) CurrentLibraryStructArray() librarypkg.Lib
 	return r.Current().(librarypkg.LibraryStruct)
 }
 
-func (r RefreshingLibraryStructArray) MapLibraryStructArray(mapFn func(librarypkg.LibraryStruct) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingLibraryStructArray) MapLibraryStructArray(mapFn func(librarypkg.LibraryStruct) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(librarypkg.LibraryStruct))
 	})
 }
 
 func (r RefreshingLibraryStructArray) SubscribeToLibraryStructArray(consumer func(librarypkg.LibraryStruct)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(librarypkg.LibraryStruct))
 	})
 }
@@ -1527,7 +1527,7 @@ func (r RefreshingLibraryStructArray) SubscribeToLibraryStructArray(consumer fun
 type RefreshableLibraryStructToLibraryStruct interface {
 	refreshable.Refreshable
 	CurrentLibraryStructToLibraryStruct() map[librarypkg.LibraryStruct]librarypkg.LibraryStruct
-	MapLibraryStructToLibraryStruct(func(map[librarypkg.LibraryStruct]librarypkg.LibraryStruct) interface{}) refreshable.Refreshable
+	MapLibraryStructToLibraryStruct(func(map[librarypkg.LibraryStruct]librarypkg.LibraryStruct) any) refreshable.Refreshable
 	SubscribeToLibraryStructToLibraryStruct(func(map[librarypkg.LibraryStruct]librarypkg.LibraryStruct)) (unsubscribe func())
 }
 
@@ -1543,14 +1543,14 @@ func (r RefreshingLibraryStructToLibraryStruct) CurrentLibraryStructToLibraryStr
 	return r.Current().(map[librarypkg.LibraryStruct]librarypkg.LibraryStruct)
 }
 
-func (r RefreshingLibraryStructToLibraryStruct) MapLibraryStructToLibraryStruct(mapFn func(map[librarypkg.LibraryStruct]librarypkg.LibraryStruct) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingLibraryStructToLibraryStruct) MapLibraryStructToLibraryStruct(mapFn func(map[librarypkg.LibraryStruct]librarypkg.LibraryStruct) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(map[librarypkg.LibraryStruct]librarypkg.LibraryStruct))
 	})
 }
 
 func (r RefreshingLibraryStructToLibraryStruct) SubscribeToLibraryStructToLibraryStruct(consumer func(map[librarypkg.LibraryStruct]librarypkg.LibraryStruct)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(map[librarypkg.LibraryStruct]librarypkg.LibraryStruct))
 	})
 }
@@ -1558,7 +1558,7 @@ func (r RefreshingLibraryStructToLibraryStruct) SubscribeToLibraryStructToLibrar
 type RefreshableLibraryStructAlias interface {
 	refreshable.Refreshable
 	CurrentLibraryStructAlias() LibraryStructAlias
-	MapLibraryStructAlias(func(LibraryStructAlias) interface{}) refreshable.Refreshable
+	MapLibraryStructAlias(func(LibraryStructAlias) any) refreshable.Refreshable
 	SubscribeToLibraryStructAlias(func(LibraryStructAlias)) (unsubscribe func())
 
 	FieldA() refreshable.Int
@@ -1576,20 +1576,20 @@ func (r RefreshingLibraryStructAlias) CurrentLibraryStructAlias() LibraryStructA
 	return r.Current().(LibraryStructAlias)
 }
 
-func (r RefreshingLibraryStructAlias) MapLibraryStructAlias(mapFn func(LibraryStructAlias) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingLibraryStructAlias) MapLibraryStructAlias(mapFn func(LibraryStructAlias) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(LibraryStructAlias))
 	})
 }
 
 func (r RefreshingLibraryStructAlias) SubscribeToLibraryStructAlias(consumer func(LibraryStructAlias)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(LibraryStructAlias))
 	})
 }
 
 func (r RefreshingLibraryStructAlias) FieldA() refreshable.Int {
-	return refreshable.NewInt(r.MapLibraryStructAlias(func(i LibraryStructAlias) interface{} {
+	return refreshable.NewInt(r.MapLibraryStructAlias(func(i LibraryStructAlias) any {
 		return i.FieldA
 	}))
 }
@@ -1597,7 +1597,7 @@ func (r RefreshingLibraryStructAlias) FieldA() refreshable.Int {
 type RefreshableOptionalLibraryStructAlias interface {
 	refreshable.Refreshable
 	CurrentOptionalLibraryStructAlias() OptionalLibraryStructAlias
-	MapOptionalLibraryStructAlias(func(OptionalLibraryStructAlias) interface{}) refreshable.Refreshable
+	MapOptionalLibraryStructAlias(func(OptionalLibraryStructAlias) any) refreshable.Refreshable
 	SubscribeToOptionalLibraryStructAlias(func(OptionalLibraryStructAlias)) (unsubscribe func())
 
 	FieldA() refreshable.Int
@@ -1615,20 +1615,20 @@ func (r RefreshingOptionalLibraryStructAlias) CurrentOptionalLibraryStructAlias(
 	return r.Current().(OptionalLibraryStructAlias)
 }
 
-func (r RefreshingOptionalLibraryStructAlias) MapOptionalLibraryStructAlias(mapFn func(OptionalLibraryStructAlias) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingOptionalLibraryStructAlias) MapOptionalLibraryStructAlias(mapFn func(OptionalLibraryStructAlias) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(OptionalLibraryStructAlias))
 	})
 }
 
 func (r RefreshingOptionalLibraryStructAlias) SubscribeToOptionalLibraryStructAlias(consumer func(OptionalLibraryStructAlias)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(OptionalLibraryStructAlias))
 	})
 }
 
 func (r RefreshingOptionalLibraryStructAlias) FieldA() refreshable.Int {
-	return refreshable.NewInt(r.MapOptionalLibraryStructAlias(func(i OptionalLibraryStructAlias) interface{} {
+	return refreshable.NewInt(r.MapOptionalLibraryStructAlias(func(i OptionalLibraryStructAlias) any {
 		return i.FieldA
 	}))
 }
@@ -1636,7 +1636,7 @@ func (r RefreshingOptionalLibraryStructAlias) FieldA() refreshable.Int {
 type RefreshableLibraryStructAliasPtr interface {
 	refreshable.Refreshable
 	CurrentLibraryStructAliasPtr() *LibraryStructAlias
-	MapLibraryStructAliasPtr(func(*LibraryStructAlias) interface{}) refreshable.Refreshable
+	MapLibraryStructAliasPtr(func(*LibraryStructAlias) any) refreshable.Refreshable
 	SubscribeToLibraryStructAliasPtr(func(*LibraryStructAlias)) (unsubscribe func())
 
 	FieldA() refreshable.Int
@@ -1654,20 +1654,20 @@ func (r RefreshingLibraryStructAliasPtr) CurrentLibraryStructAliasPtr() *Library
 	return r.Current().(*LibraryStructAlias)
 }
 
-func (r RefreshingLibraryStructAliasPtr) MapLibraryStructAliasPtr(mapFn func(*LibraryStructAlias) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingLibraryStructAliasPtr) MapLibraryStructAliasPtr(mapFn func(*LibraryStructAlias) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(*LibraryStructAlias))
 	})
 }
 
 func (r RefreshingLibraryStructAliasPtr) SubscribeToLibraryStructAliasPtr(consumer func(*LibraryStructAlias)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(*LibraryStructAlias))
 	})
 }
 
 func (r RefreshingLibraryStructAliasPtr) FieldA() refreshable.Int {
-	return refreshable.NewInt(r.MapLibraryStructAliasPtr(func(i *LibraryStructAlias) interface{} {
+	return refreshable.NewInt(r.MapLibraryStructAliasPtr(func(i *LibraryStructAlias) any {
 		return i.FieldA
 	}))
 }

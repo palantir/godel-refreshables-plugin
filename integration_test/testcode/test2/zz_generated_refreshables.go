@@ -10,7 +10,7 @@ import (
 type RefreshableOtherStruct interface {
 	refreshable.Refreshable
 	CurrentOtherStruct() OtherStruct
-	MapOtherStruct(func(OtherStruct) interface{}) refreshable.Refreshable
+	MapOtherStruct(func(OtherStruct) any) refreshable.Refreshable
 	SubscribeToOtherStruct(func(OtherStruct)) (unsubscribe func())
 
 	FieldA() refreshable.String
@@ -29,26 +29,26 @@ func (r RefreshingOtherStruct) CurrentOtherStruct() OtherStruct {
 	return r.Current().(OtherStruct)
 }
 
-func (r RefreshingOtherStruct) MapOtherStruct(mapFn func(OtherStruct) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingOtherStruct) MapOtherStruct(mapFn func(OtherStruct) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(OtherStruct))
 	})
 }
 
 func (r RefreshingOtherStruct) SubscribeToOtherStruct(consumer func(OtherStruct)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(OtherStruct))
 	})
 }
 
 func (r RefreshingOtherStruct) FieldA() refreshable.String {
-	return refreshable.NewString(r.MapOtherStruct(func(i OtherStruct) interface{} {
+	return refreshable.NewString(r.MapOtherStruct(func(i OtherStruct) any {
 		return i.FieldA
 	}))
 }
 
 func (r RefreshingOtherStruct) FieldB() RefreshableLibraryStruct {
-	return NewRefreshingLibraryStruct(r.MapOtherStruct(func(i OtherStruct) interface{} {
+	return NewRefreshingLibraryStruct(r.MapOtherStruct(func(i OtherStruct) any {
 		return i.FieldB
 	}))
 }
@@ -56,7 +56,7 @@ func (r RefreshingOtherStruct) FieldB() RefreshableLibraryStruct {
 type RefreshableLibraryStruct interface {
 	refreshable.Refreshable
 	CurrentLibraryStruct() library.LibraryStruct
-	MapLibraryStruct(func(library.LibraryStruct) interface{}) refreshable.Refreshable
+	MapLibraryStruct(func(library.LibraryStruct) any) refreshable.Refreshable
 	SubscribeToLibraryStruct(func(library.LibraryStruct)) (unsubscribe func())
 
 	FieldA() refreshable.Int
@@ -74,20 +74,20 @@ func (r RefreshingLibraryStruct) CurrentLibraryStruct() library.LibraryStruct {
 	return r.Current().(library.LibraryStruct)
 }
 
-func (r RefreshingLibraryStruct) MapLibraryStruct(mapFn func(library.LibraryStruct) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingLibraryStruct) MapLibraryStruct(mapFn func(library.LibraryStruct) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(library.LibraryStruct))
 	})
 }
 
 func (r RefreshingLibraryStruct) SubscribeToLibraryStruct(consumer func(library.LibraryStruct)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(library.LibraryStruct))
 	})
 }
 
 func (r RefreshingLibraryStruct) FieldA() refreshable.Int {
-	return refreshable.NewInt(r.MapLibraryStruct(func(i library.LibraryStruct) interface{} {
+	return refreshable.NewInt(r.MapLibraryStruct(func(i library.LibraryStruct) any {
 		return i.FieldA
 	}))
 }

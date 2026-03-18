@@ -5,7 +5,7 @@
 package config
 
 import (
-	"io/ioutil"
+	"os"
 
 	v0 "github.com/palantir/godel-refreshables-plugin/config/internal/v0"
 	"github.com/pkg/errors"
@@ -19,7 +19,7 @@ func ToConfig(in *Config) *v0.Config {
 }
 
 func ReadConfigFromFile(f string) (Config, error) {
-	bytes, err := ioutil.ReadFile(f)
+	bytes, err := os.ReadFile(f)
 	if err != nil {
 		return Config{}, errors.WithStack(err)
 	}

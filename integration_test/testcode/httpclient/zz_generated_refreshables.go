@@ -10,7 +10,7 @@ import (
 type RefreshableServicesConfig interface {
 	refreshable.Refreshable
 	CurrentServicesConfig() httpclient.ServicesConfig
-	MapServicesConfig(func(httpclient.ServicesConfig) interface{}) refreshable.Refreshable
+	MapServicesConfig(func(httpclient.ServicesConfig) any) refreshable.Refreshable
 	SubscribeToServicesConfig(func(httpclient.ServicesConfig)) (unsubscribe func())
 
 	Default() RefreshableClientConfig
@@ -29,26 +29,26 @@ func (r RefreshingServicesConfig) CurrentServicesConfig() httpclient.ServicesCon
 	return r.Current().(httpclient.ServicesConfig)
 }
 
-func (r RefreshingServicesConfig) MapServicesConfig(mapFn func(httpclient.ServicesConfig) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingServicesConfig) MapServicesConfig(mapFn func(httpclient.ServicesConfig) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(httpclient.ServicesConfig))
 	})
 }
 
 func (r RefreshingServicesConfig) SubscribeToServicesConfig(consumer func(httpclient.ServicesConfig)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(httpclient.ServicesConfig))
 	})
 }
 
 func (r RefreshingServicesConfig) Default() RefreshableClientConfig {
-	return NewRefreshingClientConfig(r.MapServicesConfig(func(i httpclient.ServicesConfig) interface{} {
+	return NewRefreshingClientConfig(r.MapServicesConfig(func(i httpclient.ServicesConfig) any {
 		return i.Default
 	}))
 }
 
 func (r RefreshingServicesConfig) Services() RefreshableStringToClientConfig {
-	return NewRefreshingStringToClientConfig(r.MapServicesConfig(func(i httpclient.ServicesConfig) interface{} {
+	return NewRefreshingStringToClientConfig(r.MapServicesConfig(func(i httpclient.ServicesConfig) any {
 		return i.Services
 	}))
 }
@@ -56,7 +56,7 @@ func (r RefreshingServicesConfig) Services() RefreshableStringToClientConfig {
 type RefreshableClientConfig interface {
 	refreshable.Refreshable
 	CurrentClientConfig() httpclient.ClientConfig
-	MapClientConfig(func(httpclient.ClientConfig) interface{}) refreshable.Refreshable
+	MapClientConfig(func(httpclient.ClientConfig) any) refreshable.Refreshable
 	SubscribeToClientConfig(func(httpclient.ClientConfig)) (unsubscribe func())
 
 	ServiceName() refreshable.String
@@ -95,146 +95,146 @@ func (r RefreshingClientConfig) CurrentClientConfig() httpclient.ClientConfig {
 	return r.Current().(httpclient.ClientConfig)
 }
 
-func (r RefreshingClientConfig) MapClientConfig(mapFn func(httpclient.ClientConfig) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingClientConfig) MapClientConfig(mapFn func(httpclient.ClientConfig) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(httpclient.ClientConfig))
 	})
 }
 
 func (r RefreshingClientConfig) SubscribeToClientConfig(consumer func(httpclient.ClientConfig)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(httpclient.ClientConfig))
 	})
 }
 
 func (r RefreshingClientConfig) ServiceName() refreshable.String {
-	return refreshable.NewString(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+	return refreshable.NewString(r.MapClientConfig(func(i httpclient.ClientConfig) any {
 		return i.ServiceName
 	}))
 }
 
 func (r RefreshingClientConfig) URIs() refreshable.StringSlice {
-	return refreshable.NewStringSlice(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+	return refreshable.NewStringSlice(r.MapClientConfig(func(i httpclient.ClientConfig) any {
 		return i.URIs
 	}))
 }
 
 func (r RefreshingClientConfig) APIToken() refreshable.StringPtr {
-	return refreshable.NewStringPtr(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+	return refreshable.NewStringPtr(r.MapClientConfig(func(i httpclient.ClientConfig) any {
 		return i.APIToken
 	}))
 }
 
 func (r RefreshingClientConfig) APITokenFile() refreshable.StringPtr {
-	return refreshable.NewStringPtr(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+	return refreshable.NewStringPtr(r.MapClientConfig(func(i httpclient.ClientConfig) any {
 		return i.APITokenFile
 	}))
 }
 
 func (r RefreshingClientConfig) DisableHTTP2() refreshable.BoolPtr {
-	return refreshable.NewBoolPtr(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+	return refreshable.NewBoolPtr(r.MapClientConfig(func(i httpclient.ClientConfig) any {
 		return i.DisableHTTP2
 	}))
 }
 
 func (r RefreshingClientConfig) ProxyFromEnvironment() refreshable.BoolPtr {
-	return refreshable.NewBoolPtr(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+	return refreshable.NewBoolPtr(r.MapClientConfig(func(i httpclient.ClientConfig) any {
 		return i.ProxyFromEnvironment
 	}))
 }
 
 func (r RefreshingClientConfig) ProxyURL() refreshable.StringPtr {
-	return refreshable.NewStringPtr(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+	return refreshable.NewStringPtr(r.MapClientConfig(func(i httpclient.ClientConfig) any {
 		return i.ProxyURL
 	}))
 }
 
 func (r RefreshingClientConfig) MaxNumRetries() refreshable.IntPtr {
-	return refreshable.NewIntPtr(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+	return refreshable.NewIntPtr(r.MapClientConfig(func(i httpclient.ClientConfig) any {
 		return i.MaxNumRetries
 	}))
 }
 
 func (r RefreshingClientConfig) InitialBackoff() refreshable.DurationPtr {
-	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) any {
 		return i.InitialBackoff
 	}))
 }
 
 func (r RefreshingClientConfig) MaxBackoff() refreshable.DurationPtr {
-	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) any {
 		return i.MaxBackoff
 	}))
 }
 
 func (r RefreshingClientConfig) ConnectTimeout() refreshable.DurationPtr {
-	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) any {
 		return i.ConnectTimeout
 	}))
 }
 
 func (r RefreshingClientConfig) ReadTimeout() refreshable.DurationPtr {
-	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) any {
 		return i.ReadTimeout
 	}))
 }
 
 func (r RefreshingClientConfig) WriteTimeout() refreshable.DurationPtr {
-	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) any {
 		return i.WriteTimeout
 	}))
 }
 
 func (r RefreshingClientConfig) IdleConnTimeout() refreshable.DurationPtr {
-	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) any {
 		return i.IdleConnTimeout
 	}))
 }
 
 func (r RefreshingClientConfig) TLSHandshakeTimeout() refreshable.DurationPtr {
-	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) any {
 		return i.TLSHandshakeTimeout
 	}))
 }
 
 func (r RefreshingClientConfig) ExpectContinueTimeout() refreshable.DurationPtr {
-	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) any {
 		return i.ExpectContinueTimeout
 	}))
 }
 
 func (r RefreshingClientConfig) HTTP2ReadIdleTimeout() refreshable.DurationPtr {
-	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) any {
 		return i.HTTP2ReadIdleTimeout
 	}))
 }
 
 func (r RefreshingClientConfig) HTTP2PingTimeout() refreshable.DurationPtr {
-	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+	return refreshable.NewDurationPtr(r.MapClientConfig(func(i httpclient.ClientConfig) any {
 		return i.HTTP2PingTimeout
 	}))
 }
 
 func (r RefreshingClientConfig) MaxIdleConns() refreshable.IntPtr {
-	return refreshable.NewIntPtr(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+	return refreshable.NewIntPtr(r.MapClientConfig(func(i httpclient.ClientConfig) any {
 		return i.MaxIdleConns
 	}))
 }
 
 func (r RefreshingClientConfig) MaxIdleConnsPerHost() refreshable.IntPtr {
-	return refreshable.NewIntPtr(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+	return refreshable.NewIntPtr(r.MapClientConfig(func(i httpclient.ClientConfig) any {
 		return i.MaxIdleConnsPerHost
 	}))
 }
 
 func (r RefreshingClientConfig) Metrics() RefreshableMetricsConfig {
-	return NewRefreshingMetricsConfig(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+	return NewRefreshingMetricsConfig(r.MapClientConfig(func(i httpclient.ClientConfig) any {
 		return i.Metrics
 	}))
 }
 
 func (r RefreshingClientConfig) Security() RefreshableSecurityConfig {
-	return NewRefreshingSecurityConfig(r.MapClientConfig(func(i httpclient.ClientConfig) interface{} {
+	return NewRefreshingSecurityConfig(r.MapClientConfig(func(i httpclient.ClientConfig) any {
 		return i.Security
 	}))
 }
@@ -242,7 +242,7 @@ func (r RefreshingClientConfig) Security() RefreshableSecurityConfig {
 type RefreshableMetricsConfig interface {
 	refreshable.Refreshable
 	CurrentMetricsConfig() httpclient.MetricsConfig
-	MapMetricsConfig(func(httpclient.MetricsConfig) interface{}) refreshable.Refreshable
+	MapMetricsConfig(func(httpclient.MetricsConfig) any) refreshable.Refreshable
 	SubscribeToMetricsConfig(func(httpclient.MetricsConfig)) (unsubscribe func())
 
 	Enabled() refreshable.BoolPtr
@@ -261,26 +261,26 @@ func (r RefreshingMetricsConfig) CurrentMetricsConfig() httpclient.MetricsConfig
 	return r.Current().(httpclient.MetricsConfig)
 }
 
-func (r RefreshingMetricsConfig) MapMetricsConfig(mapFn func(httpclient.MetricsConfig) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingMetricsConfig) MapMetricsConfig(mapFn func(httpclient.MetricsConfig) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(httpclient.MetricsConfig))
 	})
 }
 
 func (r RefreshingMetricsConfig) SubscribeToMetricsConfig(consumer func(httpclient.MetricsConfig)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(httpclient.MetricsConfig))
 	})
 }
 
 func (r RefreshingMetricsConfig) Enabled() refreshable.BoolPtr {
-	return refreshable.NewBoolPtr(r.MapMetricsConfig(func(i httpclient.MetricsConfig) interface{} {
+	return refreshable.NewBoolPtr(r.MapMetricsConfig(func(i httpclient.MetricsConfig) any {
 		return i.Enabled
 	}))
 }
 
 func (r RefreshingMetricsConfig) Tags() RefreshableStringToString {
-	return NewRefreshingStringToString(r.MapMetricsConfig(func(i httpclient.MetricsConfig) interface{} {
+	return NewRefreshingStringToString(r.MapMetricsConfig(func(i httpclient.MetricsConfig) any {
 		return i.Tags
 	}))
 }
@@ -288,7 +288,7 @@ func (r RefreshingMetricsConfig) Tags() RefreshableStringToString {
 type RefreshableStringToString interface {
 	refreshable.Refreshable
 	CurrentStringToString() map[string]string
-	MapStringToString(func(map[string]string) interface{}) refreshable.Refreshable
+	MapStringToString(func(map[string]string) any) refreshable.Refreshable
 	SubscribeToStringToString(func(map[string]string)) (unsubscribe func())
 }
 
@@ -304,14 +304,14 @@ func (r RefreshingStringToString) CurrentStringToString() map[string]string {
 	return r.Current().(map[string]string)
 }
 
-func (r RefreshingStringToString) MapStringToString(mapFn func(map[string]string) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingStringToString) MapStringToString(mapFn func(map[string]string) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(map[string]string))
 	})
 }
 
 func (r RefreshingStringToString) SubscribeToStringToString(consumer func(map[string]string)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(map[string]string))
 	})
 }
@@ -319,7 +319,7 @@ func (r RefreshingStringToString) SubscribeToStringToString(consumer func(map[st
 type RefreshableSecurityConfig interface {
 	refreshable.Refreshable
 	CurrentSecurityConfig() httpclient.SecurityConfig
-	MapSecurityConfig(func(httpclient.SecurityConfig) interface{}) refreshable.Refreshable
+	MapSecurityConfig(func(httpclient.SecurityConfig) any) refreshable.Refreshable
 	SubscribeToSecurityConfig(func(httpclient.SecurityConfig)) (unsubscribe func())
 
 	CAFiles() refreshable.StringSlice
@@ -339,32 +339,32 @@ func (r RefreshingSecurityConfig) CurrentSecurityConfig() httpclient.SecurityCon
 	return r.Current().(httpclient.SecurityConfig)
 }
 
-func (r RefreshingSecurityConfig) MapSecurityConfig(mapFn func(httpclient.SecurityConfig) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingSecurityConfig) MapSecurityConfig(mapFn func(httpclient.SecurityConfig) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(httpclient.SecurityConfig))
 	})
 }
 
 func (r RefreshingSecurityConfig) SubscribeToSecurityConfig(consumer func(httpclient.SecurityConfig)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(httpclient.SecurityConfig))
 	})
 }
 
 func (r RefreshingSecurityConfig) CAFiles() refreshable.StringSlice {
-	return refreshable.NewStringSlice(r.MapSecurityConfig(func(i httpclient.SecurityConfig) interface{} {
+	return refreshable.NewStringSlice(r.MapSecurityConfig(func(i httpclient.SecurityConfig) any {
 		return i.CAFiles
 	}))
 }
 
 func (r RefreshingSecurityConfig) CertFile() refreshable.String {
-	return refreshable.NewString(r.MapSecurityConfig(func(i httpclient.SecurityConfig) interface{} {
+	return refreshable.NewString(r.MapSecurityConfig(func(i httpclient.SecurityConfig) any {
 		return i.CertFile
 	}))
 }
 
 func (r RefreshingSecurityConfig) KeyFile() refreshable.String {
-	return refreshable.NewString(r.MapSecurityConfig(func(i httpclient.SecurityConfig) interface{} {
+	return refreshable.NewString(r.MapSecurityConfig(func(i httpclient.SecurityConfig) any {
 		return i.KeyFile
 	}))
 }
@@ -372,7 +372,7 @@ func (r RefreshingSecurityConfig) KeyFile() refreshable.String {
 type RefreshableStringToClientConfig interface {
 	refreshable.Refreshable
 	CurrentStringToClientConfig() map[string]httpclient.ClientConfig
-	MapStringToClientConfig(func(map[string]httpclient.ClientConfig) interface{}) refreshable.Refreshable
+	MapStringToClientConfig(func(map[string]httpclient.ClientConfig) any) refreshable.Refreshable
 	SubscribeToStringToClientConfig(func(map[string]httpclient.ClientConfig)) (unsubscribe func())
 }
 
@@ -388,14 +388,14 @@ func (r RefreshingStringToClientConfig) CurrentStringToClientConfig() map[string
 	return r.Current().(map[string]httpclient.ClientConfig)
 }
 
-func (r RefreshingStringToClientConfig) MapStringToClientConfig(mapFn func(map[string]httpclient.ClientConfig) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingStringToClientConfig) MapStringToClientConfig(mapFn func(map[string]httpclient.ClientConfig) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(map[string]httpclient.ClientConfig))
 	})
 }
 
 func (r RefreshingStringToClientConfig) SubscribeToStringToClientConfig(consumer func(map[string]httpclient.ClientConfig)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(map[string]httpclient.ClientConfig))
 	})
 }

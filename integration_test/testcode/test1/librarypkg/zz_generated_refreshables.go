@@ -7,7 +7,7 @@ import refreshable "github.com/palantir/pkg/refreshable"
 type RefreshableLibraryStruct interface {
 	refreshable.Refreshable
 	CurrentLibraryStruct() LibraryStruct
-	MapLibraryStruct(func(LibraryStruct) interface{}) refreshable.Refreshable
+	MapLibraryStruct(func(LibraryStruct) any) refreshable.Refreshable
 	SubscribeToLibraryStruct(func(LibraryStruct)) (unsubscribe func())
 
 	FieldA() refreshable.Int
@@ -25,20 +25,20 @@ func (r RefreshingLibraryStruct) CurrentLibraryStruct() LibraryStruct {
 	return r.Current().(LibraryStruct)
 }
 
-func (r RefreshingLibraryStruct) MapLibraryStruct(mapFn func(LibraryStruct) interface{}) refreshable.Refreshable {
-	return r.Map(func(i interface{}) interface{} {
+func (r RefreshingLibraryStruct) MapLibraryStruct(mapFn func(LibraryStruct) any) refreshable.Refreshable {
+	return r.Map(func(i any) any {
 		return mapFn(i.(LibraryStruct))
 	})
 }
 
 func (r RefreshingLibraryStruct) SubscribeToLibraryStruct(consumer func(LibraryStruct)) (unsubscribe func()) {
-	return r.Subscribe(func(i interface{}) {
+	return r.Subscribe(func(i any) {
 		consumer(i.(LibraryStruct))
 	})
 }
 
 func (r RefreshingLibraryStruct) FieldA() refreshable.Int {
-	return refreshable.NewInt(r.MapLibraryStruct(func(i LibraryStruct) interface{} {
+	return refreshable.NewInt(r.MapLibraryStruct(func(i LibraryStruct) any {
 		return i.FieldA
 	}))
 }
