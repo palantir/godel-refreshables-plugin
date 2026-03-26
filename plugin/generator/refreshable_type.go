@@ -171,7 +171,7 @@ func (rt RefreshableType) currentFunc() jen.Code {
 }
 
 func (rt RefreshableType) mapFunc() jen.Code {
-	return jen.Id(rt.mapFuncString()).Params(jen.Func().Params(jenType(rt.Type)).Add(jen.Interface())).Add(refreshable)
+	return jen.Id(rt.mapFuncString()).Params(jen.Func().Params(jenType(rt.Type)).Add(jen.Any())).Add(refreshable)
 }
 
 func (rt RefreshableType) subscribeFunc() jen.Code {
@@ -234,7 +234,7 @@ func jenType(typ types.Type) jen.Code {
 func jenName(typ types.Type) jen.Code {
 	switch t := typ.(type) {
 	case *types.Interface:
-		return jen.Interface()
+		return jen.Any()
 	case *types.Map:
 		return jen.Map(jen.Add(jenName(t.Key()))).Add(jenName(t.Elem()))
 	case *types.Pointer:
@@ -357,7 +357,7 @@ func (rt RefreshableType) typedMapImpl() jen.Code {
 		jen.Id("r").Id(rt.implTypeString()),
 	).Id(rt.mapFuncString()).Params(rt.typedMapFn()).Add(refreshable).Block(
 		jen.Return(jen.Id("r").Dot("Map").Call(
-			jen.Func().Params(jen.Id("i").Interface()).Interface().Block(
+			jen.Func().Params(jen.Id("i").Any()).Any().Block(
 				jen.Return(jen.Id(mapFuncName).Params(jen.Id("i").Assert(jenType(rt.Type)))),
 			),
 		)),
@@ -369,7 +369,7 @@ func (rt RefreshableType) typedSubscribeImpl() jen.Code {
 		jen.Id("r").Id(rt.implTypeString()),
 	).Id(rt.subscribeFuncString()).Params(rt.typedSubscribeFn()).Add(unsubscribeFunc).Block(
 		jen.Return(jen.Id("r").Dot("Subscribe").Call(
-			jen.Func().Params(jen.Id("i").Interface()).Block(
+			jen.Func().Params(jen.Id("i").Any()).Block(
 				jen.Id(consumerFuncName).Params(jen.Id("i").Assert(jenType(rt.Type))),
 			),
 		)),
@@ -406,7 +406,7 @@ func (rt RefreshableType) jenImplementationForField(field *types.Var, typ Refres
 		jen.Id("r").Id(rt.implTypeString()),
 	).Id(field.Name()).Params().Add(refreshableJenType(typ)).Block(
 		jen.Return(refreshableJenTypeConstructor(typ)).Params(jen.Id("r").Dot(rt.mapFuncString()).Params(
-			jen.Func().Params(jen.Id("i").Add(jenType(rt.Type))).Interface().Block(
+			jen.Func().Params(jen.Id("i").Add(jenType(rt.Type))).Any().Block(
 				jen.Return(jen.Id("i").Dot(field.Name())),
 			),
 		)),
@@ -434,7 +434,7 @@ func (rt RefreshableType) subscribeFuncString() string {
 }
 
 func (rt RefreshableType) typedMapFn() jen.Code {
-	return jen.Id(mapFuncName).Func().Params(jenType(rt.Type)).Add(jen.Interface())
+	return jen.Id(mapFuncName).Func().Params(jenType(rt.Type)).Add(jen.Any())
 }
 
 func (rt RefreshableType) typedSubscribeFn() jen.Code {
