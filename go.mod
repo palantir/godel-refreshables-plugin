@@ -7,7 +7,7 @@ require (
 	github.com/palantir/conjure-go-runtime/v2 v2.99.0
 	github.com/palantir/godel/v2 v2.154.0
 	github.com/palantir/pkg/cobracli v1.3.0
-	github.com/palantir/pkg/refreshable v1.6.0
+	github.com/palantir/pkg/refreshable v1.8.0
 	github.com/pkg/errors v0.9.1
 	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.11.1
