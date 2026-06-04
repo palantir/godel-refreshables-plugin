@@ -42,7 +42,7 @@ require (
 	github.com/palantir/pkg/tlsconfig v1.5.0 // indirect
 	github.com/palantir/pkg/uuid v1.3.0 // indirect
 	github.com/palantir/witchcraft-go-error v1.45.0 // indirect
-	github.com/palantir/witchcraft-go-logging v1.67.0 // indirect
+	github.com/palantir/witchcraft-go-logging v1.69.0 // indirect
 	github.com/palantir/witchcraft-go-params v1.41.0 // indirect
 	github.com/palantir/witchcraft-go-tracing v1.43.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
