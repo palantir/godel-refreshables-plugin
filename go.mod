@@ -7,7 +7,7 @@ toolchain go1.26.4
 require (
 	github.com/dave/jennifer v1.7.1
 	github.com/palantir/conjure-go-runtime/v2 v2.99.0
-	github.com/palantir/godel/v2 v2.157.0
+	github.com/palantir/godel/v2 v2.158.0
 	github.com/palantir/pkg/cobracli v1.3.0
 	github.com/palantir/pkg/refreshable v1.8.0
 	github.com/pkg/errors v0.9.1
