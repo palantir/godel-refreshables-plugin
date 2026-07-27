@@ -8,13 +8,15 @@ import (
 	"bytes"
 	"go/token"
 	"go/types"
-	"os"
+	"maps"
 	"path/filepath"
+	"slices"
 	"strings"
 
 	"github.com/palantir/godel-refreshables-plugin/config"
 	"github.com/palantir/godel-refreshables-plugin/plugin/generator"
 	"github.com/palantir/godel-refreshables-plugin/plugin/gotypes"
+	"github.com/palantir/pkg/codegenfiles"
 	"github.com/pkg/errors"
 	"golang.org/x/tools/go/packages"
 	"golang.org/x/tools/imports"
@@ -27,23 +29,47 @@ const (
 var fset = token.NewFileSet()
 
 func Run(projectDir string, cfg config.Config, verify bool) error {
-	for pkgPath, pkgCfg := range cfg.Refreshables {
-		if err := renderRefreshableTypesFile(projectDir, cfg.ImportAliases, pkgPath, pkgCfg.Types, pkgCfg.Output, verify); err != nil {
+	out := codegenfiles.NewOutput()
+	// packages are rendered in a deterministic order so that the first configuration error reported does
+	// not depend on map iteration order
+	for _, pkgPath := range slices.Sorted(maps.Keys(cfg.Refreshables)) {
+		pkgCfg := cfg.Refreshables[pkgPath]
+		outputFile, outputBytes, err := renderRefreshableTypesFile(projectDir, cfg.ImportAliases, pkgPath, pkgCfg.Types, pkgCfg.Output)
+		if err != nil {
 			return errors.Wrap(err, pkgPath)
 		}
+		out.Add(outputFile, outputBytes)
 	}
-	return nil
-}
 
-func renderRefreshableTypesFile(projectDir string, importAliases map[string]string, pkgPath string, typeNames []string, outputFile string, verify bool) error {
-	pkg, err := loadPackage(projectDir, pkgPath)
+	// Every configured package writes into the project directory, so one project reconciles all of them.
+	// That is what makes two entries resolving to the same output file an error rather than a
+	// last-writer-wins race, and what keeps an output path from escaping the project directory.
+	//
+	// DeleteStale is deliberately off: the plugin's output locations come entirely from configuration, so
+	// it has no record of where an earlier run wrote, and the only name it could search for --
+	// zz_generated_refreshables.go -- is also the name under which consumers vendor this plugin's output
+	// from their dependencies. Deleting on that name would remove vendored source.
+	p := &codegenfiles.Project{Dir: projectDir}
+	changes, err := p.Plan(out)
 	if err != nil {
 		return err
+	}
+	if verify {
+		return changes.Err()
+	}
+	return changes.Apply()
+}
+
+// renderRefreshableTypesFile returns the absolute path of the file generated for pkgPath and its content.
+func renderRefreshableTypesFile(projectDir string, importAliases map[string]string, pkgPath string, typeNames []string, outputFile string) (string, []byte, error) {
+	pkg, err := loadPackage(projectDir, pkgPath)
+	if err != nil {
+		return "", nil, err
 	}
 
 	outputFile, outputPackagePath, outputPackageName, err := getOutputSpec(projectDir, pkg, outputFile)
 	if err != nil {
-		return err
+		return "", nil, err
 	}
 
 	// Collect all nested types -> load packages for all nested types -> resolve to remote or local refreshable -> generate code
@@ -52,52 +78,36 @@ func renderRefreshableTypesFile(projectDir string, importAliases map[string]stri
 	for i, typeName := range typeNames {
 		typeObj, err := gotypes.FindType(pkg, typeName)
 		if err != nil {
-			return err
+			return "", nil, err
 		}
 		typeObjects[i] = typeObj.Type()
 	}
 	typeObjects, err = gotypes.FlattenTypes(typeObjects...)
 	if err != nil {
-		return err
+		return "", nil, err
 	}
 
 	refreshableTypes, err := generator.NewRefreshableTypes(pkg, typeObjects)
 	if err != nil {
-		return err
+		return "", nil, err
 	}
 
 	file, err := generator.GenerateRefreshableFile(outputPackagePath, outputPackageName, refreshableTypes)
 	if err != nil {
-		return err
+		return "", nil, err
 	}
 	for path, alias := range importAliases {
 		file.ImportAlias(path, alias)
 	}
 	buf := &bytes.Buffer{}
 	if err := file.Render(buf); err != nil {
-		return err
+		return "", nil, err
 	}
 	outputBytes, err := imports.Process(outputFile, buf.Bytes(), nil)
 	if err != nil {
-		return err
+		return "", nil, err
 	}
-	if verify {
-		existing, err := os.ReadFile(outputFile)
-		if os.IsNotExist(err) {
-			return errors.Wrap(err, "regenerate refreshables output")
-		}
-		if !bytes.Equal(existing, outputBytes) {
-			return errors.Errorf("regenerate refreshables output: outdated file %s", outputFile)
-		}
-	} else {
-		if err := os.MkdirAll(filepath.Dir(outputFile), 0755); err != nil {
-			return errors.Wrap(err, "create outputFile parent directories")
-		}
-		if err := os.WriteFile(outputFile, outputBytes, 0644); err != nil {
-			return errors.Wrap(err, "write outputFile")
-		}
-	}
-	return nil
+	return outputFile, outputBytes, nil
 }
 
 func loadPackage(projectDir string, pkgPath string) (*packages.Package, error) {
@@ -146,7 +156,9 @@ func validatePackage(pkg *packages.Package) error {
 
 // getOutputSpec determines where the pkg's generated refreshables file will be written and its go package metadata.
 // If outputFile is empty, the default location within pkg will be used.
-// If outputFile is specified, it must be a go file within projectDir.
+// If outputFile is specified, it must be a relative go file path; that it resolves within projectDir is
+// enforced when the output is reconciled, which a check on the path text cannot do reliably.
+// The returned filename is absolute.
 func getOutputSpec(projectDir string, pkg *packages.Package, outputFile string) (outputFilename, outputPkgPath, outputPkgName string, err error) {
 	if outputFile == "" {
 		if pkg.Module != nil && pkg.Module.Dir != projectDir {
@@ -166,10 +178,10 @@ func getOutputSpec(projectDir string, pkg *packages.Package, outputFile string) 
 	if filepath.IsAbs(outputFile) {
 		return "", "", "", errors.Errorf("Output %q must be a relative path", outputFile)
 	}
-	if strings.HasPrefix(outputFile, ".."+string(filepath.Separator)) {
-		return "", "", "", errors.Errorf("Output %q must exist within project directory %q", outputFile, projectDir)
+	outputFilename, err = filepath.Abs(filepath.Join(projectDir, outputFile))
+	if err != nil {
+		return "", "", "", errors.Wrapf(err, "Output %q", outputFile)
 	}
-	outputFilename = filepath.Join(projectDir, outputFile)
 	outputPkgPath = "./" + filepath.Dir(outputFile) // Add ./ so go doesn't treat it as a normal package path
 	outputPkgName = filepath.Base(filepath.Dir(outputFilename))
 

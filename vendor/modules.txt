@@ -68,6 +68,9 @@ github.com/palantir/pkg/bytesbuffers
 # github.com/palantir/pkg/cobracli v1.3.0
 ## explicit; go 1.25.0
 github.com/palantir/pkg/cobracli
+# github.com/palantir/pkg/codegenfiles v0.0.0-20260727173115-26ef973d1261
+## explicit; go 1.25.0
+github.com/palantir/pkg/codegenfiles
 # github.com/palantir/pkg/matcher v1.3.0
 ## explicit; go 1.25.0
 github.com/palantir/pkg/matcher
