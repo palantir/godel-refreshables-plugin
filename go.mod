@@ -27,7 +27,7 @@ require (
 	github.com/kr/text v0.2.0 // indirect
 	github.com/mattn/go-colorable v0.1.15 // indirect
 	github.com/mattn/go-isatty v0.0.24 // indirect
-	github.com/mattn/go-runewidth v0.0.28 // indirect
+	github.com/mattn/go-runewidth v0.0.29 // indirect
 	github.com/nmiyake/pkg/errorstringer v1.1.0 // indirect
 	github.com/palantir/go-metrics v1.1.1 // indirect
 	github.com/palantir/pkg v1.1.0 // indirect
