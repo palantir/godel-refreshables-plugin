@@ -40,7 +40,7 @@ require (
 	github.com/palantir/pkg/specdir v1.4.0 // indirect
 	github.com/palantir/pkg/tlsconfig v1.5.0 // indirect
 	github.com/palantir/pkg/uuid v1.3.0 // indirect
-	github.com/palantir/witchcraft-go-error v1.48.0 // indirect
+	github.com/palantir/witchcraft-go-error v1.49.0 // indirect
 	github.com/palantir/witchcraft-go-logging v1.73.0 // indirect
 	github.com/palantir/witchcraft-go-params v1.46.0 // indirect
 	github.com/palantir/witchcraft-go-tracing v1.48.0 // indirect
