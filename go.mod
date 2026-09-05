@@ -37,7 +37,7 @@ require (
 	github.com/palantir/pkg/refreshable/v2 v2.9.0 // indirect
 	github.com/palantir/pkg/retry v1.3.0 // indirect
 	github.com/palantir/pkg/safejson v1.2.0 // indirect
-	github.com/palantir/pkg/specdir v1.3.0 // indirect
+	github.com/palantir/pkg/specdir v1.4.0 // indirect
 	github.com/palantir/pkg/tlsconfig v1.5.0 // indirect
 	github.com/palantir/pkg/uuid v1.3.0 // indirect
 	github.com/palantir/witchcraft-go-error v1.48.0 // indirect
