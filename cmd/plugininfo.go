@@ -30,12 +30,9 @@ var (
 			pluginDescription,
 			pluginapi.TaskInfoCommand("generate"),
 			pluginapi.TaskInfoVerifyOptions(
-				pluginapi.VerifyOptionsOrdering(pInt(verifyorder.Generate+1)),
+				pluginapi.VerifyOptionsOrdering(new(verifyorder.Generate+1)),
 				pluginapi.VerifyOptionsApplyFalseArgs("--"+verifyFlagName),
 			),
 		),
 	)
 )
-
-//go:fix inline
-func pInt(i int) *int { return new(i) }
