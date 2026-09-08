@@ -8,7 +8,7 @@ require (
 	github.com/dave/jennifer v1.7.1
 	github.com/palantir/conjure-go-runtime/v2 v2.99.0
 	github.com/palantir/godel/v2 v2.175.0
-	github.com/palantir/pkg/cobracli v1.3.0
+	github.com/palantir/pkg/cobracli v1.4.0
 	github.com/palantir/pkg/refreshable v1.8.0
 	github.com/pkg/errors v0.9.1
 	github.com/spf13/cobra v1.10.2
@@ -30,20 +30,20 @@ require (
 	github.com/mattn/go-runewidth v0.0.29 // indirect
 	github.com/nmiyake/pkg/errorstringer v1.1.0 // indirect
 	github.com/palantir/go-metrics v1.1.1 // indirect
-	github.com/palantir/pkg v1.1.0 // indirect
+	github.com/palantir/pkg v1.2.0 // indirect
 	github.com/palantir/pkg/bytesbuffers v1.3.0 // indirect
 	github.com/palantir/pkg/matcher v1.3.0 // indirect
 	github.com/palantir/pkg/metrics v1.10.1 // indirect
 	github.com/palantir/pkg/refreshable/v2 v2.9.0 // indirect
 	github.com/palantir/pkg/retry v1.3.0 // indirect
-	github.com/palantir/pkg/safejson v1.2.0 // indirect
-	github.com/palantir/pkg/specdir v1.3.0 // indirect
+	github.com/palantir/pkg/safejson v1.3.0 // indirect
+	github.com/palantir/pkg/specdir v1.4.0 // indirect
 	github.com/palantir/pkg/tlsconfig v1.5.0 // indirect
 	github.com/palantir/pkg/uuid v1.3.0 // indirect
-	github.com/palantir/witchcraft-go-error v1.48.0 // indirect
-	github.com/palantir/witchcraft-go-logging v1.72.0 // indirect
-	github.com/palantir/witchcraft-go-params v1.46.0 // indirect
-	github.com/palantir/witchcraft-go-tracing v1.47.0 // indirect
+	github.com/palantir/witchcraft-go-error v1.49.0 // indirect
+	github.com/palantir/witchcraft-go-logging v1.73.0 // indirect
+	github.com/palantir/witchcraft-go-params v1.47.0 // indirect
+	github.com/palantir/witchcraft-go-tracing v1.48.0 // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
 	go.yaml.in/yaml/v3 v3.0.5 // indirect
 	golang.org/x/mod v0.40.0 // indirect

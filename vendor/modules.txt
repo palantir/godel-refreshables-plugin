@@ -56,14 +56,14 @@ github.com/palantir/godel/v2/framework/verifyorder
 github.com/palantir/godel/v2/godelgetter
 github.com/palantir/godel/v2/pkg/osarch
 github.com/palantir/godel/v2/pkg/products
-# github.com/palantir/pkg v1.1.0
-## explicit; go 1.19
+# github.com/palantir/pkg v1.2.0
+## explicit; go 1.26.0
 github.com/palantir/pkg
 # github.com/palantir/pkg/bytesbuffers v1.3.0
 ## explicit; go 1.25.0
 github.com/palantir/pkg/bytesbuffers
-# github.com/palantir/pkg/cobracli v1.3.0
-## explicit; go 1.25.0
+# github.com/palantir/pkg/cobracli v1.4.0
+## explicit; go 1.26.0
 github.com/palantir/pkg/cobracli
 # github.com/palantir/pkg/matcher v1.3.0
 ## explicit; go 1.25.0
@@ -80,11 +80,11 @@ github.com/palantir/pkg/refreshable/v2
 # github.com/palantir/pkg/retry v1.3.0
 ## explicit; go 1.25.0
 github.com/palantir/pkg/retry
-# github.com/palantir/pkg/safejson v1.2.0
-## explicit; go 1.25.0
+# github.com/palantir/pkg/safejson v1.3.0
+## explicit; go 1.26.0
 github.com/palantir/pkg/safejson
-# github.com/palantir/pkg/specdir v1.3.0
-## explicit; go 1.25.0
+# github.com/palantir/pkg/specdir v1.4.0
+## explicit; go 1.26.0
 github.com/palantir/pkg/specdir
 # github.com/palantir/pkg/tlsconfig v1.5.0
 ## explicit; go 1.25.0
@@ -93,20 +93,20 @@ github.com/palantir/pkg/tlsconfig
 ## explicit; go 1.25.0
 github.com/palantir/pkg/uuid
 github.com/palantir/pkg/uuid/internal/uuid
-# github.com/palantir/witchcraft-go-error v1.48.0
+# github.com/palantir/witchcraft-go-error v1.49.0
 ## explicit; go 1.26.0
 github.com/palantir/witchcraft-go-error
 github.com/palantir/witchcraft-go-error/internal/errors
-# github.com/palantir/witchcraft-go-logging v1.72.0
+# github.com/palantir/witchcraft-go-logging v1.73.0
 ## explicit; go 1.26.0
 github.com/palantir/witchcraft-go-logging/internal/gopath
 github.com/palantir/witchcraft-go-logging/wlog
 github.com/palantir/witchcraft-go-logging/wlog/internal
 github.com/palantir/witchcraft-go-logging/wlog/svclog/svc1log
-# github.com/palantir/witchcraft-go-params v1.46.0
+# github.com/palantir/witchcraft-go-params v1.47.0
 ## explicit; go 1.26.0
 github.com/palantir/witchcraft-go-params
-# github.com/palantir/witchcraft-go-tracing v1.47.0
+# github.com/palantir/witchcraft-go-tracing v1.48.0
 ## explicit; go 1.26.0
 github.com/palantir/witchcraft-go-tracing/wtracing
 github.com/palantir/witchcraft-go-tracing/wtracing/propagation/b3
