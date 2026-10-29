@@ -1,7 +1,7 @@
 github.com/VividCortex/ewma v1.2.0 h1:f58SaIzcDXrSy3kWaHNvuJgJ3Nmz59Zji6XoJR/q1ow=
 github.com/VividCortex/ewma v1.2.0/go.mod h1:nz4BbCtbLyFDeC9SUHbtcT5644juEuWfUAUnGx7j5l4=
-github.com/andybalholm/brotli v1.2.6 h1:ftYnfj6usCp+UGV5kSJ3+chpMQgU+gJf/AxsUQ52REI=
-github.com/andybalholm/brotli v1.2.6/go.mod h1:rzTDkvFWvIrjDXZHkuS16NPggd91W3kUSvPlQ1pLaKY=
+github.com/andybalholm/brotli v1.2.7 h1:UgafRPGMam5ySHfRkhthMqOFA6IFoeF3D7mWIDLjG5A=
+github.com/andybalholm/brotli v1.2.7/go.mod h1:rzTDkvFWvIrjDXZHkuS16NPggd91W3kUSvPlQ1pLaKY=
 github.com/cheggaaa/pb/v3 v3.2.1 h1:aprZbFRG+B7+ug76S8QZ6Y1PW168UHzOmbC3wa+aU6I=
 github.com/cheggaaa/pb/v3 v3.2.1/go.mod h1:U9hSVxoKqJrZIE3PkFG1xXXNaK/Ilzg+EF/scpXzEdw=
 github.com/clipperhouse/uax29/v2 v2.7.0 h1:+gs4oBZ2gPfVrKPthwbMzWZDaAFPGYK72F0NJv2v7Vk=
@@ -22,8 +22,8 @@ github.com/inconshreveable/mousetrap v1.1.0 h1:wN+x4NVGpMsO7ErUn/mUI3vEoE6Jt13X2
 github.com/inconshreveable/mousetrap v1.1.0/go.mod h1:vpF70FUmC8bwa3OWnCshd2FqLfsEA9PFc4w1p2J65bw=
 github.com/klauspost/compress v1.20.3 h1:zWNoFqq/lSuYQRim3dUXlXeA0IqwuZGicdG5ZTfY5j4=
 github.com/klauspost/compress v1.20.3/go.mod h1:LUdAzn7YLVvxLpc7y3V1m40wESHTgc1422pwwBSKYuI=
-github.com/klauspost/pgzip v1.2.7 h1:02QB3Ttao6zOWDnSsv3bIvjN24bX0eGjWniQ8vuBfkA=
-github.com/klauspost/pgzip v1.2.7/go.mod h1:g7E6NrOKHOzah4QwK6Ue1tNCJs8IDiNOfjiXTr85U2E=
+github.com/klauspost/pgzip v1.3.0 h1:8t+KjjzD/0n/8vNlJGGZmTeK4njuwffOQvJm8tOSc8o=
+github.com/klauspost/pgzip v1.3.0/go.mod h1:Xx7tAv5DH8ObLHUDQKXoE/nd8i/FYdNDTVMvi3SLTKI=
 github.com/kr/pretty v0.3.1 h1:flRD4NNwYAUpkphVc1HcthR4KEIFJ65n8Mw5qdRn3LE=
 github.com/kr/pretty v0.3.1/go.mod h1:hoEshYVHaxMs3cyo3Yncou5ZscifuDolrwPKZanG3xk=
 github.com/kr/text v0.2.0 h1:5Nx0Ya0ZqY2ygV366QzturHI13Jq95ApcVaJBhpS+AY=
@@ -50,8 +50,8 @@ github.com/palantir/conjure-go-runtime/v2 v2.99.0 h1:HPt4w+HUrxX4spucNZyt3t59S1P
 github.com/palantir/conjure-go-runtime/v2 v2.99.0/go.mod h1:hqmK7O//4dyJ2mbmsxptiZpL7JmWCYRDRkF6rZ7U2WQ=
 github.com/palantir/go-metrics v1.1.1 h1:YL/UmptBjrC6iSCTVr7vfuIcjL0M359Da3/gBGNny10=
 github.com/palantir/go-metrics v1.1.1/go.mod h1:fRkuipBnsI4nD8Vd9UNcrUJvD8Y0wOJMSbicygcBrGs=
-github.com/palantir/godel/v2 v2.203.0 h1:hNYchaPQnpvxOKY3MaId8f1EDh72qIYCcdKDsXHuQqQ=
-github.com/palantir/godel/v2 v2.203.0/go.mod h1:KCjbnzPEAjPrrBXInaBgs0c2mJynPUT141DOiNGaHKM=
+github.com/palantir/godel/v2 v2.204.0 h1:JeGCOMytzN+QoWZIoDm5FUZh4367JdBxibw1yB+wIog=
+github.com/palantir/godel/v2 v2.204.0/go.mod h1:+H1xUfigndKHoIVHVb2oS5o+CoYbsNDR7FXfojgXHuQ=
 github.com/palantir/pkg v1.2.0 h1:GxXiXLcayV/JNptEyBIDvUrd1NRzI+TwpsL64sufrd8=
 github.com/palantir/pkg v1.2.0/go.mod h1:y8Dt3/qSZjq+0pLBeCsxXDqzby3G08bw85gZmJm5mwA=
 github.com/palantir/pkg/bytesbuffers v1.3.0 h1:0cjgt0T2f0dYbKOv1H2Q9vE8rVhyB++WZfdAXNXWieg=
@@ -60,6 +60,8 @@ github.com/palantir/pkg/cobracli v1.4.0 h1:pMSAaz3rzfkVuaGgOmrgqMkDefizoHdcXtzUr
 github.com/palantir/pkg/cobracli v1.4.0/go.mod h1:F3PqaAXFuDoH16b6aorTDb1pcQPTw9aZOJ8cWnBmALs=
 github.com/palantir/pkg/datetime v1.4.0 h1:yh1j4WZVtHpvK+IsRVuQKbKgJSg7RLRhxmG8QAXPysI=
 github.com/palantir/pkg/datetime v1.4.0/go.mod h1:SfUHKWRJRCynkm9SiW86W3iDtkf7mvBDlEJyLg4ayvM=
+github.com/palantir/pkg/gotoolchain v0.1.0 h1:o+UA/vwKPpfX/0ahT/1eSiQECupAEEKP4ACf/awCzO4=
+github.com/palantir/pkg/gotoolchain v0.1.0/go.mod h1:q7BS55zf4dsDbi93OQe2Lvv3U70q5nZ/LU+k+fWnOHI=
 github.com/palantir/pkg/httpserver v1.2.0 h1:VdmcM4oaDE2HB16yrWWs4dFO6nUQwj+H4+OPxGh1jtw=
 github.com/palantir/pkg/httpserver v1.2.0/go.mod h1:YNtnkfxBDA5jgZj3DmRFb7ntXO24doNmmOwXzNo7bDY=
 github.com/palantir/pkg/matcher v1.3.0 h1:sRcoJUknco5GSKiFW464bbl+E61rwXwyFvHmmisI7B0=
