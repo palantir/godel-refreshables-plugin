@@ -42,7 +42,7 @@ require (
 	github.com/palantir/pkg/uuid v1.4.0 // indirect
 	github.com/palantir/witchcraft-go-error v1.52.0 // indirect
 	github.com/palantir/witchcraft-go-logging v1.76.0 // indirect
-	github.com/palantir/witchcraft-go-params v1.50.0 // indirect
+	github.com/palantir/witchcraft-go-params v1.51.0 // indirect
 	github.com/palantir/witchcraft-go-tracing v1.51.0 // indirect
 	github.com/spf13/pflag v1.1.0 // indirect
 	go.yaml.in/yaml/v3 v3.0.6 // indirect
