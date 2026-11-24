@@ -58,6 +58,8 @@ github.com/palantir/pkg/bytesbuffers v1.3.0 h1:0cjgt0T2f0dYbKOv1H2Q9vE8rVhyB++WZ
 github.com/palantir/pkg/bytesbuffers v1.3.0/go.mod h1:D4BwQZu3lngNbtE5tqYFduh6D40i8VSnpr7PcCZ8Th8=
 github.com/palantir/pkg/cobracli v1.4.0 h1:pMSAaz3rzfkVuaGgOmrgqMkDefizoHdcXtzUroFf5u8=
 github.com/palantir/pkg/cobracli v1.4.0/go.mod h1:F3PqaAXFuDoH16b6aorTDb1pcQPTw9aZOJ8cWnBmALs=
+github.com/palantir/pkg/codegenfiles v1.0.0 h1:bcFqkrfBmBHwAeCkTyiAS6CqB91m+stvi0Mogn5SlXc=
+github.com/palantir/pkg/codegenfiles v1.0.0/go.mod h1:At+1zpCdNX9m/+Ut+N62FhAcFeE22dWCJ5t0M4QphW0=
 github.com/palantir/pkg/datetime v1.5.0 h1:+Oapq+EGX4dZtjfLqrNRwA5C1AHRdojXOXm7SiJdMH4=
 github.com/palantir/pkg/datetime v1.5.0/go.mod h1:18RT0VGDxFiVxzAXChcues/NcaLy225NWOh+YqC/E60=
 github.com/palantir/pkg/gotoolchain v0.1.0 h1:o+UA/vwKPpfX/0ahT/1eSiQECupAEEKP4ACf/awCzO4=
